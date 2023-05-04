@@ -1,3 +1,4 @@
+package net.ariane.Entite;
 
 public class Entite {
 
@@ -9,7 +10,7 @@ public class Entite {
     public int speed ;
     public int sizeX, sizeY;
 
-    public Entite{
+    public Entite(){
         setLife(MAXLIFE);
     }
 
