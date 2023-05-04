@@ -18,6 +18,13 @@ public class Entite {
         setSizeY(SIZEY);
     }
 
+    private int attack(Bullet bullet,Entite entite){
+        if(entite.life - bullet.power <= 0){
+            return 0 ;
+        }
+        return entite.life - bullet.power ;
+    }
+
 
     public int getLife() {
         return life;
