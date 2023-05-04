@@ -6,21 +6,18 @@ public class Entite {
     public static final int SPEED = 1;
     public static final int SIZEX = 20;
     public static final int SIZEY = 20;
-    public int maxLife, life ;
+
+    public int life ;
     public int speed ;
     public int sizeX, sizeY;
 
     public Entite(){
         setLife(MAXLIFE);
+        setSpeed(SPEED);
+        setSizeX(SIZEX);
+        setSizeY(SIZEY);
     }
 
-    public int getMaxLife() {
-        return maxLife;
-    }
-
-    public void setMaxLife(int maxLife) {
-        this.maxLife = maxLife;
-    }
 
     public int getLife() {
         return life;
