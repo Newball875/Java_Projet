@@ -1,6 +1,6 @@
-package net.ariane.Entites.TypeEnnemi;
+package net.ariane.mobs.ennemi;
 
-import net.ariane.Entites.Ennemi;
+import net.ariane.mobs.Ennemi;
 
 public class Classique extends Ennemi {
     public Classique(){
