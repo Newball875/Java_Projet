@@ -21,8 +21,6 @@ public class ArianeGame extends ApplicationAdapter {
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		Gdx.graphics.setTitle("Zaq");
-		this.resize(800, 800);
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		if(i==0){
 			System.out.println(Gdx.graphics.getWidth());
