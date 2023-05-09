@@ -1,5 +1,8 @@
 package net.ariane.bullet;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 public class Bullet {
 
     public static final int DEFAULT_SIZE = 5;
@@ -22,6 +25,8 @@ public class Bullet {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public int getSize(){return this.size;}
 
     public void setXposition(int positionx) {
         this.Xposition = positionx;
@@ -60,9 +65,13 @@ public class Bullet {
         this.damage = damage;
     }
 
+    public void draw(ShapeRenderer shape){
+		shape.setColor(Color.RED);
+		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
+	}
+
     public void update(){
         setXposition(getXposition() + getXspeed());
         setYposition(getYposition() + getYspeed());
-
     }
 }

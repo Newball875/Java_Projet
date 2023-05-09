@@ -17,7 +17,6 @@ public class ArianeGame extends ApplicationAdapter {
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	ShapeRenderer shape;
-	int i=0;
 	
 	@Override
 	public void create () {
@@ -48,12 +47,12 @@ public class ArianeGame extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeRenderer.ShapeType.Filled);
-		if(i==0){
-			System.out.println(Gdx.graphics.getWidth());
-			i=i+1;
-		}
+		int i=0;
 		zac.update(balles_alliees);
 		zac.draw(shape);
+		for(Bullet balle:balles_alliees){
+			balle.update();
+		}
 		shape.end();
 	}
 }

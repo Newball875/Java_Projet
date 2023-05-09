@@ -42,7 +42,7 @@ public class Weapon {
     }
 
 
-    public void use(int x, int y, int Xspeed, int Yspeed){
-        Bullet bullet = new Bullet(x, y, Xspeed, Yspeed);
+    public Bullet use(int x, int y, int Xspeed, int Yspeed){
+        return new Bullet(x, y, Xspeed, Yspeed);
     }
 }

@@ -24,17 +24,17 @@ public class Joueur extends Entite{
     public void update(HashSet<Bullet>balles_alliees){
 		this.setX(Gdx.input.getX()-(this.getSizeX()/2));
 		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY())-(this.getSizeY()/2));
-        shoot();
+        shoot(balles_alliees);
         //System.out.println("COOS SOURIS : "+Gdx.input.getX()+" ; "+(Gdx.graphics.getHeight()-Gdx.input.getY()));
         //System.out.println("COOS CARRE : "+this.getX()+" ; "+this.getY());
         //System.out.println("\n\n");
 	}
 
-    public void shoot(){
+    public void shoot(HashSet<Bullet>balles_alliees){
         if(Gdx.input.isKeyPressed(Keys.SPACE)){
             if(this.wait<=0){
                 System.out.println("SALUUUUUT");
-                this.weapon.use(getX(), getY(), 0, this.weapon.getSpeedBullet());
+                balles_alliees.add(this.weapon.use(getX(), getY(), 0, this.weapon.getSpeedBullet()));
                 this.wait=this.getCooldown();
             }
             else{
