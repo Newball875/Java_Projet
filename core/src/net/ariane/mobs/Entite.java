@@ -68,8 +68,52 @@ public class Entite {
 		shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
 	}
 
+<<<<<<< HEAD
     public void update(){
 		this.setX(Gdx.input.getX());
 		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY()));
 	}
+=======
+
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public void setSizeX(int sizeX) {
+        this.sizeX = sizeX;
+    }
+
+    public int getSizeY() {
+        return sizeY;
+    }
+
+    public void setSizeY(int sizeY) {
+        this.sizeY = sizeY;
+    }
+
+    public Weapon getWeapon() {
+        return this.weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+>>>>>>> 1f690ed (changement)
 }
