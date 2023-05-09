@@ -14,7 +14,8 @@ import java.util.HashSet;
 public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
-	HashSet<Bullet>balles=new HashSet<Bullet>();
+	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
+	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	int i=0;
 	
@@ -47,7 +48,7 @@ public class ArianeGame extends ApplicationAdapter {
 			System.out.println(Gdx.graphics.getWidth());
 			i=i+1;
 		}
-		zac.update();
+		zac.update(balles_alliees);
 		zac.draw(shape);
 		shape.end();
 	}

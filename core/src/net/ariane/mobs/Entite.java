@@ -19,9 +19,9 @@ public abstract class Entite {
     private int speed ;
     private int sizeX, sizeY;
     private int x,y;
-    private Weapon weapon;
+    protected Weapon weapon;
     private int cooldown;
-    private int wait=0;
+    protected int wait=0;
 
     public Entite(){
         setLife(MAXLIFE);
