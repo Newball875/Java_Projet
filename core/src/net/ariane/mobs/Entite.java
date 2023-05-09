@@ -13,14 +13,14 @@ public class Entite {
     private static final int SPEED = 1;
     private static final int SIZEX = 20;
     private static final int SIZEY = 20;
-    private static final int X=15;
-    private static final int Y=15;
+    private static final int X=100;
+    private static final int Y=100;
 
     private int life ;
     private int speed ;
     private int sizeX, sizeY;
     private int x,y;
-    public Weapon weapon ;
+    private Weapon weapon ;
 
     public Bullet bullet ;
 
@@ -29,14 +29,42 @@ public class Entite {
         setSpeed(SPEED);
         setSizeX(SIZEX);
         setSizeY(SIZEY);
+        setX(X);
+        setY(Y);
     }
 
-    private int attack(Bullet bullet,Entite entite){
-        if(entite.life - bullet.power <= 0){
-            return 0 ;
+    private int attack(int damage){
+        if(getLife() - damage <= 0){
+            setLife(0);
+            return 0;
         }
-        return entite.life - bullet.power ;
+        setLife(getLife() - damage);
+        return getLife();
     }
+
+
+    public int getLife(){return life;}
+    public void setLife(int life){this.life = life;}
+
+    public int getSpeed(){return speed;}
+    public void setSpeed(int speed){this.speed = speed;}
+
+    public int getSizeX(){return sizeX;}
+    public void setSizeX(int sizeX){this.sizeX = sizeX;}
+
+    public int getSizeY(){return sizeY;}
+    public void setSizeY(int sizeY){this.sizeY = sizeY;}
+
+    public int getX(){return x;}
+    public void setX(int x){this.x=x;}
+
+    public int getY(){return y;}
+    public void setY(int y){this.y=y;}
+
+    public Weapon getWeapon(){return this.weapon;}
+    public void setWeapon(Weapon weapon){this.weapon = weapon;}
+
+
 
     public void draw(ShapeRenderer shape){
 		shape.setColor(Color.WHITE);
