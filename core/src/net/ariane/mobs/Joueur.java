@@ -38,7 +38,6 @@ public class Joueur extends Entite{
     public void shoot(HashSet<Bullet>balles_alliees){
         if(Gdx.input.isKeyPressed(Keys.SPACE)){
             if(this.wait<=0){
-                System.out.println("SALUUUUUT");
                 balles_alliees.add(this.weapon.use(getX()+(getSizeX()/2), getY()+(getSizeY()), 0, this.weapon.getSpeedBullet()));
                 this.wait=this.getCooldown();
             }
