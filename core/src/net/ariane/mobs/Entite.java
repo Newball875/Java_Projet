@@ -1,4 +1,4 @@
-package net.ariane.Entites;
+package net.ariane.mobs;
 
 public class Entite {
 
