@@ -20,7 +20,7 @@ public class Entite {
     private int speed ;
     private int sizeX, sizeY;
     private int x,y;
-    private Weapon weapon ;
+    private Weapon weapon;
 
     public Entite(){
         setLife(MAXLIFE);
@@ -66,8 +66,4 @@ public class Entite {
 		shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
 	}
 
-    public void update(){
-		this.setX(Gdx.input.getX());
-		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY()));
-	}
 }

@@ -14,4 +14,8 @@ public class Joueur extends Entite{
         super();
     }
 
+    public void update(){
+		this.setX(Gdx.input.getX());
+		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY()));
+	}
 }
