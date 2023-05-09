@@ -1,5 +1,7 @@
 package net.ariane;
 
+import net.ariane.entites.*;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
@@ -8,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class ArianeGame extends ApplicationAdapter {
+	Zac player;
 	ShapeRenderer shape;
 	Texture img;
 	int i=0;
@@ -15,6 +18,7 @@ public class ArianeGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		shape=new ShapeRenderer();
+		player=new Zac(10,10,10);
 	}
 
 	@Override
@@ -26,7 +30,9 @@ public class ArianeGame extends ApplicationAdapter {
 			System.out.println(Gdx.graphics.getWidth());
 			i=i+1;
 		}
-		//shape.begin(ShapeRenderer.ShapeType.Filled);
+		shape.begin(ShapeRenderer.ShapeType.Filled);
+		player.update();
+		player.draw(shape);
 	}
 	
 }

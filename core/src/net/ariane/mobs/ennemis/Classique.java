@@ -1,4 +1,4 @@
-package net.ariane.mobs.ennemi;
+package net.ariane.mobs.ennemis;
 
 import net.ariane.mobs.Ennemi;
 
