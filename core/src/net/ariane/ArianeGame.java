@@ -7,8 +7,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import java.util.HashSet;
+
 public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
+	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	ShapeRenderer shape;
 	int i=0;
 	
@@ -16,6 +19,12 @@ public class ArianeGame extends ApplicationAdapter {
 	public void create () {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
+		createEnnemi();
+	}
+
+	public void createEnnemi () {
+		Ennemi ennemi=new Ennemi(100,100);
+		ennemis.add(ennemi);
 	}
 
 	@Override
@@ -30,5 +39,4 @@ public class ArianeGame extends ApplicationAdapter {
 		zac.draw(shape);
 		shape.end();
 	}
-	
 }

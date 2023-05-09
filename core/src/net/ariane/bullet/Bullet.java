@@ -6,36 +6,63 @@ public class Bullet {
     public static final int DEFAULT_DAMAGE = 10;
 
     public int size;
-    public int positionx, positiony;
-    public int speed;
-
+    public int Xposition, Yposition;
+    public int Xspeed, Yspeed;
     public int damage;
 
-    public Bullet(int positionx, int positiony, int speed){
+    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed){
         setSize(DEFAULT_SIZE);
         setDamage(DEFAULT_DAMAGE);
-        setSpeed(speed);
-        setPositionx(positionx);
-        setPositiony(positiony);
+        setXspeed(Xspeed);
+        setYspeed(Yspeed);
+        setXposition(Xposition);
+        setYposition(Yposition);
     }
 
     public void setSize(int size) {
         this.size = size;
     }
 
-    public void setPositionx(int positionx) {
-        this.positionx = positionx;
+    public void setXposition(int positionx) {
+        this.Xposition = positionx;
     }
 
-    public void setPositiony(int positiony) {
-        this.positiony = positiony;
+    public void setYposition(int positiony) {
+        this.Yposition = positiony;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public int getXposition() {
+        return Xposition;
+    }
+
+    public int getYposition() {
+        return Yposition;
+    }
+
+
+    public void setXspeed(int xspeed) {
+        Xspeed = xspeed;
+    }
+
+    public void setYspeed(int yspeed) {
+        Yspeed = yspeed;
+    }
+
+    public int getXspeed() {
+        return Xspeed;
+    }
+
+    public int getYspeed() {
+        return Yspeed;
     }
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public void update(){
+        setXposition(getXposition() + getXspeed());
+        setYposition(getYposition() + getYspeed());
+
     }
 }
