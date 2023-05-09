@@ -1,6 +1,5 @@
 package net.ariane.mobs;
 
-import net.ariane.bullet.Bullet;
 import net.ariane.weapon.Weapon;
 
 import com.badlogic.gdx.Gdx;
@@ -21,8 +20,6 @@ public class Entite {
     private int sizeX, sizeY;
     private int x,y;
     private Weapon weapon ;
-
-    public Bullet bullet ;
 
     public Entite(){
         setLife(MAXLIFE);
