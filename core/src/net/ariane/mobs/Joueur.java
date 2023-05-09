@@ -3,6 +3,7 @@ package net.ariane.mobs;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
+import net.ariane.weapon.*;
 
 public class Joueur extends Entite{
 
@@ -12,6 +13,7 @@ public class Joueur extends Entite{
 
     public Joueur(){
         super();
+        setWeapon(new Zak());
     }
 
     public void update(){
