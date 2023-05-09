@@ -21,6 +21,7 @@ public class ArianeGame extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.graphics.setWindowedMode(800, 800);
+		Gdx.graphics.setTitle("Zaq");
 		if(i==0){
 			System.out.println(Gdx.graphics.getWidth());
 			i=i+1;
