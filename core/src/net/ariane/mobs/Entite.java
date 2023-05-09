@@ -33,16 +33,6 @@ public class Entite {
         setY(Y);
     }
 
-    private int attack(int damage){
-        if(getLife() - damage <= 0){
-            setLife(0);
-            return 0;
-        }
-        setLife(getLife() - damage);
-        return getLife();
-    }
-
-
     public int getLife(){return life;}
     public void setLife(int life){this.life = life;}
 
@@ -64,7 +54,14 @@ public class Entite {
     public Weapon getWeapon(){return this.weapon;}
     public void setWeapon(Weapon weapon){this.weapon = weapon;}
 
-
+    private int attack(int damage){
+        if(getLife() - damage <= 0){
+            setLife(0);
+            return 0;
+        }
+        setLife(getLife() - damage);
+        return getLife();
+    }
 
     public void draw(ShapeRenderer shape){
 		shape.setColor(Color.WHITE);
