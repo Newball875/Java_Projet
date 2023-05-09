@@ -39,7 +39,7 @@ public class Joueur extends Entite{
         if(Gdx.input.isKeyPressed(Keys.SPACE)){
             if(this.wait<=0){
                 System.out.println("SALUUUUUT");
-                balles_alliees.add(this.weapon.use(getX(), getY(), 0, this.weapon.getSpeedBullet()));
+                balles_alliees.add(this.weapon.use(getX()+(getSizeX()/2), getY()+(getSizeY()), 0, this.weapon.getSpeedBullet()));
                 this.wait=this.getCooldown();
             }
             else{

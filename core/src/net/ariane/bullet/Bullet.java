@@ -3,6 +3,8 @@ package net.ariane.bullet;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import net.ariane.mobs.*;
+
 public class Bullet {
 
     public static final int DEFAULT_SIZE = 5;
@@ -65,7 +67,7 @@ public class Bullet {
         this.damage = damage;
     }
 
-    public void draw(ShapeRenderer shape){
+    public void draw(ShapeRenderer shape, Entite tireur){
 		shape.setColor(Color.RED);
 		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
 	}
