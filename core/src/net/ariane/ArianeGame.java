@@ -7,7 +7,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import net.ariane.mobs.ennemis.Classique;
+import net.ariane.mobs.ennemis.*;
 
 import java.util.HashSet;
 
@@ -23,11 +23,15 @@ public class ArianeGame extends ApplicationAdapter {
 	public void create () {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		createEnnemi(100,100);
+		createClassique(100,100);
 	}
 
-	public void createEnnemi (int X, int Y) {
+	public void createClassique (int X, int Y) {
 		Ennemi ennemi=new Classique(X,Y);
+		ennemis.add(ennemi);
+	}
+	public void createNavar (int X, int Y) {
+		Ennemi ennemi=new Navar(X,Y);
 		ennemis.add(ennemi);
 	}
 
@@ -35,7 +39,7 @@ public class ArianeGame extends ApplicationAdapter {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
 		for(int i=0;i<10;i++) {
-			createEnnemi(i*10+5,100);
+			createClassique(i*10+5,100);
 			java.util.concurrent.TimeUnit.SECONDS.sleep(2);
 		}
 	}
