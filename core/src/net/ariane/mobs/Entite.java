@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 
-public class Entite {
+public abstract class Entite {
 
     private static final int MAXLIFE = 1;
     private static final int SPEED = 1;
@@ -20,6 +20,8 @@ public class Entite {
     private int sizeX, sizeY;
     private int x,y;
     private Weapon weapon;
+    private int cooldown;
+    private int wait=0;
 
     public Entite(){
         setLife(MAXLIFE);
@@ -28,6 +30,7 @@ public class Entite {
         setSizeY(SIZEY);
         setX(X);
         setY(Y);
+        setCooldown(6);
     }
 
     public int getLife(){return life;}
@@ -50,6 +53,9 @@ public class Entite {
 
     public Weapon getWeapon(){return this.weapon;}
     public void setWeapon(Weapon weapon){this.weapon = weapon;}
+
+    public int getCooldown(){return this.cooldown;}
+    public void setCooldown(int cool){this.cooldown=cool;}
 
     private int attack(int damage){
         if(getLife() - damage <= 0){
