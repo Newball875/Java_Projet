@@ -31,32 +31,11 @@ public class Entite {
         setSizeY(SIZEY);
     }
 
-    public int getLife(){return life;}
-    public void setLife(int life){this.life=life;}
-
-    public int getSpeed(){return speed;}
-    public void setSpeed(int speed){this.speed=speed;}
-
-    public int getSizeX(){return sizeX;}
-    public void setSizeX(int sizeX){this.sizeX=sizeX;}
-
-    public int getSizeY(){return sizeY;}
-    public void setSizeY(int sizeY){this.sizeY=sizeY;}
-
-    public int getX(){return x;}
-    public void setX(int x){this.x=x;}
-
-    public int getY(){return y;}
-    public void setY(int y){this.y=y;}
-
-    public Weapon getWeapon(){return this.weapon;}
-    public void setWeapon(Weapon weapon){this.weapon=weapon;}
-
     private int attack(Bullet bullet,Entite entite){
-        if(entite.life - bullet.damage <= 0){
+        if(entite.life - bullet.power <= 0){
             return 0 ;
         }
-        return entite.life - bullet.damage ;
+        return entite.life - bullet.power ;
     }
 
     public void draw(ShapeRenderer shape){
