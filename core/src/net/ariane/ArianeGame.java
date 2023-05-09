@@ -1,38 +1,42 @@
 package net.ariane;
 
-import net.ariane.entites.*;
+import net.ariane.mobs.*;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import java.util.HashSet;
+
 public class ArianeGame extends ApplicationAdapter {
-	Zac player;
+	Joueur zac;
+	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	ShapeRenderer shape;
-	Texture img;
 	int i=0;
 	
 	@Override
 	public void create () {
 		shape=new ShapeRenderer();
-		player=new Zac(10,10,10);
+		zac=new Joueur();
+		createEnnemi();
+	}
+
+	public void createEnnemi () {
+		Ennemi ennemi=new Ennemi(100,100);
+		ennemis.add(ennemi);
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		Gdx.graphics.setWindowedMode(800, 800);
-		Gdx.graphics.setTitle("Zaq");
+		shape.begin(ShapeRenderer.ShapeType.Filled);
 		if(i==0){
 			System.out.println(Gdx.graphics.getWidth());
 			i=i+1;
 		}
-		shape.begin(ShapeRenderer.ShapeType.Filled);
-		player.update();
-		player.draw(shape);
+		zac.update();
+		zac.draw(shape);
+		shape.end();
 	}
-	
 }
