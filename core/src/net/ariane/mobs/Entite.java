@@ -2,10 +2,10 @@ package net.ariane.mobs;
 
 public class Entite {
 
-    public static final int MAXLIFE = 1;
-    public static final int SPEED = 1;
-    public static final int SIZEX = 20;
-    public static final int SIZEY = 20;
+    private static final int MAXLIFE = 1;
+    private static final int SPEED = 1;
+    private static final int SIZEX = 20;
+    private static final int SIZEY = 20;
 
     public int life ;
     public int speed ;
