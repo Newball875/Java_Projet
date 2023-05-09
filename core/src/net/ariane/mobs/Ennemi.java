@@ -7,6 +7,10 @@ public class Ennemi extends Entite{
     public static final int SIZEX = 20;
     public static final int SIZEY = 20;
 
+    private int score ;
+    public int getScore(){return score;}
+    public void setScore(int score){this.score = score;}
+
     public Ennemi(int X, int Y){
         super();
         this.setX(X);

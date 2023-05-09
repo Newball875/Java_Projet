@@ -16,9 +16,14 @@ public class Joueur extends Entite{
     private static final int SIZEX=10;
     private static final int SIZEY=10;
 
+    private int highScore ;
+    public int getHighScore(){return highScore;}
+    public void setHighScore(int score){this.highScore = highScore;}
+
     public Joueur(){
         super();
-        setWeapon(new Zak());
+        this.setWeapon(new Zak());
+        this.setHighScore(0);
     }
 
     public void update(HashSet<Bullet>balles_alliees){

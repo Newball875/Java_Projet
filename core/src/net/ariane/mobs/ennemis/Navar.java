@@ -9,6 +9,7 @@ public class Navar extends Ennemi{
         super(X,Y);
         this.setLife(20);
         this.setWeapon(new Rafale());
+        this.setScore(10);
     }
 
 }

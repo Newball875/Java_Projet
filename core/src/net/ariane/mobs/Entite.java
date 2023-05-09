@@ -2,7 +2,6 @@ package net.ariane.mobs;
 
 import net.ariane.weapon.*;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 
@@ -64,6 +63,9 @@ public abstract class Entite {
         }
         setLife(getLife() - damage);
         return getLife();
+    }
+    public void update_HighScore(int score){
+
     }
 
     public void draw(ShapeRenderer shape){

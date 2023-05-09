@@ -8,5 +8,6 @@ public class Classique extends Ennemi {
         super(X,Y);
         this.setLife(20);
         this.setWeapon(new Destroyer());
+        this.setScore(5);
     }
 }
