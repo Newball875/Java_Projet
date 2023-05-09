@@ -24,11 +24,13 @@ public class Entite {
         setSizeY(SIZEY);
     }
 
-    private int attack(Bullet bullet,Entite entite){
-        if(entite.life - bullet.power <= 0){
-            return 0 ;
+    private int attack(int damage){
+        if(getLife() - damage <= 0){
+            setLife(0);
+            return 0;
         }
-        return entite.life - bullet.power ;
+        setLife(getLife() - damage);
+        return getLife();
     }
 
 
