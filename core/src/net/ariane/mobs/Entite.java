@@ -15,8 +15,6 @@ public class Entite {
     public int sizeX, sizeY;
     public Weapon weapon ;
 
-    public Bullet bullet ;
-
     public Entite(){
         setLife(MAXLIFE);
         setSpeed(SPEED);
