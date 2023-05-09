@@ -50,7 +50,7 @@ public class Entite {
     public void setY(int y){this.y=y;}
 
     public Weapon getWeapon(){return this.weapon;}
-    public void setWeapon(Destroyer weapon){this.weapon = weapon;}
+    public void setWeapon(Weapon weapon){this.weapon = weapon;}
 
     private int attack(int damage){
         if(getLife() - damage <= 0){
