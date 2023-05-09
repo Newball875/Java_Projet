@@ -1,5 +1,8 @@
 package net.ariane.mobs;
 
+import net.ariane.bullet.Bullet;
+import net.ariane.weapon.Weapon;
+
 public class Entite {
 
     private static final int MAXLIFE = 1;
@@ -10,6 +13,9 @@ public class Entite {
     public int life ;
     public int speed ;
     public int sizeX, sizeY;
+    public Weapon weapon ;
+
+    public Bullet bullet ;
 
     public Entite(){
         setLife(MAXLIFE);
@@ -58,7 +64,11 @@ public class Entite {
         this.sizeY = sizeY;
     }
 
+    public Weapon getWeapon() {
+        return this.weapon;
+    }
 
-
-    //Ajouter Arme et Sprite
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 }
