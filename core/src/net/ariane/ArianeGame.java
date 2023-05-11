@@ -17,13 +17,18 @@ public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
+	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	
 	@Override
 	public void create () {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		createClassique(100,700);
+		int i=0;
+		while(i<1){
+			createClassique(100+i*100,700);
+			i=i+1;
+		}
 	}
 
 	public void createClassique (int X, int Y) {
@@ -53,25 +58,19 @@ public class ArianeGame extends ApplicationAdapter {
 		zac.draw(shape);
 		for(Ennemi mechant:ennemis){
 			int j=0;
-			mechant.update(zac);
+			mechant.update(balles_ennemies,zac);
 			mechant.draw(shape);
-			HashSet<Bullet>balles=mechant.getBalles();
-			for(Bullet balle:balles){
+			for(Bullet balle:balles_ennemies){
 				if(balle.update()){
 					balle=null;
 				}else{
 					balle.draw(shape);
 				}
 			}
-			System.out.println(balles.size());
-			Iterator<Bullet> aux=balles.iterator();
-			while(aux.hasNext()){
-				Bullet balle=aux.next();
-				if(balle==null){
-					aux.remove();
-				}
-			}
+
+			//toarray
 		}
+
 		for(Bullet balle:balles_alliees){
 			if(balle.update()){
 				balle=null;
@@ -79,6 +78,7 @@ public class ArianeGame extends ApplicationAdapter {
 				balle.draw(shape);
 			}
 		}
+		System.out.println(balles_alliees.size());
 		shape.end();
 	}
 }

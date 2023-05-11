@@ -15,6 +15,7 @@ public class Bullet {
     public int Xspeed, Yspeed;
     public int damage;
     private Color color;
+    private boolean delete=false;
 
     public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Color couleur){
         setSize(DEFAULT_SIZE);
@@ -71,6 +72,8 @@ public class Bullet {
 
     public Color getColor(){return this.color;}
     public void setColor(Color color){this.color=color;}
+
+    public boolean getDelete(){return this.delete;}
 
     public void draw(ShapeRenderer shape){
 		shape.setColor(this.color);

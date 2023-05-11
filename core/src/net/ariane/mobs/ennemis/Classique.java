@@ -20,13 +20,13 @@ public class Classique extends Ennemi {
         this.setColor(Color.CORAL);
     }
 
-    public void update(Joueur zac){
+    public void update(HashSet<Bullet>balles_ennemies,Joueur zac){
         if(this.getX()<=0 || this.getX()>=800){
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
 
-        shoot(zac);
+        shoot(balles_ennemies,zac);
     }
 
 }
