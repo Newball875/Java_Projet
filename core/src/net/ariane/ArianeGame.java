@@ -3,6 +3,7 @@ package net.ariane;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -55,7 +56,22 @@ public class ArianeGame extends ApplicationAdapter {
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 		zac.update(balles_alliees);
-		zac.draw(shape);
+
+		ArrayList<Bullet> allies = new ArrayList<>(balles_alliees);
+		while(i<allies.size()){
+			Bullet balle=allies.get(i);
+			if(balle.update()){
+				System.out.println("COUCU"+i);
+				allies.remove(i);
+			}else{
+				i=i+1;
+			}
+		}
+		balles_alliees.clear();
+		balles_alliees=new HashSet<>(allies);
+		i=0;
+
+		ArrayList<Bullet>
 		for(Ennemi mechant:ennemis){
 			int j=0;
 			mechant.update(balles_ennemies,zac);
@@ -71,14 +87,13 @@ public class ArianeGame extends ApplicationAdapter {
 			//toarray
 		}
 
-		for(Bullet balle:balles_alliees){
-			if(balle.update()){
-				balle=null;
-			}else{
-				balle.draw(shape);
-			}
+		zac.draw(shape);
+		while(i<allies.size()){
+			Bullet balle=allies.get(i);
+			balle.draw(shape);
+			i=i+1;
 		}
-		System.out.println(balles_alliees.size());
+		System.out.println("BALLES : "+balles_alliees.size()+"\nALLIES : "+allies.size());
 		shape.end();
 	}
 }
