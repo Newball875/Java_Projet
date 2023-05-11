@@ -8,14 +8,16 @@ import com.badlogic.gdx.graphics.Color;
 public abstract class Entite {
 
     private static final int MAXLIFE = 1;
-    private static final int SPEED = 1;
+    private static final int SPEEDX = 1;
+    private static final int SPEEDY = 1;
     private static final int SIZEX = 20;
     private static final int SIZEY = 20;
     private static final int X=100;
     private static final int Y=100;
 
     private int life ;
-    private int speed ;
+    private int speedx ;
+    private int speedy ;
     private int sizeX, sizeY;
     private int x,y;
     protected Weapon weapon;
@@ -24,7 +26,8 @@ public abstract class Entite {
 
     public Entite(){
         setLife(MAXLIFE);
-        setSpeed(SPEED);
+        setSpeedX(SPEEDX);
+        setSpeedX(SPEEDY);
         setSizeX(SIZEX);
         setSizeY(SIZEY);
         setX(X);
@@ -35,8 +38,10 @@ public abstract class Entite {
     public int getLife(){return life;}
     public void setLife(int life){this.life = life;}
 
-    public int getSpeed(){return speed;}
-    public void setSpeed(int speed){this.speed = speed;}
+    public int getSpeedX(){return speedx;}
+    public void setSpeedX(int speedx){this.speedx = speedx;}
+    public int getSpeedY(){return speedy;}
+    public void setSpeedY(int speedy){this.speedy = speedy;}
 
     public int getSizeX(){return sizeX;}
     public void setSizeX(int sizeX){this.sizeX = sizeX;}

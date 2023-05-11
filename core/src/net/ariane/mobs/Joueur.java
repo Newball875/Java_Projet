@@ -30,9 +30,6 @@ public class Joueur extends Entite{
 		this.setX(Gdx.input.getX()-(this.getSizeX()/2));
 		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY())-(this.getSizeY()/2));
         shoot(balles_alliees);
-        //System.out.println("COOS SOURIS : "+Gdx.input.getX()+" ; "+(Gdx.graphics.getHeight()-Gdx.input.getY()));
-        //System.out.println("COOS CARRE : "+this.getX()+" ; "+this.getY());
-        //System.out.println("\n\n");
 	}
 
     public void shoot(HashSet<Bullet>balles_alliees){
