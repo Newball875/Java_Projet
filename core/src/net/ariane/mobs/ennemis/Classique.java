@@ -5,6 +5,7 @@ import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.weapon.Destroyer;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Classique extends Ennemi {
@@ -15,11 +16,18 @@ public class Classique extends Ennemi {
         this.setScore(5);
     }
 
-    public void update(){
+    //HashMap<Ennemi,Bullet>balles_ennemies=new HashMap<Ennemi,Bullet>();
+
+    public void update(HashMap<Ennemi,Bullet>balles_ennemies){
         if(this.getX()<=0 || this.getX()>=800){
-            this.setSpeed(-this.getSpeed());
+            this.setSpeedX(-this.getSpeedX());
         }
-        this.setX(this.getX() + this.getSpeed());
+        this.setX(this.getX() + this.getSpeedX());
     }
 
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
 }
