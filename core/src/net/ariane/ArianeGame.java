@@ -16,19 +16,27 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import net.ariane.mobs.ennemis.*;
 
-public class ArianeGame extends Zaq {
+public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
-	boolean niveau[];
+	HashMap<Integer,Integer>niveaux=new HashMap<Integer,Integer>();
 	
 	@Override
 	public void create () {
+		boolean truc=true;
+		if(truc){
+			System.out.println("OUI");
+		}
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		createClassique(100, 700);
+		niveaux.put(1,1);
+		niveaux.put(2,-1);
+		niveaux.put(3,-1);
+		//niveaux.put(4,false);
+		//niveaux.put(5,false);
 	}
 
 	public void createClassique (int X, int Y) {
@@ -40,15 +48,51 @@ public class ArianeGame extends Zaq {
 		ennemis.add(ennemi);
 	}
 
-	public void niveau1() throws InterruptedException {
-		for(int i=0;i<10;i++) {
-			createClassique(i*10+5,100);
-			java.util.concurrent.TimeUnit.SECONDS.sleep(2);
+	public void checkLevels()throws Exception{
+		if(niveaux.get(1)==1){
+			level1();
+			niveaux.put(1,0);
 		}
+		if(niveaux.get(2)==1){
+			level2();
+			niveaux.put(2,0);
+		}
+		if(niveaux.get(3)==1){
+			level3();
+			niveaux.put(3,0);
+		}
+		if(niveaux.get(1)==-1 && niveaux.get(2)==-1 && niveaux.get(3)==-1){
+			System.out.println("HELLO");
+		}
+	}
+
+	public void level1(){
+		ennemis.clear();
+		createClassique(100,700);
+	}
+
+	public void level2() throws InterruptedException{
+		ennemis.clear();
+		//Thread.sleep(4000);
+		createClassique(200, 700);
+		createClassique(200, 650);
+	}
+
+	public void level3()throws Exception{
+		ennemis.clear();
+		//Thread.sleep(4000);
+		createNavar(200, 700);
+		createClassique(100, 700);
+		createClassique(200, 600);
 	}
 
 	@Override
 	public void render () {
+		try{
+			checkLevels();
+		}catch(Exception e){
+			System.out.println(e);
+		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
@@ -122,9 +166,14 @@ public class ArianeGame extends Zaq {
 			bad.draw(shape);
 		}
 		if(ennemis.isEmpty()){
-			System.out.println("BIEN JOUE ! TU AS GAGNE !");
-			ennemis.clear();
 			balles_ennemies.clear();
+			for(Integer cle:niveaux.keySet()){
+				if(cle!=1){
+					if(niveaux.get(cle)==-1 && niveaux.get(cle-1)==0){
+						niveaux.put(cle,1);
+					}
+				}
+			}
 		}
 
 		shape.end();
