@@ -14,6 +14,6 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Zaq");
 		config.setWindowedMode(800,800);
-		new Lwjgl3Application( new ArianeGame(), config);
+		new Lwjgl3Application( new Zaq(), config);
 	}
 }
