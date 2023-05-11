@@ -3,18 +3,19 @@ package net.ariane;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.*;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import net.ariane.mobs.ennemis.*;
 
-import java.util.HashSet;
-
 public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
-	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
+	HashMap<Ennemi,Bullet>balles_ennemies=new HashMap<Ennemi,Bullet>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	
@@ -50,6 +51,9 @@ public class ArianeGame extends ApplicationAdapter {
 		int i=0;
 		zac.update(balles_alliees);
 		zac.draw(shape);
+		for(Ennemi mechant:ennemis){
+			mechant.update();
+		}
 		for(Bullet balle:balles_alliees){
 			balle.update();
 			balle.draw(shape,zac);
