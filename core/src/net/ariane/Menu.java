@@ -39,40 +39,11 @@ public class Menu implements Screen {
 
     public Menu(Zaq game){
         this.game = game;
+    }
+
+    public void create(){
         menu = new Menu(this.game);
         backToMenu();
-        // load the images for the droplet and the bucket, 64x64 pixels each
-        //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
-        bucketImage = new Texture(Gdx.files.internal("menu.png"));
-        bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
-        backgroundTexture = new TextureRegion(bucketImage2, 0, 0, 800, 800);
-
-        // load the drop sound effect and the rain background "music"
-        //dropSound = Gdx.audio.newSound(Gdx.files.internal("musique_epic.mp3"));
-        rainMusic = Gdx.audio.newMusic(Gdx.files.internal("musique_epic.mp3"));
-
-        // start the playback of the background music immediately
-        rainMusic.setLooping(true);
-        rainMusic.play();
-
-        // create the camera and the SpriteBatch
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
-        batch = new SpriteBatch();
-
-        // create a Rectangle to logically represent the bucket
-        bucket = new Rectangle();
-        bucket.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        bucket.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
-        bucket.width = 64;
-        bucket.height = 64;
-        bucket2 = new Rectangle();
-        bucket2.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        bucket2.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
-
-        // create the raindrops array and spawn the first raindrop
-        raindrops = new Array<Rectangle>();
-        spawnRaindrop();
     }
 
     public void backToMenu(){
@@ -125,7 +96,7 @@ public class Menu implements Screen {
             camera.unproject(touchPos);
 
         }
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame);
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame(game));
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
 
         // make sure the bucket stays within the screen bounds
@@ -135,7 +106,38 @@ public class Menu implements Screen {
 
     @Override
     public void show() {
+        // load the images for the droplet and the bucket, 64x64 pixels each
+        //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
+        bucketImage = new Texture(Gdx.files.internal("menu.png"));
+        bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
+        backgroundTexture = new TextureRegion(bucketImage2, 0, 0, 800, 800);
 
+        // load the drop sound effect and the rain background "music"
+        //dropSound = Gdx.audio.newSound(Gdx.files.internal("musique_epic.mp3"));
+        rainMusic = Gdx.audio.newMusic(Gdx.files.internal("musique_epic.mp3"));
+
+        // start the playback of the background music immediately
+        rainMusic.setLooping(true);
+        rainMusic.play();
+
+        // create the camera and the SpriteBatch
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 480);
+        batch = new SpriteBatch();
+
+        // create a Rectangle to logically represent the bucket
+        bucket = new Rectangle();
+        bucket.x = 800 / 2 - 64 / 2; // center the bucket horizontally
+        bucket.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
+        bucket.width = 64;
+        bucket.height = 64;
+        bucket2 = new Rectangle();
+        bucket2.x = 800 / 2 - 64 / 2; // center the bucket horizontally
+        bucket2.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
+
+        // create the raindrops array and spawn the first raindrop
+        raindrops = new Array<Rectangle>();
+        spawnRaindrop();
     }
 
     @Override
