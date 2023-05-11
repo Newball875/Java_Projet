@@ -9,8 +9,8 @@ import java.util.HashSet;
 public class Rafale extends Weapon{
     //Tir 3 balles(diagonale gauche, diagonale droite, bas droit)
     private final static int SPEEDBULLET=5;
-    private final static int COOLDOWN=6;
-    private final static int DAMAGE=5;
+    private final static int COOLDOWN=15;
+    private final static int DAMAGE=8;
     private final static Color COLOR=Color.RED;
 
     public Rafale(){
@@ -28,10 +28,21 @@ public class Rafale extends Weapon{
             int speedX = longX * this.getSpeedBullet() / D;
             int speedY = longY * this.getSpeedBullet() / D;
 
-            balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
-            balles_tab.add(new Bullet(X, Y, speedX, speedY-1, Color.RED));
-            balles_tab.add(new Bullet(X, Y, speedX, speedY+1, Color.RED));
-            this.wait=this.getCooldown();
+
+            if(Math.abs(longX) < Math.abs(longY)) {
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX-1, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX+1, speedY, Color.RED));
+            }else if (Math.abs(longX) > Math.abs(longY)){
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY-1, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY+1, Color.RED));
+            }else {
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX-1, speedY-1, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX+1, speedY+1, Color.RED));
+            }
+                this.wait=this.getCooldown();
         }
         else{
             this.wait--;

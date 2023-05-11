@@ -1,5 +1,6 @@
 package net.ariane.mobs.ennemis;
 
+import com.badlogic.gdx.graphics.Color;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
@@ -14,6 +15,7 @@ public class Navar extends Ennemi{
         this.setLife(20);
         this.setWeapon(new Rafale());
         this.setScore(10);
+        this.setColor(Color.ORANGE);
     }
 
     public void update(){
@@ -34,5 +36,8 @@ public class Navar extends Ennemi{
         this.setX(this.getX() + this.getSpeedX());
 
         shoot(balles_ennemies, cible);
+        if(this.getLife()<=0){
+            this.dead=true;
+        }
     }
 }
