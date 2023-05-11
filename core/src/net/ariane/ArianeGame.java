@@ -25,7 +25,7 @@ public class ArianeGame extends ApplicationAdapter {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
 		int i=0;
-		while(i<5){
+		while(i<1){
 			createClassique(100+i*100,700);
 			i=i+1;
 		}
