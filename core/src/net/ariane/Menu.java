@@ -5,6 +5,7 @@ import java.util.Iterator;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -18,7 +19,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
-public class Menu extends Zaq {
+
+public class Menu implements Screen {
     //private Texture dropImage;
     private Texture bucketImage;
     private Texture bucketImage2;
@@ -31,9 +33,14 @@ public class Menu extends Zaq {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
+    private Zaq game ;
 
-    @Override
-    public void create() {
+    private Menu menu ;
+
+    public Menu(Zaq game){
+        this.game = game;
+        menu = new Menu(this.game);
+        backToMenu();
         // load the images for the droplet and the bucket, 64x64 pixels each
         //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
         bucketImage = new Texture(Gdx.files.internal("menu.png"));
@@ -68,6 +75,10 @@ public class Menu extends Zaq {
         spawnRaindrop();
     }
 
+    public void backToMenu(){
+        game.setScreen(menu);
+    }
+
     private void spawnRaindrop() {
         Rectangle raindrop = new Rectangle();
         raindrop.x = MathUtils.random(0, 800-64);
@@ -79,7 +90,7 @@ public class Menu extends Zaq {
     }
 
     @Override
-    public void render() {
+    public void render(float delta) {
         // clear the screen with a dark blue color. The
         // arguments to clear are the red, green
         // blue and alpha component in the range [0,1]
@@ -114,12 +125,37 @@ public class Menu extends Zaq {
             camera.unproject(touchPos);
 
         }
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) this.changeScene();
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame);
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
 
         // make sure the bucket stays within the screen bounds
         if(bucket.x < 0) bucket.x = 0;
         if(bucket.x > 800 - 64) bucket.x = 800 - 64;
+    }
+
+    @Override
+    public void show() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     @Override

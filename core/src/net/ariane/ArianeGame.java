@@ -1,5 +1,6 @@
 package net.ariane;
 
+import com.badlogic.gdx.Screen;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.*;
 
@@ -16,13 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import net.ariane.mobs.ennemis.*;
 
-public class ArianeGame extends ApplicationAdapter {
+public class ArianeGame implements Screen {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	HashMap<Integer,Integer>niveaux=new HashMap<Integer,Integer>();
+	
 	
 	@Override
 	public void create () {
@@ -87,7 +89,7 @@ public class ArianeGame extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
+	public void render (float delta) {
 		try{
 			checkLevels();
 		}catch(Exception e){
@@ -179,7 +181,37 @@ public class ArianeGame extends ApplicationAdapter {
 		shape.end();
 	}
 
+	@Override
+	public void resize(int width, int height) {
+
+	}
+
+	@Override
+	public void pause() {
+
+	}
+
+	@Override
+	public void resume() {
+
+	}
+
+	@Override
+	public void hide() {
+
+	}
+
 	private void end(){
 		
+	}
+
+	@Override
+	public void show() {
+
+	}
+
+	@Override
+	public void dispose() {
+
 	}
 }
