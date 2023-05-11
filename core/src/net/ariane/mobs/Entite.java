@@ -22,8 +22,6 @@ public abstract class Entite {
     private int x,y;
     private Color color=Color.WHITE;
     protected Weapon weapon;
-    private int cooldown;
-    protected int wait=0;
 
     public Entite(){
         setLife(MAXLIFE);
@@ -33,7 +31,6 @@ public abstract class Entite {
         setSizeY(SIZEY);
         setX(X);
         setY(Y);
-        setCooldown(6);
     }
 
     public int getLife(){return life;}
@@ -58,9 +55,6 @@ public abstract class Entite {
 
     public Weapon getWeapon(){return this.weapon;}
     public void setWeapon(Weapon weapon){this.weapon = weapon;}
-
-    public int getCooldown(){return this.cooldown;}
-    public void setCooldown(int cool){this.cooldown=cool;}
 
     public Color getColor(){return this.color;}
     public void setColor(Color color){this.color=color;}

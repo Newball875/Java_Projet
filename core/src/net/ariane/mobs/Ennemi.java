@@ -18,9 +18,12 @@ public abstract class Ennemi extends Entite{
     private static final int SIZEY = 20;
 
     private int score ;
+    protected HashSet<Bullet>balles=new HashSet<Bullet>();
 
     public int getScore(){return score;}
     public void setScore(int score){this.score = score;}
+
+    public HashSet<Bullet> getBalles(){return this.balles;}
 
 
     public Ennemi(int X, int Y){
@@ -29,24 +32,13 @@ public abstract class Ennemi extends Entite{
         this.setY(Y);
     }
 
-    public void shoot(HashSet<Bullet>balles_ennemies,Entite cible){
-        if(this.wait<=0){
+    public void shoot(HashSet<Bullet>balles_ennemies, Entite cible){
 
-            int X = cible.getX() - this.getX();
-            int Y = cible.getY() - this.getY();
-            int D = (int)Math.sqrt((X*X + Y*Y));
-
-            int speedX = (X * this.weapon.getSpeedBullet()) / D;
-            int speedY = Y * this.weapon.getSpeedBullet() / D;
-            balles_ennemies.add(this.weapon.use(getX()+(getSizeX()/2), getY(), speedX, speedY, Color.RED));
-            this.wait=this.getCooldown();
-
-        }
-        else{
-            this.wait--;
-        }
+        int x = this.getX() + (getSizeX()/2);
+        int y = this.getY();
+        this.weapon.use(balles_ennemies, cible,  x, y);
     }
 
-    public abstract void update(HashSet<Bullet>balles_ennemies,Joueur zac);
+    public abstract void update(HashSet<Bullet>balles_ennemies, Joueur cible);
     
 }

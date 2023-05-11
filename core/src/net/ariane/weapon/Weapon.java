@@ -3,28 +3,34 @@ package net.ariane.weapon;
 import com.badlogic.gdx.graphics.Color;
 
 import net.ariane.bullet.Bullet;
+import net.ariane.mobs.Entite;
 
-public class Weapon {
+import java.util.HashSet;
+
+public abstract class Weapon {
 
     private static final int DEFAULT_SPEED_BULLET = 1;
-    private static final int DEFAULT_SPEED_SHOT = 3;
+    private static final int DEFAULT_COOLDOWN = 3;
     private static final int DEFAULT_DAMAGE = 10;
 
 
     public int speedBullet;
-    public int speedShot;
+
+    public int cooldown;
     public int damage;
+
+    protected int wait=0;
 
 
     public Weapon(){
         setSpeedBullet(DEFAULT_SPEED_BULLET);
-        setSpeedShot(DEFAULT_SPEED_SHOT);
+        setCooldown(DEFAULT_COOLDOWN);
         setDamage(DEFAULT_DAMAGE);
     }
 
-    public Weapon(int speedBullet, int speedShot, int damage){
+    public Weapon(int speedBullet, int cooldown, int damage){
         setSpeedBullet(speedBullet);
-        setSpeedShot(speedShot);
+        setCooldown(cooldown);
         setDamage(damage);
     }
 
@@ -35,16 +41,14 @@ public class Weapon {
         return speedBullet;
     }
 
-    public void setSpeedShot(int speedShot) {
-        this.speedShot = speedShot;
-    }
+    public int getCooldown(){return this.cooldown;}
+    public void setCooldown(int cool){this.cooldown=cool;}
+
 
     public void setDamage(int damage) {
         this.damage = damage;
     }
 
 
-    public Bullet use(int x, int y, int Xspeed, int Yspeed, Color couleur){
-        return new Bullet(x, y, Xspeed, Yspeed,couleur);
-    }
+    public abstract void use(HashSet<Bullet> balles_alliees, Entite cible, int x, int y);
 }

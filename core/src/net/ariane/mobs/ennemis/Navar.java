@@ -1,8 +1,11 @@
 package net.ariane.mobs.ennemis;
 
+import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
 import net.ariane.weapon.*;
+
+import java.util.HashSet;
 
 public class Navar extends Ennemi{
 
@@ -24,7 +27,7 @@ public class Navar extends Ennemi{
         this.setY(this.getY() + this.getSpeedY());
     }
 
-    public void update(Joueur cible) {
+    public void update(HashSet<Bullet> balles_ennemies, Joueur cible) {
 
     }
 }
