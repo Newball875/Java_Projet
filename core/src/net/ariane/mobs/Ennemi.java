@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 
 public abstract class Ennemi extends Entite{
 
@@ -42,7 +43,7 @@ public abstract class Ennemi extends Entite{
             int speedY = Y * this.weapon.getSpeedBullet() / D;
 
             System.out.println(speedX + " " + speedY);
-            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), speedX, speedY, Color RED));
+            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), speedX, speedY, Color.RED));
             this.wait=this.getCooldown();
 
         }
