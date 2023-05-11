@@ -27,7 +27,7 @@ public abstract class Ennemi extends Entite{
 
     public void shoot(HashSet<Bullet>balles_ennemies, Entite cible){
         if(this.wait<=0){
-            int D = Math.sqrt((Math.abs(this.getX() - cible.getX()) * Math.abs(this.getX() - cible.getX())) + (Math.abs(this.getY() - this.getY()) * Math.abs(this.getY() - this.getY()));
+            int D = (int)Math.sqrt((Math.abs(this.getX() - cible.getX()) * Math.abs(this.getX() - cible.getX())) + (Math.abs(this.getY() - this.getY()) * Math.abs(this.getY() - this.getY()));
             balles_ennemies.add(this.weapon.use(getX()+(getSizeX()/2), getY()+(getSizeY()), (Math.abs(this.getX() - cible.getX()) * (this.weapon.getSpeedBullet() / D)), (Math.abs(this.getY() - cible.getY()) * (this.weapon.getSpeedBullet() / D))));
             this.wait=this.getCooldown();
         }

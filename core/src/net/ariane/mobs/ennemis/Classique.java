@@ -10,14 +10,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Classique extends Ennemi {
-    public Classique(){
-        super();
+    public Classique(int X, int Y){
+        super(X,Y);
         this.setLife(20);
         this.setWeapon(new Destroyer());
         this.setScore(5);
     }
-
-    //HashMap<Ennemi,Bullet>balles_ennemies=new HashMap<Ennemi,Bullet>();
 
     public void update(HashMap<Ennemi,Bullet>balles_ennemies, Joueur zac){
         if(this.getX()<=0 || this.getX()>=800){
