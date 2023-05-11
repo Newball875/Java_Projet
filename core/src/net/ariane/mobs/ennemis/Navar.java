@@ -1,6 +1,7 @@
 package net.ariane.mobs.ennemis;
 
 import net.ariane.mobs.Ennemi;
+import net.ariane.mobs.Joueur;
 import net.ariane.weapon.*;
 
 public class Navar extends Ennemi{
@@ -23,4 +24,7 @@ public class Navar extends Ennemi{
         this.setY(this.getY() + this.getSpeedY());
     }
 
+    public void update(Joueur cible) {
+
+    }
 }
