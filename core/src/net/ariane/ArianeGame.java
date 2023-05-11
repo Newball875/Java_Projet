@@ -56,6 +56,7 @@ public class ArianeGame extends ApplicationAdapter {
 			HashSet<Bullet>balles=mechant.getBalles();
 			for(Bullet balle:balles){
 				balle.update();
+				//System.out.println(balle.getXspeed() + " " + balle.getYspeed());
 				balle.draw(shape);
 			}
 		}
