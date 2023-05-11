@@ -67,7 +67,7 @@ public class Bullet {
         this.damage = damage;
     }
 
-    public void draw(ShapeRenderer shape, Entite tireur){
+    public void draw(ShapeRenderer shape){
 		shape.setColor(Color.RED);
 		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
 	}

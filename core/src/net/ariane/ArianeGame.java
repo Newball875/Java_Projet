@@ -52,11 +52,11 @@ public class ArianeGame extends ApplicationAdapter {
 		zac.update(balles_alliees);
 		zac.draw(shape);
 		for(Ennemi mechant:ennemis){
-			mechant.update();
+			mechant.update(balle_ennemies);
 		}
 		for(Bullet balle:balles_alliees){
 			balle.update();
-			balle.draw(shape,zac);
+			balle.draw(shape);
 			i=i+1;
 		}
 		shape.end();
