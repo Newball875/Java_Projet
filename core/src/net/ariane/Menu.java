@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -17,26 +18,31 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
-public class Menu extends ApplicationAdapter {
-    private Texture dropImage;
+public class Menu extends Zaq {
+    //private Texture dropImage;
     private Texture bucketImage;
+    private Texture bucketImage2;
     private Sound dropSound;
     private Music rainMusic;
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private Rectangle bucket;
+    private Rectangle bucket2;
     private Array<Rectangle> raindrops;
     private long lastDropTime;
+    private TextureRegion backgroundTexture;
 
     @Override
     public void create() {
         // load the images for the droplet and the bucket, 64x64 pixels each
-        dropImage = new Texture(Gdx.files.internal("droplet.png"));
-        bucketImage = new Texture(Gdx.files.internal("bucket.png"));
+        //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
+        bucketImage = new Texture(Gdx.files.internal("menu.png"));
+        bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
+        backgroundTexture = new TextureRegion(bucketImage2, 0, 0, 800, 800);
 
         // load the drop sound effect and the rain background "music"
-        dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-        rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
+        //dropSound = Gdx.audio.newSound(Gdx.files.internal("musique_epic.mp3"));
+        rainMusic = Gdx.audio.newMusic(Gdx.files.internal("musique_epic.mp3"));
 
         // start the playback of the background music immediately
         rainMusic.setLooping(true);
@@ -53,6 +59,9 @@ public class Menu extends ApplicationAdapter {
         bucket.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
         bucket.width = 64;
         bucket.height = 64;
+        bucket2 = new Rectangle();
+        bucket2.x = 800 / 2 - 64 / 2; // center the bucket horizontally
+        bucket2.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
 
         // create the raindrops array and spawn the first raindrop
         raindrops = new Array<Rectangle>();
@@ -87,10 +96,15 @@ public class Menu extends ApplicationAdapter {
         // begin a new batch and draw the bucket and
         // all drops
         batch.begin();
+
+        batch.draw(backgroundTexture, 0, 0);
+        //I believe texture region takes the upper left corner as 0,0 and batch.Draw the bottom left.
+        //So you might need to do something like this:
+        batch.draw(backgroundTexture, 0, 800);
         batch.draw(bucketImage, bucket.x, bucket.y);
-        for(Rectangle raindrop: raindrops) {
-            batch.draw(dropImage, raindrop.x, raindrop.y);
-        }
+		/*for(Rectangle raindrop: raindrops) {
+			batch.draw(dropImage, raindrop.x, raindrop.y);
+		}*/
         batch.end();
 
         // process user input
@@ -98,38 +112,23 @@ public class Menu extends ApplicationAdapter {
             Vector3 touchPos = new Vector3();
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
             camera.unproject(touchPos);
-            bucket.x = touchPos.x - 64 / 2;
+
         }
-        if(Gdx.input.isKeyPressed(Keys.LEFT)) bucket.x -= 200 * Gdx.graphics.getDeltaTime();
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) this.changeScene();
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
 
         // make sure the bucket stays within the screen bounds
         if(bucket.x < 0) bucket.x = 0;
         if(bucket.x > 800 - 64) bucket.x = 800 - 64;
-
-        // check if we need to create a new raindrop
-        if(TimeUtils.nanoTime() - lastDropTime > 1000000000) spawnRaindrop();
-
-        // move the raindrops, remove any that are beneath the bottom edge of
-        // the screen or that hit the bucket. In the latter case we play back
-        // a sound effect as well.
-        for (Iterator<Rectangle> iter = raindrops.iterator(); iter.hasNext(); ) {
-            Rectangle raindrop = iter.next();
-            raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
-            if(raindrop.y + 64 < 0) iter.remove();
-            if(raindrop.overlaps(bucket)) {
-                dropSound.play();
-                iter.remove();
-            }
-        }
     }
 
     @Override
     public void dispose() {
         // dispose of all the native resources
-        dropImage.dispose();
+        //dropImage.dispose();
         bucketImage.dispose();
-        dropSound.dispose();
+        bucketImage2.dispose();
+        //dropSound.dispose();
         rainMusic.dispose();
         batch.dispose();
     }
