@@ -10,7 +10,8 @@ import com.badlogic.gdx.Input.Keys;
 public abstract class Ennemi extends Entite{
 
     public static final int MAXLIFE = 1000;
-    public static final int SPEED = 1;
+    public static final int SPEEDX = 1;
+    public static final int SPEEDY = 1;
     public static final int SIZEX = 20;
     public static final int SIZEY = 20;
 

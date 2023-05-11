@@ -21,4 +21,5 @@ public class Classique extends Ennemi {
         }
         this.setX(this.getX() + this.getSpeed());
     }
+
 }

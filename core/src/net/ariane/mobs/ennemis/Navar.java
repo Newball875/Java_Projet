@@ -12,4 +12,15 @@ public class Navar extends Ennemi{
         this.setScore(10);
     }
 
+    public void update(){
+        if(this.getX()<=0 || this.getX()>=800){
+            this.setSpeedX(-this.getSpeedX());
+        }
+        if(this.getY()<=650 || this.getX()>=800){
+            this.setSpeedY(-this.getSpeedY());
+        }
+        this.setX(this.getX() + this.getSpeedX());
+        this.setY(this.getY() + this.getSpeedY());
+    }
+
 }
