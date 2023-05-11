@@ -1,5 +1,12 @@
 package net.ariane.mobs;
 
+import net.ariane.bullet.Bullet;
+
+import java.util.HashSet;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+
 public class Ennemi extends Entite{
 
     public static final int MAXLIFE = 1000;
@@ -15,6 +22,16 @@ public class Ennemi extends Entite{
         super();
         this.setX(X);
         this.setY(Y);
+    }
+
+    public void shoot(HashSet<Bullet>balles_alliees){
+        if(this.wait<=0){
+            balles_alliees.add(this.weapon.use(getX()+(getSizeX()/2), getY()+(getSizeY()), 0, this.weapon.getSpeedBullet()));
+            this.wait=this.getCooldown();
+        }
+        else{
+            this.wait--;
+        }
     }
     
 }
