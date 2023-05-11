@@ -77,8 +77,13 @@ public class Bullet {
 		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
 	}
 
-    public void update(){
+    public boolean update(){
         setXposition(getXposition() + getXspeed());
         setYposition(getYposition() + getYspeed());
+        return this.border();
+    }
+
+    boolean border(){
+        return (this.getXposition()<=0 || this.getXposition()>=800)||(this.getYposition()<=0 || this.getYposition()>=800);
     }
 }
