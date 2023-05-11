@@ -34,6 +34,6 @@ public abstract class Ennemi extends Entite{
         }
     }
 
-    public abstract update();
+    public abstract void update();
     
 }
