@@ -55,13 +55,14 @@ public class ArianeGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
+		//MAJ du héros
 		zac.update(balles_alliees);
 
+		//MAJ de ses balles
 		ArrayList<Bullet> allies = new ArrayList<>(balles_alliees);
 		while(i<allies.size()){
 			Bullet balle=allies.get(i);
 			if(balle.update()){
-				System.out.println("COUCU"+i);
 				allies.remove(i);
 			}else{
 				i=i+1;
@@ -71,29 +72,42 @@ public class ArianeGame extends ApplicationAdapter {
 		balles_alliees=new HashSet<>(allies);
 		i=0;
 
-		ArrayList<Bullet>
+		//MAJ des méchants
 		for(Ennemi mechant:ennemis){
-			int j=0;
 			mechant.update(balles_ennemies,zac);
-			mechant.draw(shape);
-			for(Bullet balle:balles_ennemies){
-				if(balle.update()){
-					balle=null;
-				}else{
-					balle.draw(shape);
-				}
-			}
-
-			//toarray
 		}
 
+		//MAJ des balles des ennemis
+		ArrayList<Bullet> adverse= new ArrayList<>(balles_ennemies);
+		while(i<adverse.size()){
+			Bullet balle=adverse.get(i);
+			if(balle.update()){
+				adverse.remove(i);
+			}else{
+				i=i+1;
+			}
+		}
+		balles_ennemies.clear();
+		balles_ennemies=new HashSet<>(adverse);
+		i=0;
+
+		//On draw tout dans le même ordre
 		zac.draw(shape);
 		while(i<allies.size()){
 			Bullet balle=allies.get(i);
 			balle.draw(shape);
 			i=i+1;
 		}
-		System.out.println("BALLES : "+balles_alliees.size()+"\nALLIES : "+allies.size());
+		i=0;
+		while(i<adverse.size()){
+			Bullet balle=adverse.get(i);
+			balle.draw(shape);
+			i=i+1;
+		}
+		for(Ennemi mechant:ennemis){
+			mechant.draw(shape);
+		}
+
 		shape.end();
 	}
 }
