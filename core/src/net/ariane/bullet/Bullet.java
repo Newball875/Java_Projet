@@ -14,14 +14,16 @@ public class Bullet {
     public int Xposition, Yposition;
     public int Xspeed, Yspeed;
     public int damage;
+    private Color color;
 
-    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed){
+    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Color couleur){
         setSize(DEFAULT_SIZE);
         setDamage(DEFAULT_DAMAGE);
         setXspeed(Xspeed);
         setYspeed(Yspeed);
         setXposition(Xposition);
         setYposition(Yposition);
+        setColor(couleur);
     }
 
     public void setSize(int size) {
@@ -67,8 +69,11 @@ public class Bullet {
         this.damage = damage;
     }
 
+    public Color getColor(){return this.color;}
+    public void setColor(Color color){this.color=color;}
+
     public void draw(ShapeRenderer shape){
-		shape.setColor(Color.RED);
+		shape.setColor(this.color);
 		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
 	}
 
