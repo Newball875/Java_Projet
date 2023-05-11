@@ -20,6 +20,7 @@ public abstract class Entite {
     private int speedy ;
     private int sizeX, sizeY;
     private int x,y;
+    private Color color=Color.WHITE;
     protected Weapon weapon;
     private int cooldown;
     protected int wait=0;
@@ -61,6 +62,9 @@ public abstract class Entite {
     public int getCooldown(){return this.cooldown;}
     public void setCooldown(int cool){this.cooldown=cool;}
 
+    public Color getColor(){return this.color;}
+    public void setColor(Color color){this.color=color;}
+
     private int attack(int damage){
         if(getLife() - damage <= 0){
             setLife(0);
@@ -74,7 +78,7 @@ public abstract class Entite {
     }
 
     public void draw(ShapeRenderer shape){
-		shape.setColor(Color.WHITE);
+		shape.setColor(this.color);
 		shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
 	}
 

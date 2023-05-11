@@ -15,7 +15,6 @@ import net.ariane.mobs.ennemis.*;
 public class ArianeGame extends ApplicationAdapter {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
-	HashMap<Ennemi,Bullet>balles_ennemies=new HashMap<Ennemi,Bullet>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	
@@ -23,7 +22,7 @@ public class ArianeGame extends ApplicationAdapter {
 	public void create () {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		createClassique(100,100);
+		createClassique(100,700);
 	}
 
 	public void createClassique (int X, int Y) {
@@ -52,26 +51,18 @@ public class ArianeGame extends ApplicationAdapter {
 		zac.update(balles_alliees);
 		zac.draw(shape);
 		for(Ennemi mechant:ennemis){
-			mechant.update(balle_ennemies,zac);
+			mechant.update(zac);
 			mechant.draw(shape);
+			HashSet<Bullet>balles=mechant.getBalles();
+			for(Bullet balle:balles){
+				balle.update();
+				balle.draw(shape);
+			}
 		}
-
-
-
-
-
-
 		for(Bullet balle:balles_alliees){
-			balle.update();
-			balle.draw(shape);
-			
-			i=i+1;
-		}
-		for(Bullet balle:balles_ennemies){
 			balle.update();
 			balle.draw(shape);
 		}
 		shape.end();
-		System.out.println(i);
 	}
 }

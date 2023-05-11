@@ -17,11 +17,13 @@ public class Classique extends Ennemi {
         this.setScore(5);
     }
 
-    public void update(HashMap<Ennemi,Bullet>balles_ennemies, Joueur zac){
+    public void update(Joueur zac){
         if(this.getX()<=0 || this.getX()>=800){
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
+
+        shoot(zac);
     }
 
 }
