@@ -25,9 +25,4 @@ public class Classique extends Ennemi {
         this.setX(this.getX() + this.getSpeedX());
     }
 
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
 }
