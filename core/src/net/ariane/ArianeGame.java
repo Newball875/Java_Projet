@@ -16,22 +16,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import net.ariane.mobs.ennemis.*;
 
-public class ArianeGame extends ApplicationAdapter {
+public class ArianeGame extends Zaq {
 	Joueur zac;
 	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
+	boolean niveau[];
 	
 	@Override
 	public void create () {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		int i=0;
-		while(i<2){
-			createClassique(100+i*100,700);
-			i=i+1;
-		}
+		createClassique(100, 700);
 	}
 
 	public void createClassique (int X, int Y) {
@@ -44,8 +41,6 @@ public class ArianeGame extends ApplicationAdapter {
 	}
 
 	public void niveau1() throws InterruptedException {
-		shape=new ShapeRenderer();
-		zac=new Joueur();
 		for(int i=0;i<10;i++) {
 			createClassique(i*10+5,100);
 			java.util.concurrent.TimeUnit.SECONDS.sleep(2);
