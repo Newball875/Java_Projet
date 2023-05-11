@@ -13,7 +13,7 @@ public class Navar extends Ennemi{
     public Navar(int X, int Y){
         super(X,Y);
         this.setLife(20);
-        this.setWeapon(new Rafale());
+        this.setWeapon(new PiouPiou());
         this.setScore(10);
         this.setColor(Color.ORANGE);
     }
