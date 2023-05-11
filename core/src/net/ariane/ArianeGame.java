@@ -129,6 +129,7 @@ public class ArianeGame extends ApplicationAdapter {
 		if(ennemis.isEmpty()){
 			System.out.println("BIEN JOUE ! TU AS GAGNE !");
 			ennemis.clear();
+			balles_ennemies.clear();
 		}
 
 		shape.end();
