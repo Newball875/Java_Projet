@@ -12,6 +12,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+
 import net.ariane.mobs.ennemis.*;
 
 public class ArianeGame extends ApplicationAdapter {
@@ -26,7 +28,7 @@ public class ArianeGame extends ApplicationAdapter {
 		shape=new ShapeRenderer();
 		zac=new Joueur();
 		int i=0;
-		while(i<1){
+		while(i<2){
 			createClassique(100+i*100,700);
 			i=i+1;
 		}
@@ -55,14 +57,22 @@ public class ArianeGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
+
 		//MAJ du héros
-		zac.update(balles_alliees);
+		if(zac.update(balles_alliees)){
+			//Dire que c'est la fin
+			System.out.println("TU AS PERDU, T'ES TROP NUL !");
+			balles_alliees.clear();
+			balles_ennemies.clear();
+			ennemis.clear();
+			System.exit(1);
+		}
 
 		//MAJ de ses balles
 		ArrayList<Bullet> allies = new ArrayList<>(balles_alliees);
 		while(i<allies.size()){
 			Bullet balle=allies.get(i);
-			if(balle.update()){
+			if(balle.update() || balle.checkCollision(ennemis)){
 				allies.remove(i);
 			}else{
 				i=i+1;
@@ -73,15 +83,25 @@ public class ArianeGame extends ApplicationAdapter {
 		i=0;
 
 		//MAJ des méchants
-		for(Ennemi mechant:ennemis){
-			mechant.update(balles_ennemies,zac);
+		ArrayList<Ennemi> mechant=new ArrayList<>(ennemis);
+		while(i<mechant.size()){
+			Ennemi bad=mechant.get(i);
+			bad.update(balles_ennemies,zac);
+			if(bad.dead){
+				mechant.remove(i);
+			}else{
+				i=i+1;
+			}
 		}
+		ennemis.clear();
+		ennemis=new HashSet<>(mechant);
+		i=0;
 
 		//MAJ des balles des ennemis
 		ArrayList<Bullet> adverse= new ArrayList<>(balles_ennemies);
 		while(i<adverse.size()){
 			Bullet balle=adverse.get(i);
-			if(balle.update()){
+			if(balle.update() || balle.checkCollision(zac)){
 				adverse.remove(i);
 			}else{
 				i=i+1;
@@ -90,7 +110,6 @@ public class ArianeGame extends ApplicationAdapter {
 		balles_ennemies.clear();
 		balles_ennemies=new HashSet<>(adverse);
 		i=0;
-
 		//On draw tout dans le même ordre
 		zac.draw(shape);
 		while(i<allies.size()){
@@ -104,10 +123,18 @@ public class ArianeGame extends ApplicationAdapter {
 			balle.draw(shape);
 			i=i+1;
 		}
-		for(Ennemi mechant:ennemis){
-			mechant.draw(shape);
+		for(Ennemi bad:ennemis){
+			bad.draw(shape);
+		}
+		if(ennemis.isEmpty()){
+			System.out.println("BIEN JOUE ! TU AS GAGNE !");
+			ennemis.clear();
 		}
 
 		shape.end();
+	}
+
+	private void end(){
+		
 	}
 }

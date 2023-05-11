@@ -33,6 +33,16 @@ public abstract class Entite {
         setY(Y);
     }
 
+    public Entite(int life){
+        setSpeedX(SPEEDX);
+        setSpeedX(SPEEDY);
+        setSizeX(SIZEX);
+        setSizeY(SIZEY);
+        setX(X);
+        setY(Y);
+        setLife(life);
+    }
+
     public int getLife(){return life;}
     public void setLife(int life){this.life = life;}
 
@@ -59,7 +69,7 @@ public abstract class Entite {
     public Color getColor(){return this.color;}
     public void setColor(Color color){this.color=color;}
 
-    private int attack(int damage){
+    public int attack(int damage){
         if(getLife() - damage <= 0){
             setLife(0);
             return 0;

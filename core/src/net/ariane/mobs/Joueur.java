@@ -21,15 +21,16 @@ public class Joueur extends Entite{
     public void setHighScore(int score){this.highScore = highScore;}
 
     public Joueur(){
-        super();
+        super(MAXLIFE);
         this.setWeapon(new Zak());
         this.setHighScore(0);
     }
 
-    public void update(HashSet<Bullet>balles_alliees){
+    public boolean update(HashSet<Bullet>balles_alliees){
 		this.setX(Gdx.input.getX()-(this.getSizeX()/2));
 		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY())-(this.getSizeY()/2));
         shoot(balles_alliees);
+        return (this.getLife()<=0);
 	}
 
     public void shoot(HashSet<Bullet>balles_alliees){

@@ -20,18 +20,21 @@ public abstract class Weapon {
     public int damage;
 
     protected int wait=0;
+    protected Color color;
 
 
     public Weapon(){
         setSpeedBullet(DEFAULT_SPEED_BULLET);
         setCooldown(DEFAULT_COOLDOWN);
         setDamage(DEFAULT_DAMAGE);
+        setColor(Color.WHITE);
     }
 
-    public Weapon(int speedBullet, int cooldown, int damage){
+    public Weapon(int speedBullet, int cooldown, int damage, Color color){
         setSpeedBullet(speedBullet);
         setCooldown(cooldown);
         setDamage(damage);
+        setColor(color);
     }
 
     public void setSpeedBullet(int speedBullet) {
@@ -48,6 +51,9 @@ public abstract class Weapon {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
+    public void setColor(Color color){this.color=color;}
+    public Color getColor(){return this.color;}
 
 
     public abstract void use(HashSet<Bullet> balles_alliees, Entite cible, int x, int y);

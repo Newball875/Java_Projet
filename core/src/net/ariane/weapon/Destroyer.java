@@ -9,8 +9,13 @@ import net.ariane.mobs.Entite;
 import java.util.HashSet;
 
 public class Destroyer extends Weapon{
+    private final static int SPEEDBULLET=5;
+    private final static int COOLDOWN=6;
+    private final static int DAMAGE=5;
+    private final static Color COLOR=Color.RED;
+
     public Destroyer(){
-        super(6,6,5);
+        super(SPEEDBULLET,COOLDOWN,DAMAGE,COLOR);
     }
 
     public void use(HashSet<Bullet> balles_tab, Entite cible, int X, int Y){
@@ -24,7 +29,7 @@ public class Destroyer extends Weapon{
             int speedX = longX * this.getSpeedBullet() / D;
             int speedY = longY * this.getSpeedBullet() / D;
 
-            balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+            balles_tab.add(new Bullet(X, Y, speedX, speedY, this.getColor()));
             this.wait=this.getCooldown();
         }
         else{

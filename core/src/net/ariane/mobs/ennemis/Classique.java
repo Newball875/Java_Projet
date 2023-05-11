@@ -27,6 +27,9 @@ public class Classique extends Ennemi {
         this.setX(this.getX() + this.getSpeedX());
 
         shoot(balles_ennemies, cible);
+        if(this.getLife()<=0){
+            this.dead=true;
+        }
     }
 
 }

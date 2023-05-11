@@ -19,6 +19,7 @@ public abstract class Ennemi extends Entite{
 
     private int score ;
     protected HashSet<Bullet>balles=new HashSet<Bullet>();
+    public boolean dead=false;
 
     public int getScore(){return score;}
     public void setScore(int score){this.score = score;}
