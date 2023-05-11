@@ -33,8 +33,8 @@ public abstract class Ennemi extends Entite{
     public void shoot(Entite cible){
         if(this.wait<=0){
             int x=0,y=0;
-            int D = (int)Math.sqrt(((this.getX() - cible.getX()) * (this.getX() - cible.getX())) + ((this.getY() - this.getY()) * (this.getY() - this.getY())));
-            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), ((this.getX() - cible.getX()) * (this.weapon.getSpeedBullet() / D)), ((this.getY() - cible.getY()) * (this.weapon.getSpeedBullet() / D))));
+            int D = (int)Math.sqrt(((cible.getX() - this.getX()) * (cible.getX() - this.getX())) + ((cible.getY() - this.getY()) * (cible.getY() - this.getY())));
+            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), ((cible.getX() - this.getX()) * (this.weapon.getSpeedBullet() / D)), ((cible.getY() - this.getY()) * (this.weapon.getSpeedBullet() / D))));
             this.wait=this.getCooldown();
             //x=(Math.abs(this.getX() - cible.getX()))
             //y=(Math.abs(this.getY() - cible.getY()));
