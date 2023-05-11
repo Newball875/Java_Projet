@@ -1,27 +1,36 @@
 package net.ariane;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 
-public class Zaq extends ApplicationAdapter {
+public class Zaq extends Game {
 
-    ArianeGame arianeGame = new ArianeGame();
-    Menu menu = new Menu();
-    ApplicationAdapter scene;
+    public ApplicationAdapter scene;
+    public int numScene;
 
     public void create () {
-         this.scene = menu ;
+        changeScreen(new Menu(this));
+    }
+
+    public void changeScreen(Screen newScreen){
+        Screen oldScreen = getScreen();
+        setScreen(newScreen);
+        if(oldScreen != null){
+            oldScreen.dispose();
+        }
     }
 
     public void render() {
-        this.scene.render();
+        Gdx.gl.glClearColor(1,0,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        super.render();
     }
 
-    public void changeScene(){
-        if(this.scene==menu){
-            this.scene=arianeGame;
-        }
-        if(this.scene==arianeGame){
-            this.scene=menu;
-        }
+    public void dispose(){
+
     }
+
 }
