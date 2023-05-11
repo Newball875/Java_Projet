@@ -5,6 +5,7 @@ import net.ariane.mobs.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -51,18 +52,32 @@ public class ArianeGame extends ApplicationAdapter {
 		zac.update(balles_alliees);
 		zac.draw(shape);
 		for(Ennemi mechant:ennemis){
+			int j=0;
 			mechant.update(zac);
 			mechant.draw(shape);
 			HashSet<Bullet>balles=mechant.getBalles();
 			for(Bullet balle:balles){
-				balle.update();
-				//System.out.println(balle.getXspeed() + " " + balle.getYspeed());
-				balle.draw(shape);
+				if(balle.update()){
+					balle=null;
+				}else{
+					balle.draw(shape);
+				}
+			}
+			System.out.println(balles.size());
+			Iterator<Bullet> aux=balles.iterator();
+			while(aux.hasNext()){
+				Bullet balle=aux.next();
+				if(balle==null){
+					aux.remove();
+				}
 			}
 		}
 		for(Bullet balle:balles_alliees){
-			balle.update();
-			balle.draw(shape);
+			if(balle.update()){
+				balle=null;
+			}else{
+				balle.draw(shape);
+			}
 		}
 		shape.end();
 	}
