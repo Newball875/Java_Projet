@@ -8,8 +8,8 @@ import net.ariane.weapon.Destroyer;
 import java.util.HashSet;
 
 public class Classique extends Ennemi {
-    public Classique(int X, int Y){
-        super(X,Y);
+    public Classique(){
+        super();
         this.setLife(20);
         this.setWeapon(new Destroyer());
         this.setScore(5);
