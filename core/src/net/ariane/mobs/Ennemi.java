@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 
 public abstract class Ennemi extends Entite{
 
@@ -34,7 +35,7 @@ public abstract class Ennemi extends Entite{
         if(this.wait<=0){
             int x=0,y=0;
             int D = (int)Math.sqrt(((this.getX() - cible.getX()) * (this.getX() - cible.getX())) + ((this.getY() - this.getY()) * (this.getY() - this.getY())));
-            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), ((this.getX() - cible.getX()) * (this.weapon.getSpeedBullet() / D)), ((this.getY() - cible.getY()) * (this.weapon.getSpeedBullet() / D))));
+            this.balles.add(this.weapon.use(getX()+(getSizeX()/2), getY(), ((this.getX() - cible.getX()) * (this.weapon.getSpeedBullet() / D)), ((this.getY() - cible.getY()) * (this.weapon.getSpeedBullet() / D)),Color.RED));
             this.wait=this.getCooldown();
             //x=(Math.abs(this.getX() - cible.getX()))
             //y=(Math.abs(this.getY() - cible.getY()));

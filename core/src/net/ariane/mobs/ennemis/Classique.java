@@ -1,6 +1,8 @@
 package net.ariane.mobs.ennemis;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
@@ -15,6 +17,7 @@ public class Classique extends Ennemi {
         this.setLife(20);
         this.setWeapon(new Destroyer());
         this.setScore(5);
+        this.setColor(Color.CORAL);
     }
 
     public void update(Joueur zac){
