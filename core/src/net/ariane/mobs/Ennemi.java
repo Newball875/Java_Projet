@@ -7,7 +7,7 @@ import java.util.HashSet;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
-public class Ennemi extends Entite{
+public abstract class Ennemi extends Entite{
 
     public static final int MAXLIFE = 1000;
     public static final int SPEED = 1;
@@ -33,5 +33,7 @@ public class Ennemi extends Entite{
             this.wait--;
         }
     }
+
+    public abstract update();
     
 }
