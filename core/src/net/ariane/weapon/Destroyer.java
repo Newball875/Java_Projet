@@ -22,12 +22,12 @@ public class Destroyer extends Weapon{
 
         if(this.wait<=0){
 
-            int longX = cible.getX() - X;
-            int longY = cible.getY() - Y;
+            int longX = (cible.getX() - X) * 10;
+            int longY = (cible.getY() - Y) * 10;
             int D = (int)Math.sqrt((longX * longX + longY * longY));
 
-            int speedX = longX * this.getSpeedBullet() / D;
-            int speedY = longY * this.getSpeedBullet() / D;
+            int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
+            int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
             balles_tab.add(new Bullet(X, Y, speedX, speedY, this.getColor()));
             this.wait=this.getCooldown();

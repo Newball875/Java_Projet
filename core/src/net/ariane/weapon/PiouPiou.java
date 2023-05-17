@@ -22,34 +22,47 @@ public class PiouPiou extends Weapon{
         if(this.wait<=0){
 
             for(int i = -5; i <= 5; i++){
-                int [] jliste = {-5, 5};
-                for(int j=0; j<=1; j++) {
 
-                    int longX = (X + i) - X;
-                    int longY = (Y + jliste[j]) - Y;
-                    int D = (int) Math.sqrt((longX * longX + longY * longY));
+                int longX = i * 10;
+                int longY = -5 * 10;
+                int D = (int) Math.sqrt((longX * longX + longY * longY));
 
-                    int speedX = longX * this.getSpeedBullet() / D;
-                    int speedY = longY * this.getSpeedBullet() / D;
+                int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
+                int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                    balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
-                }
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+
+
+                longX = i * 10;
+                longY = 5 * 10;
+                D = (int) Math.sqrt((longX * longX + longY * longY));
+
+                speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
+                speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
+
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+
 
             }
-
             for(int j = -4; j <= 4; j++){
-                int [] iliste = {-5, 5};
-                for(int i=0; i<=1; i++) {
+                int longX = -5 * 10;
+                int longY = j * 10;
+                int D = (int) Math.sqrt((longX * longX + longY * longY));
 
-                    int longX = (X + iliste[i]) - X;
-                    int longY = (Y + j) - Y;
-                    int D = (int) Math.sqrt((longX * longX + longY * longY));
+                int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
+                int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                    int speedX = longX * this.getSpeedBullet() / D;
-                    int speedY = longY * this.getSpeedBullet() / D;
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
 
-                    balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
-                }
+                longX = 5 * 10;
+                longY = j * 10;
+                D = (int) Math.sqrt((longX * longX + longY * longY));
+
+                speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
+                speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
+
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+
 
             }
 
