@@ -32,9 +32,12 @@ public class ArianeGame implements Screen {
 	private SpriteBatch batch;
 	private Texture img;
 	private Menu menu;
+	private int niv;
 
-	public ArianeGame(Zaq game){
+	public ArianeGame(Zaq game, int niv){
 		this.game = game;
+		this.niv=niv;
+		System.out.println("NIVEAU : "+this.niv);
 	}
 	
 
