@@ -185,7 +185,6 @@ public class ArianeGame implements Screen {
 			bad.draw(shape);
 		}
 		level.ennemis=ennemis;
-		System.out.println(balles_ennemies.size());
 		shape.end();
 	}
 
