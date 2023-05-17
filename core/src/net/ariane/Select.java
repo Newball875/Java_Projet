@@ -8,19 +8,22 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
 
-public class Menu implements Screen {
+public class Select implements Screen {
     private Texture bucketImage;
     private Texture bucketImage2;
     private Music rainMusic;
@@ -34,9 +37,13 @@ public class Menu implements Screen {
     private Zaq game ;
     private float f=0 ;
 
+    private Color color;
+
+    ShapeRenderer shape;
+
     private Menu menu ;
 
-    public Menu(Zaq game){
+    public Select(Zaq game){
         this.game = game;
     }
 
@@ -65,23 +72,33 @@ public class Menu implements Screen {
         batch.begin();
 
         batch.draw(bucketImage2, 0, 0,900,900);
-        batch.draw(bucketImage, bucket.x, bucket.y,200,600);
         batch.end();
 
-        if(Gdx.input.isTouched()) {
-            Vector3 touchPos = new Vector3();
-            touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-            camera.unproject(touchPos);
+        shape.begin(ShapeRenderer.ShapeType.Filled);
 
-        }
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>635 && Gdx.graphics.getHeight()-Gdx.input.getY()<735))) game.changeScreen(new Select(game));//PLay
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>515 && Gdx.graphics.getHeight()-Gdx.input.getY()<615))) game.changeScreen(new ArianeGame(game,0));//Option
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>395 && Gdx.graphics.getHeight()-Gdx.input.getY()<495))) game.changeScreen(new Select(game));//Score
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>275 && Gdx.graphics.getHeight()-Gdx.input.getY()<375))) game.changeScreen(new ArianeGame(game,0));//Help
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>155 && Gdx.graphics.getHeight()-Gdx.input.getY()<255))) System.exit(1);
+        shape.setColor(color.GREEN);
 
-        if(bucket.x < 0) bucket.x = 0;
-        if(bucket.x > 800 - 64) bucket.x = 800 - 64;
+        shape.rect(100,600,200,200);
+        shape.rect(500,600,200,200);
+
+        shape.setColor(color.BLUE);
+
+        shape.rect(100,400,200,200);
+        shape.rect(500,400,200,200);
+
+        shape.setColor(color.RED);
+
+        shape.rect(300,100,200,200);
+
+        shape.end();
+
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>100 && Gdx.input.getX()<300) && (Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800))) game.changeScreen(new ArianeGame(game,0));
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>500 && Gdx.input.getX()<700) && (Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800))) game.changeScreen(new ArianeGame(game,1));
+
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>100 && Gdx.input.getX()<300) && (Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600))) game.changeScreen(new ArianeGame(game,2));
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>500 && Gdx.input.getX()<700) && (Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600))) game.changeScreen(new ArianeGame(game,3));
+
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>100 && Gdx.graphics.getHeight()-Gdx.input.getY()<300))) game.changeScreen(new ArianeGame(game,4));
     }
 
     @Override
@@ -94,6 +111,7 @@ public class Menu implements Screen {
         rainMusic.setLooping(true);
         rainMusic.play();
 
+        shape=new ShapeRenderer();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
