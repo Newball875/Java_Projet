@@ -3,9 +3,9 @@ package net.ariane.levels;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.ennemis.*;
 
-public class Level1 extends Level{
+public class Level2 extends Level{
 
-	public Level1(){
+	public Level2(){
 		super(2);     
 		//Première vague à 1 ennemi : 1 Classique
 		this.vagues[0]=new Ennemi[1];
