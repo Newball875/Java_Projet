@@ -6,6 +6,7 @@ import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
 import net.ariane.weapon.*;
 
+import java.io.Console;
 import java.util.HashSet;
 
 public class Ywing extends Ennemi{
@@ -41,8 +42,9 @@ public class Ywing extends Ennemi{
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
-
-        this.setY(this.getDefY() + (int)(50 * Math.cos(getX() / 100)));
+        System.out.println(Math.sin(getX()/50));
+        System.out.println(30 * Math.sin(getX()/50));
+        this.setY((int)(this.getDefY() + (30 * Math.sin(getX()/50))));
 
         shoot(balles_ennemies, cible);
         if(this.getLife()<=0){
