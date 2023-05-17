@@ -21,10 +21,8 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class Menu implements Screen {
-    //private Texture dropImage;
     private Texture bucketImage;
     private Texture bucketImage2;
-    private Sound dropSound;
     private Music rainMusic;
     private SpriteBatch batch;
     private OrthographicCamera camera;
@@ -68,12 +66,8 @@ public class Menu implements Screen {
 
         batch.draw(bucketImage2, 0, 0);
         batch.draw(bucketImage, bucket.x, bucket.y);
-		/*for(Rectangle raindrop: raindrops) {
-			batch.draw(dropImage, raindrop.x, raindrop.y);
-		}*/
         batch.end();
 
-        // process user input
         if(Gdx.input.isTouched()) {
             Vector3 touchPos = new Vector3();
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -89,14 +83,11 @@ public class Menu implements Screen {
 
     @Override
     public void show() {
-        //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
         bucketImage = new Texture(Gdx.files.internal("menu.png"));
         bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
 
-        //dropSound = Gdx.audio.newSound(Gdx.files.internal("musique_epic.mp3"));
         rainMusic = Gdx.audio.newMusic(Gdx.files.internal("musique_epic.mp3"));
 
-        // start the playback of the background music immediately
         rainMusic.setLooping(true);
         rainMusic.play();
 
@@ -139,11 +130,8 @@ public class Menu implements Screen {
 
     @Override
     public void dispose() {
-        // dispose of all the native resources
-        //dropImage.dispose();
         bucketImage.dispose();
         bucketImage2.dispose();
-        //dropSound.dispose();
         rainMusic.dispose();
         batch.dispose();
     }
