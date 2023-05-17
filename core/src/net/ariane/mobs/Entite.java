@@ -24,16 +24,19 @@ public abstract class Entite {
     private Color color=Color.WHITE;
     protected Weapon weapon;
 
-    public Entite(int maxLife){
+    public Entite(int maxLife, int sizeX, int sizeY){
         if(maxLife<=0){
             maxLife = MAXLIFE;
         }
+        if(sizeX <= 0){sizeX = SIZEX;}
+        if(sizeY <= 0){sizeY = SIZEY;}
+
         setMaxLife(maxLife);
         setLife(maxLife);
         setSpeedX(SPEEDX);
         setSpeedX(SPEEDY);
-        setSizeX(SIZEX);
-        setSizeY(SIZEY);
+        setSizeX(sizeX);
+        setSizeY(sizeY);
         setX(X);
         setY(Y);
     }

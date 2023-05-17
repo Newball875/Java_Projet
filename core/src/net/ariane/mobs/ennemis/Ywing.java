@@ -19,6 +19,11 @@ public class Ywing extends Ennemi{
         this.setScore(10);
         this.setColor(Color.ORANGE);
     }
+    int DefY = this.getY();
+
+    public int getDefY() {
+        return DefY;
+    }
 
     public void update(){
         if(this.getX()<=0 || this.getX()>=800){
@@ -36,6 +41,8 @@ public class Ywing extends Ennemi{
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
+
+        this.setY(this.getDefY() + (int)(50 * Math.cos(getX() / 100)));
 
         shoot(balles_ennemies, cible);
         if(this.getLife()<=0){

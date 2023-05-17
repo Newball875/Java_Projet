@@ -13,15 +13,15 @@ import net.ariane.weapon.*;
 public class Joueur extends Entite{
 
     private static final int MAXLIFE = 1000;
-    private static final int SIZEX=10;
-    private static final int SIZEY=10;
+    private static final int SIZEX=20;
+    private static final int SIZEY=20;
 
     private int highScore ;
     public int getHighScore(){return highScore;}
     public void setHighScore(int score){this.highScore = highScore;}
 
     public Joueur(){
-        super(MAXLIFE);
+        super(MAXLIFE, SIZEX, SIZEY);
         this.setWeapon(new Zak());
         this.setHighScore(0);
     }
