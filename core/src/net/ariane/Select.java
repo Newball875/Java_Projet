@@ -56,16 +56,6 @@ public class Select implements Screen {
         game.setScreen(menu);
     }
 
-    private void spawnRaindrop() {
-        Rectangle raindrop = new Rectangle();
-        raindrop.x = MathUtils.random(0, 800-64);
-        raindrop.y = 480;
-        raindrop.width = 64;
-        raindrop.height = 64;
-        raindrops.add(raindrop);
-        lastDropTime = TimeUtils.nanoTime();
-    }
-
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);
@@ -126,7 +116,6 @@ public class Select implements Screen {
         bucket2.y = 200;
 
         raindrops = new Array<Rectangle>();
-        spawnRaindrop();
     }
 
     @Override
