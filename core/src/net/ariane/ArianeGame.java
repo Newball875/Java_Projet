@@ -1,13 +1,10 @@
 package net.ariane;
 
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreVie;
-import net.ariane.levels.Level;
-import net.ariane.levels.Level1;
+import net.ariane.levels.*;      
 import net.ariane.mobs.*;
+import net.ariane.mobs.ennemis.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,8 +12,10 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import net.ariane.mobs.ennemis.*;
 
 public class ArianeGame implements Screen {
 	Joueur zac;
@@ -64,8 +63,20 @@ public class ArianeGame implements Screen {
 	}
 
 	public void checkLevels()throws Exception{
-		if(niveaux[niv].getNombreEnnemis()==0){
+		if(niv>=niveaux.length){
+			niv--;
+			return;
+		}
+		Level level=niveaux[niv];
+		if(level.getNombreEnnemis()==0){
 			balles_ennemies.clear();
+			if(level.vagueSuivante()){
+				return;
+			}
+			else{
+				niv++;
+				checkLevels();
+			}
 		}
 	}
 
@@ -194,8 +205,9 @@ public class ArianeGame implements Screen {
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux=new Level[1];
+		niveaux=new Level[2];
 		niveaux[0]=new Level1();
+		niveaux[1]=new Level2();
 	}
 
 	@Override
