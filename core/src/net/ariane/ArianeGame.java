@@ -7,7 +7,6 @@ import net.ariane.mobs.*;
 import net.ariane.mobs.ennemis.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
@@ -25,7 +24,7 @@ public class ArianeGame implements Screen {
 	ShapeRenderer shape;
 	Level niveaux[];
 
-	private Zaq game;
+	private GameAriane game;
 	BarreVie barreVie = new BarreVie();
 	private SpriteBatch batch;
 	private Texture img;
@@ -33,7 +32,7 @@ public class ArianeGame implements Screen {
 	private int niv;
 	private int wait;
 
-	public ArianeGame(Zaq game, int niv){
+	public ArianeGame(GameAriane game, int niv){
 		this.game = game;
 		this.niv=niv;
 		System.out.println("NIVEAU : "+this.niv);

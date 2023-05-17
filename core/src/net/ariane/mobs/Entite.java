@@ -1,5 +1,6 @@
 package net.ariane.mobs;
 
+import net.ariane.ArianeGame;
 import net.ariane.weapon.*;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

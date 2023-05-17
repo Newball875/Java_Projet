@@ -1,9 +1,7 @@
 package net.ariane;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import net.ariane.ArianeGame;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -14,6 +12,6 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Zaq");
 		config.setWindowedMode(800,900);
-		new Lwjgl3Application( new Zaq(), config);
+		new Lwjgl3Application( new GameAriane(), config);
 	}
 }

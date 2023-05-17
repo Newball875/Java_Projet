@@ -1,26 +1,17 @@
 package net.ariane;
 
-import java.util.Iterator;
-
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class Select implements Screen {
@@ -34,7 +25,7 @@ public class Select implements Screen {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
-    private Zaq game ;
+    private GameAriane game ;
     private float f=0 ;
 
     private Color color;
@@ -43,7 +34,7 @@ public class Select implements Screen {
 
     private Menu menu ;
 
-    public Select(Zaq game){
+    public Select(GameAriane game){
         this.game = game;
     }
 
@@ -81,14 +72,29 @@ public class Select implements Screen {
         shape.rect(300,100,200,200);
 
         shape.end();
-
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>100 && Gdx.input.getX()<300) && (Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800))) game.changeScreen(new ArianeGame(game,0));
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>500 && Gdx.input.getX()<700) && (Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800))) game.changeScreen(new ArianeGame(game,1));
-
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>100 && Gdx.input.getX()<300) && (Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600))) game.changeScreen(new ArianeGame(game,2));
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>500 && Gdx.input.getX()<700) && (Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600))) game.changeScreen(new ArianeGame(game,3));
-
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>100 && Gdx.graphics.getHeight()-Gdx.input.getY()<300))) game.changeScreen(new ArianeGame(game,4));
+        if(Gdx.input.isButtonPressed(0)){
+            if(Gdx.input.getX()>100 && Gdx.input.getX()<300){
+                if(Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800){
+                    game.changeScreen(new ArianeGame(game,0));
+                }
+                if(Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600){
+                    game.changeScreen(new ArianeGame(game,2));
+                }
+            }
+            if(Gdx.input.getX()>500 && Gdx.input.getX()<700){
+                if(Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800){
+                    game.changeScreen(new ArianeGame(game,1));
+                }
+                if(Gdx.graphics.getHeight()-Gdx.input.getY()>400 && Gdx.graphics.getHeight()-Gdx.input.getY()<600){
+                    game.changeScreen(new ArianeGame(game,3));
+                }
+            }
+            if(Gdx.input.getX()>300 && Gdx.input.getX()<500){
+                if((Gdx.graphics.getHeight()-Gdx.input.getY()>100 && Gdx.graphics.getHeight()-Gdx.input.getY()<300)){
+                    game.changeScreen(new ArianeGame(game,4));
+                }
+            }
+        }
     }
 
     @Override

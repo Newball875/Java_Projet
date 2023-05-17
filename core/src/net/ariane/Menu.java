@@ -1,13 +1,8 @@
 package net.ariane;
 
-import java.util.Iterator;
-
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,12 +26,12 @@ public class Menu implements Screen {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
-    private Zaq game ;
+    private GameAriane game ;
     private float f=0 ;
 
     private Menu menu ;
 
-    public Menu(Zaq game){
+    public Menu(GameAriane game){
         this.game = game;
     }
 
