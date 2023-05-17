@@ -104,7 +104,7 @@ public class ArianeGame implements Screen {
 		try{
 			checkLevels();
 		}catch(Exception e){
-			System.out.println(e);
+			System.out.println("HELLO"+e);
 		}
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -227,6 +227,7 @@ public class ArianeGame implements Screen {
 		zac=new Joueur();
 		niveaux.put(1,1);
 		niveaux.put(2,-1);
+		niveaux.put(3,-1);
 	}
 
 	@Override
