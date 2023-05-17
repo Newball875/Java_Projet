@@ -3,6 +3,7 @@ package net.ariane.mobs;
 import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
@@ -29,7 +30,9 @@ public class Joueur extends Entite{
     public boolean update(HashSet<Bullet>balles_alliees){
 		this.setX(Gdx.input.getX()-(this.getSizeX()/2));
 		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY())-(this.getSizeY()/2));
-        shoot(balles_alliees);
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)){
+            shoot(balles_alliees);
+        }
         return (this.getLife()<=0);
 	}
 

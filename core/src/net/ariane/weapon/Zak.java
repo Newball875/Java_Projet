@@ -1,12 +1,11 @@
 package net.ariane.weapon;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 
 import java.util.HashSet;
+
+import com.badlogic.gdx.graphics.Color;
 
 public class Zak extends Weapon{
     private final static int SPEEDBULLET=5;
@@ -20,14 +19,12 @@ public class Zak extends Weapon{
 
 
     public void use(HashSet<Bullet> balles_tab, Entite cible, int X, int Y){
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            if(this.wait<=0){
-                balles_tab.add(new Bullet(X, Y, 0, this.getSpeedBullet(), this.getColor()));
-                this.wait=this.getCooldown();
-            }
-            else{
-                this.wait--;
-            }
+        if(this.wait<=0){
+            balles_tab.add(new Bullet(X, Y, 0, this.getSpeedBullet(), this.getColor()));
+            this.wait=this.getCooldown();
+        }
+        else{
+            this.wait--;
         }
     }
 }
