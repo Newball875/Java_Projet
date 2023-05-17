@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreVie;
+import net.ariane.levels.Level;
+import net.ariane.levels.Level1;
 import net.ariane.mobs.*;
 
 import java.util.ArrayList;
@@ -18,11 +20,11 @@ import net.ariane.mobs.ennemis.*;
 
 public class ArianeGame implements Screen {
 	Joueur zac;
-	HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
+	HashSet<Ennemi>ennemis;
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
-	HashMap<Integer,Integer>niveaux=new HashMap<Integer,Integer>();
+	Level niveaux[];
 
 	private Zaq game;
 	BarreVie barreVie = new BarreVie();
@@ -45,11 +47,6 @@ public class ArianeGame implements Screen {
 		}
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux.put(1,1);
-		niveaux.put(2,-1);
-		niveaux.put(3,-1);
-		//niveaux.put(4,false);
-		//niveaux.put(5,false);
 	}
 
 	public void createClassique (int X, int Y) {
@@ -67,50 +64,22 @@ public class ArianeGame implements Screen {
 	}
 
 	public void checkLevels()throws Exception{
-		if(niveaux.get(1)==1){
-			level1();
-			niveaux.put(1,0);
-		}
-		if(niveaux.get(2)==1){
-			level2();
-			niveaux.put(2,0);
-		}
-		if(niveaux.get(3)==1){
-			level3();
-			niveaux.put(3,0);
-		}
-		if(niveaux.get(1)==-1 && niveaux.get(2)==-1 && niveaux.get(3)==-1){
-			System.out.println("HELLO");
+		if(niveaux[niv].getNombreEnnemis()==0){
+			System.out.println("SALUT");
 		}
 	}
 
-	public void level1(){
-		ennemis.clear();
-		createClassique(100,700);
-	}
-
-	public void level2() throws InterruptedException{
-		ennemis.clear();
-		//Thread.sleep(4000);
-		createClassique(200, 700);
-		createYwing(200, 600);
-	}
-
-	public void level3()throws Exception{
-		ennemis.clear();
-		//Thread.sleep(4000);
-		createClassique(600, 600);
-		createMother(100, 700);
-		createClassique(200, 600);
-	}
-
+	
 	@Override
 	public void render (float delta) {
+		//Récupération du niveau et des ennemis
 		try{
 			checkLevels();
 		}catch(Exception e){
 			System.out.println("HELLO"+e);
 		}
+		Level level=niveaux[niv];
+		HashSet<Ennemi>ennemis=level.ennemis;
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(img,0,0);
@@ -190,7 +159,7 @@ public class ArianeGame implements Screen {
 		for(Ennemi bad:ennemis){
 			bad.draw(shape);
 		}
-		if(ennemis.isEmpty()){
+		/*if(ennemis.isEmpty()){
 			balles_ennemies.clear();
 			for(Integer cle:niveaux.keySet()){
 				if(cle!=1){
@@ -199,7 +168,7 @@ public class ArianeGame implements Screen {
 					}
 				}
 			}
-		}
+		}*/
 
 		shape.end();
 	}
@@ -234,9 +203,8 @@ public class ArianeGame implements Screen {
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux.put(1,1);
-		niveaux.put(2,-1);
-		niveaux.put(3,-1);
+		niveaux=new Level[1];
+		niveaux[0]=new Level1();
 	}
 
 	@Override
