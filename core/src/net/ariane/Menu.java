@@ -97,7 +97,7 @@ public class Menu implements Screen {
             camera.unproject(touchPos);
 
         }
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame(game));
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame(game,0));
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
 
         // make sure the bucket stays within the screen bounds
@@ -126,17 +126,15 @@ public class Menu implements Screen {
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
 
-        // create a Rectangle to logically represent the bucket
         bucket = new Rectangle();
-        bucket.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        bucket.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
+        bucket.x = 800 / 2 - 64 / 2;
+        bucket.y = 20;
         bucket.width = 64;
         bucket.height = 64;
         bucket2 = new Rectangle();
-        bucket2.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        bucket2.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
+        bucket2.x = 800 / 2 - 64 / 2;
+        bucket2.y = 20;
 
-        // create the raindrops array and spawn the first raindrop
         raindrops = new Array<Rectangle>();
         spawnRaindrop();
     }

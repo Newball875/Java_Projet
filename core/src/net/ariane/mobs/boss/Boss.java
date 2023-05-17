@@ -1,22 +1,19 @@
 package net.ariane.mobs.boss;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
-import net.ariane.weapon.Destroyer;
-import net.ariane.weapon.Kaz;
+import net.ariane.weapon.BossArme;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
-public class Caz extends Ennemi {
-    public Caz(int X, int Y){
+public class Boss extends Ennemi {
+    public Boss(int X, int Y){
         super(X,Y);
         this.setLife(100);
-        this.setWeapon(new Kaz());
+        this.setWeapon(new BossArme());
         this.setScore(100);
         this.setColor(Color.CORAL);
     }
