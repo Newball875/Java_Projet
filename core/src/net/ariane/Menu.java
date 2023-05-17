@@ -63,27 +63,10 @@ public class Menu implements Screen {
 
     @Override
     public void render(float delta) {
-        // clear the screen with a dark blue color. The
-        // arguments to clear are the red, green
-        // blue and alpha component in the range [0,1]
-        // of the color to be used to clear the screen.
         ScreenUtils.clear(0, 0, 0.2f, 1);
-
-        // tell the camera to update its matrices.
-        camera.update();
-
-        // tell the SpriteBatch to render in the
-        // coordinate system specified by the camera.
-        batch.setProjectionMatrix(camera.combined);
-
-        // begin a new batch and draw the bucket and
-        // all drops
         batch.begin();
 
-        batch.draw(backgroundTexture, 0, 0);
-        //I believe texture region takes the upper left corner as 0,0 and batch.Draw the bottom left.
-        //So you might need to do something like this:
-        batch.draw(backgroundTexture, 0, 800);
+        batch.draw(bucketImage2, 0, 0);
         batch.draw(bucketImage, bucket.x, bucket.y);
 		/*for(Rectangle raindrop: raindrops) {
 			batch.draw(dropImage, raindrop.x, raindrop.y);
@@ -100,20 +83,16 @@ public class Menu implements Screen {
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>350 && Gdx.graphics.getHeight()-Gdx.input.getY()<450))) game.changeScreen(new ArianeGame(game,0));
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) bucket.x += 200 * Gdx.graphics.getDeltaTime();
 
-        // make sure the bucket stays within the screen bounds
         if(bucket.x < 0) bucket.x = 0;
         if(bucket.x > 800 - 64) bucket.x = 800 - 64;
     }
 
     @Override
     public void show() {
-        // load the images for the droplet and the bucket, 64x64 pixels each
         //dropImage = new Texture(Gdx.files.internal("background_space.gif"));
         bucketImage = new Texture(Gdx.files.internal("menu.png"));
         bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
-        backgroundTexture = new TextureRegion(bucketImage2, 0, 0, 800, 800);
 
-        // load the drop sound effect and the rain background "music"
         //dropSound = Gdx.audio.newSound(Gdx.files.internal("musique_epic.mp3"));
         rainMusic = Gdx.audio.newMusic(Gdx.files.internal("musique_epic.mp3"));
 
@@ -121,7 +100,6 @@ public class Menu implements Screen {
         rainMusic.setLooping(true);
         rainMusic.play();
 
-        // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
         batch = new SpriteBatch();
