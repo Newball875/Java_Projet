@@ -10,9 +10,12 @@ public class Level1 extends Level{
 		int i=0;
 		while(i<this.getNombre()){
 			Ennemi ennemi=new Classique(100,700);
-			this.vagues[i]=new Ennemi[1];
+			Ennemi mechant=new Ywing(150,650);
+			this.vagues[i]=new Ennemi[2];
 			this.vagues[i][0]=ennemi;
+			this.vagues[i][1]=mechant;
 			this.ennemis.add(ennemi);
+			this.ennemis.add(mechant);
 			i=i+1;
 		}
 	}

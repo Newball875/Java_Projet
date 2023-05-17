@@ -65,7 +65,7 @@ public class ArianeGame implements Screen {
 
 	public void checkLevels()throws Exception{
 		if(niveaux[niv].getNombreEnnemis()==0){
-			System.out.println("SALUT");
+			balles_ennemies.clear();
 		}
 	}
 
@@ -76,10 +76,11 @@ public class ArianeGame implements Screen {
 		try{
 			checkLevels();
 		}catch(Exception e){
-			System.out.println("HELLO"+e);
+			System.out.println("ERREUR : "+e);
 		}
 		Level level=niveaux[niv];
-		HashSet<Ennemi>ennemis=level.ennemis;
+		ennemis=level.ennemis;
+
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(img,0,0);
@@ -159,17 +160,7 @@ public class ArianeGame implements Screen {
 		for(Ennemi bad:ennemis){
 			bad.draw(shape);
 		}
-		/*if(ennemis.isEmpty()){
-			balles_ennemies.clear();
-			for(Integer cle:niveaux.keySet()){
-				if(cle!=1){
-					if(niveaux.get(cle)==-1 && niveaux.get(cle-1)==0){
-						niveaux.put(cle,1);
-					}
-				}
-			}
-		}*/
-
+		level.ennemis=ennemis;
 		shape.end();
 	}
 
