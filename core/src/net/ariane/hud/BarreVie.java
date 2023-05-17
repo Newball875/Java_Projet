@@ -26,12 +26,6 @@ public class BarreVie {
     public void draw(ShapeRenderer shape, int life, int maxLife){
         float max = (float)maxLife;
         float vie = (float)life;
-        if(0.3*max>=vie){
-            color = color.RED;
-        }
-        else{
-            color = color.GREEN;
-        }
 
         shape.setColor(color.RED);
         shape.rect((float)this.getX(),(float)this.getY(),(float)(this.getSizeX()),(float)this.getSizeY());
