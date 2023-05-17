@@ -8,12 +8,14 @@ import net.ariane.weapon.*;
 
 import java.util.HashSet;
 
-public class Navar extends Ennemi{
+public class Ywing extends Ennemi{
 
-    public Navar(int X, int Y){
+    public Ywing(int X, int Y){
         super(X,Y);
-        this.setLife(20);
-        this.setWeapon(new PiouPiou());
+        this.setSpeedX(3);
+        this.setLife(120);
+        this.setSizeX(30);
+        this.setWeapon(new Rafale());
         this.setScore(10);
         this.setColor(Color.ORANGE);
     }

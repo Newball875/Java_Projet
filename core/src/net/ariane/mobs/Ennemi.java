@@ -12,8 +12,8 @@ import com.badlogic.gdx.graphics.Color;
 public abstract class Ennemi extends Entite{
 
     private static final int MAXLIFE = 1000;
-    private static final int SPEEDX = 1;
-    private static final int SPEEDY = 1;
+    private static final int SPEEDX = 10;
+    private static final int SPEEDY = 10;
     private static final int SIZEX = 20;
     private static final int SIZEY = 20;
 

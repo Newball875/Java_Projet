@@ -14,7 +14,8 @@ import java.util.HashSet;
 public class Classique extends Ennemi {
     public Classique(int X, int Y){
         super(X,Y);
-        this.setLife(20);
+        this.setSpeedX(5);
+        this.setLife(80);
         this.setWeapon(new Destroyer());
         this.setScore(5);
         this.setColor(Color.CORAL);

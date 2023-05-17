@@ -2,7 +2,6 @@ package net.ariane;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.*;
@@ -10,13 +9,9 @@ import net.ariane.mobs.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import net.ariane.mobs.ennemis.*;
 
@@ -59,8 +54,13 @@ public class ArianeGame implements Screen {
 		Ennemi ennemi=new Classique(X,Y);
 		ennemis.add(ennemi);
 	}
-	public void createNavar (int X, int Y) {
-		Ennemi ennemi=new Navar(X,Y);
+	public void createYwing (int X, int Y) {
+		Ennemi ennemi=new Ywing(X,Y);
+		ennemis.add(ennemi);
+	}
+
+	public void createMother (int X, int Y){
+		Ennemi ennemi = new Mother(X, Y);
 		ennemis.add(ennemi);
 	}
 
@@ -91,14 +91,14 @@ public class ArianeGame implements Screen {
 		ennemis.clear();
 		//Thread.sleep(4000);
 		createClassique(200, 700);
-		createClassique(200, 650);
+		createYwing(200, 600);
 	}
 
 	public void level3()throws Exception{
 		ennemis.clear();
 		//Thread.sleep(4000);
-		createNavar(200, 700);
-		createClassique(100, 700);
+		createClassique(600, 600);
+		createMother(100, 700);
 		createClassique(200, 600);
 	}
 
