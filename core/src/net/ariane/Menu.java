@@ -64,8 +64,8 @@ public class Menu implements Screen {
         ScreenUtils.clear(0, 0, 0.2f, 1);
         batch.begin();
 
-        batch.draw(bucketImage2, 0, 0);
-        batch.draw(bucketImage, bucket.x, bucket.y);
+        batch.draw(bucketImage2, 0, 0,900,900);
+        batch.draw(bucketImage, bucket.x, bucket.y,200,600);
         batch.end();
 
         if(Gdx.input.isTouched()) {
@@ -96,13 +96,13 @@ public class Menu implements Screen {
         batch = new SpriteBatch();
 
         bucket = new Rectangle();
-        bucket.x = 800 / 2 - 64 / 2;
-        bucket.y = 20;
+        bucket.x = 300;
+        bucket.y = 150;
         bucket.width = 64;
         bucket.height = 64;
         bucket2 = new Rectangle();
         bucket2.x = 800 / 2 - 64 / 2;
-        bucket2.y = 20;
+        bucket2.y = 200;
 
         raindrops = new Array<Rectangle>();
         spawnRaindrop();
