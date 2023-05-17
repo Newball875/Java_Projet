@@ -16,6 +16,7 @@ public abstract class Entite {
     private static final int Y=100;
 
     private int life ;
+    private int maxLife ;
     private int speedx ;
     private int speedy ;
     private int sizeX, sizeY;
@@ -23,8 +24,12 @@ public abstract class Entite {
     private Color color=Color.WHITE;
     protected Weapon weapon;
 
-    public Entite(){
-        setLife(MAXLIFE);
+    public Entite(int maxLife){
+        if(maxLife<=0){
+            maxLife = MAXLIFE;
+        }
+        setMaxLife(maxLife);
+        setLife(maxLife);
         setSpeedX(SPEEDX);
         setSpeedX(SPEEDY);
         setSizeX(SIZEX);
@@ -33,7 +38,11 @@ public abstract class Entite {
         setY(Y);
     }
 
-    public Entite(int life){
+    public Entite(int life,int maxLife){
+        if(maxLife<=0){
+            maxLife = MAXLIFE;
+        }
+        setMaxLife(maxLife);
         setSpeedX(SPEEDX);
         setSpeedX(SPEEDY);
         setSizeX(SIZEX);
@@ -45,6 +54,8 @@ public abstract class Entite {
 
     public int getLife(){return life;}
     public void setLife(int life){this.life = life;}
+    public int getMaxlife(){return this.maxLife;}
+    public void setMaxLife(int maxLife){this.maxLife = maxLife;}
 
     public int getSpeedX(){return speedx;}
     public void setSpeedX(int speedx){this.speedx = speedx;}

@@ -12,7 +12,7 @@ import net.ariane.weapon.*;
 
 public class Joueur extends Entite{
 
-    private static final int MAXLIFE = 100000;
+    private static final int MAXLIFE = 1000;
     private static final int SIZEX=10;
     private static final int SIZEY=10;
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.bullet.Bullet;
+import net.ariane.hud.BarreVie;
 import net.ariane.mobs.*;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class ArianeGame implements Screen {
 	HashMap<Integer,Integer>niveaux=new HashMap<Integer,Integer>();
 
 	private Zaq game;
+	BarreVie barreVie = new BarreVie();
 	private SpriteBatch batch;
 	private Texture img;
 	private Menu menu;
@@ -115,6 +117,10 @@ public class ArianeGame implements Screen {
 		batch.end();
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
+
+		//MAJ de la barre de vie
+		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
+
 
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
