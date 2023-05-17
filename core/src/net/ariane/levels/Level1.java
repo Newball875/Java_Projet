@@ -6,26 +6,14 @@ import net.ariane.mobs.ennemis.*;
 public class Level1 extends Level{
 
 	public Level1(){
-		super(1);
-		int i=0;
-		while(i<this.getNombre()){
-			Ennemi ennemi=new Boss(200,600);
-			Ennemi ennemi2=new Ywing(200,500);
-			Ennemi ennemi3=new Ywing(400,400);
-			Ennemi ennemi4=new Ywing(600,500);
+		super(2);     
+		//Première vague à 1 ennemi : 1 Classique
+		this.vagues[0]=new Ennemi[1];
+		this.vagues[0][0]=new Classique(100,700);
 
-			this.vagues[i]=new Ennemi[4];
-			this.vagues[i][0]=ennemi;
-			this.vagues[i][1]=ennemi2;
-			this.vagues[i][2]=ennemi3;
-			this.vagues[i][3]=ennemi4;
-
-			this.ennemis.add(ennemi);
-			this.ennemis.add(ennemi2);
-			this.ennemis.add(ennemi3);
-			this.ennemis.add(ennemi4);
-
-			i=i+1;
-		}
+		//Seconde Vague : 1 Classique et 1 Ywing
+		this.vagues[1]=new Ennemi[2];
+		this.vagues[1][0]=new Classique(100,700);
+		this.vagues[1][1]=new Ywing(150,650);
 	}
 }
