@@ -34,6 +34,7 @@ public class Menu implements Screen {
     private long lastDropTime;
     private TextureRegion backgroundTexture;
     private Zaq game ;
+    private float f=0 ;
 
     private Menu menu ;
 

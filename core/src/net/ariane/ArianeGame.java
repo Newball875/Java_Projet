@@ -2,6 +2,7 @@ package net.ariane;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.*;
@@ -25,19 +26,16 @@ public class ArianeGame implements Screen {
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
-<<<<<<< HEAD
 	HashMap<Integer,Integer>niveaux=new HashMap<Integer,Integer>();
-=======
-	boolean niveau[];
 
 	private Zaq game;
 	private SpriteBatch batch;
 	private Texture img;
+	private Menu menu;
 
 	public ArianeGame(Zaq game){
 		this.game = game;
 	}
->>>>>>> 219e3d3 (changement fin)
 	
 
 	public void create () {
@@ -108,7 +106,10 @@ public class ArianeGame implements Screen {
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.begin();
+		batch.draw(img,0,0);
+		batch.end();
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 
@@ -220,11 +221,17 @@ public class ArianeGame implements Screen {
 
 	@Override
 	public void show() {
-
+		batch = new SpriteBatch();
+		img = new Texture(Gdx.files.internal("fond.png"));
+		shape=new ShapeRenderer();
+		zac=new Joueur();
+		niveaux.put(1,1);
+		niveaux.put(2,-1);
 	}
 
 	@Override
 	public void dispose() {
-
+		batch.dispose();
+		img.dispose();
 	}
 }
