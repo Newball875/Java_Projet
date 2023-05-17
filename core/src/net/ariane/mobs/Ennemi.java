@@ -28,7 +28,7 @@ public abstract class Ennemi extends Entite{
 
 
     public Ennemi(int X, int Y){
-        super();
+        super(MAXLIFE);
         this.setX(X);
         this.setY(Y);
     }
