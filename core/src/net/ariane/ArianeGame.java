@@ -31,6 +31,7 @@ public class ArianeGame implements Screen {
 	private Texture img;
 	private Menu menu;
 	private int niv;
+	private int wait;
 
 	public ArianeGame(Zaq game, int niv){
 		this.game = game;
@@ -38,7 +39,6 @@ public class ArianeGame implements Screen {
 		System.out.println("NIVEAU : "+this.niv);
 	}
 	
-
 	public void create () {
 		boolean truc=true;
 		if(truc){
@@ -46,6 +46,16 @@ public class ArianeGame implements Screen {
 		}
 		shape=new ShapeRenderer();
 		zac=new Joueur();
+	}
+
+	public boolean attente(int temps){
+		temps=60*temps;
+		if(wait<temps){
+			wait++;
+			return false;
+		}
+		wait=0;
+		return true;
 	}
 
 	public void createClassique (int X, int Y) {
@@ -74,8 +84,12 @@ public class ArianeGame implements Screen {
 				return;
 			}
 			else{
-				niv++;
-				checkLevels();
+				//Attente (en seconde)
+				if(attente(2)){
+					niv++;
+					wait=0;
+					checkLevels();
+				}
 			}
 		}
 	}
@@ -200,6 +214,7 @@ public class ArianeGame implements Screen {
 
 	@Override
 	public void show() {
+		wait=0;
 		batch = new SpriteBatch();
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
