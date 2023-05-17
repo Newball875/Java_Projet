@@ -185,6 +185,7 @@ public class ArianeGame implements Screen {
 			bad.draw(shape);
 		}
 		level.ennemis=ennemis;
+		System.out.println(balles_ennemies.size());
 		shape.end();
 	}
 
@@ -219,9 +220,10 @@ public class ArianeGame implements Screen {
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux=new Level[2];
+		niveaux=new Level[3];
 		niveaux[0]=new Level1();
 		niveaux[1]=new Level2();
+		niveaux[2]=new Level5();
 	}
 
 	@Override

@@ -42,8 +42,8 @@ public class Ywing extends Ennemi{
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
-        System.out.println(Math.sin(getX()/50));
-        System.out.println(30 * Math.sin(getX()/50));
+        //System.out.println(Math.sin(getX()/50));
+        //System.out.println(30 * Math.sin(getX()/50));
         this.setY((int)(this.getDefY() + (30 * Math.sin(getX()/50))));
 
         shoot(balles_ennemies, cible);
