@@ -220,10 +220,12 @@ public class ArianeGame implements Screen {
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux=new Level[3];
+		niveaux=new Level[5];
 		niveaux[0]=new Level1();
 		niveaux[1]=new Level2();
-		niveaux[2]=new Level5();
+		niveaux[2]=new Level3();
+		niveaux[3]=new Level4();
+		niveaux[4]=new Level5();
 	}
 
 	@Override
