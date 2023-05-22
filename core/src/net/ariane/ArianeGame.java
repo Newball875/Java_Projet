@@ -141,7 +141,7 @@ public class ArianeGame implements Screen {
 				System.out.println("SALUUUUT");
 				ennemis.clear();
 				//game.changeScreen(new Menu(game));
-				backToMenu();
+				game.backToMenu();
 			}
 
 			//MAJ de ses balles
@@ -194,6 +194,10 @@ public class ArianeGame implements Screen {
 
 		}
 
+		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+			this.pause = !this.pause;
+		}
+
 
 		int i = 0;
 		allies = new ArrayList<>(balles_alliees);
@@ -229,12 +233,6 @@ public class ArianeGame implements Screen {
 		batch.end();
 		shape.end();
 
-
-
-		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-			this.pause = !this.pause;
-		}
-
 	}
 
 	@Override
@@ -246,10 +244,6 @@ public class ArianeGame implements Screen {
 	public void pause() {
 
 	}
-	public void backToMenu(){
-        game.setScreen(menu);
-    }
-
 
 	@Override
 	public void resume() {

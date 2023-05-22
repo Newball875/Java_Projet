@@ -29,19 +29,8 @@ public class Menu implements Screen {
     private GameAriane game ;
     private float f=0 ;
 
-    private Menu menu ;
-
     public Menu(GameAriane game){
         this.game = game;
-    }
-
-    public void create(){
-        menu = new Menu(this.game);
-        backToMenu();
-    }
-
-    public void backToMenu(){
-        game.setScreen(menu);
     }
 
     private void spawnRaindrop() {

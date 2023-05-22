@@ -7,15 +7,19 @@ import com.badlogic.gdx.graphics.GL20;
 public class GameAriane extends com.badlogic.gdx.Game {
 
     public void create () {
-        changeScreen(new Menu(this));
+        backToMenu();
     }
 
     public void changeScreen(Screen newScreen){
         Screen oldScreen = getScreen();
-        setScreen(newScreen);
         if(oldScreen != null){
             oldScreen.dispose();
         }
+        setScreen(newScreen);
+    }
+
+    public void backToMenu () {
+        changeScreen(new Menu(this));
     }
 
     public void render() {

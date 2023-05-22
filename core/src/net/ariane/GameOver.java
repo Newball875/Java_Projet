@@ -40,15 +40,6 @@ public class GameOver implements Screen {
         this.game = game;
     }
 
-    public void create(){
-        menu = new Menu(this.game);
-        backToMenu();
-    }
-
-    public void backToMenu() {
-        game.setScreen(menu);
-    }
-
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);

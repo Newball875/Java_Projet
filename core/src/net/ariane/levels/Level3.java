@@ -10,9 +10,11 @@ public class Level3 extends Level{
 
 	public Level3(){
 		super(2, "Niveau 3");     
-		//Première vague à 1 ennemi : 1 Classique
-		this.vagues[0]=new Ennemi[1];
+		//Première vague à 3 ennemis : 2 Slimes Verts et 1 Pillard
+		this.vagues[0]=new Ennemi[3];
 		this.vagues[0][0]=new SlimeVert(100,700);
+		this.vagues[0][1]=new SlimeVert(700,750);
+		this.vagues[0][2]=new Pillard(400,400);
 
 		//Seconde Vague : 1 Mother et 1 Ywing
 		this.vagues[1]=new Ennemi[2];
