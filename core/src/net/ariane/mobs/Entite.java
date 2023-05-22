@@ -29,6 +29,7 @@ public abstract class Entite {
 
     protected Sprite sprite;
     protected Texture texture;
+    protected Texture texture_bullet;
  //   private Color color=Color.WHITE;
     protected Weapon weapon;
 

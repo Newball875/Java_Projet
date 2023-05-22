@@ -5,6 +5,7 @@ import java.util.HashSet;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 import net.ariane.bullet.*;
@@ -18,6 +19,8 @@ public class Joueur extends Entite{
 
     private static String SPRITE_LINK = "sprites/Slime.png";
 
+    private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot.png";
+
     private int highScore ;
     public int getHighScore(){return highScore;}
     public void setHighScore(int score){this.highScore = highScore;}
@@ -27,6 +30,7 @@ public class Joueur extends Entite{
         this.setWeapon(new Zak());
         this.setHighScore(0);
         this.sprite.setSize(SIZEX,SIZEY);
+        this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));
     }
 
     public boolean update(HashSet<Bullet>balles_alliees){
@@ -41,6 +45,6 @@ public class Joueur extends Entite{
     public void shoot(HashSet<Bullet>balles_alliees){
         int x = this.getX() + (getSizeX()/2);
         int y = this.getY() + getSizeY();
-        this.weapon.use(balles_alliees, null,  x, y);
+        this.weapon.use(balles_alliees, this.texture_bullet, null,  x, y);
     }
 }

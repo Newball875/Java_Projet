@@ -3,6 +3,7 @@ package net.ariane.weapon;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 
@@ -18,7 +19,7 @@ public class Destroyer extends Weapon{
         super(SPEEDBULLET,COOLDOWN,DAMAGE,COLOR);
     }
 
-    public void use(HashSet<Bullet> balles_tab, Entite cible, int X, int Y){
+    public void use(HashSet<Bullet> balles_tab, Texture texture, Entite cible, int X, int Y){
 
         if(this.wait<=0){
 
@@ -29,7 +30,7 @@ public class Destroyer extends Weapon{
             int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
             int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-            balles_tab.add(new Bullet(X, Y, speedX, speedY, this.getColor()));
+            balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
             this.wait=this.getCooldown();
         }
         else{

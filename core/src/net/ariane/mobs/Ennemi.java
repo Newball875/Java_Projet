@@ -37,7 +37,7 @@ public abstract class Ennemi extends Entite{
 
         int x = this.getX() + (getSizeX()/2);
         int y = this.getY();
-        this.weapon.use(balles_ennemies, cible,  x, y);
+        this.weapon.use(balles_ennemies, this.texture_bullet, cible,  x, y);
     }
 
     public abstract void update(HashSet<Bullet>balles_ennemies, Joueur cible);

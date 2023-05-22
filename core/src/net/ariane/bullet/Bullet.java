@@ -3,6 +3,9 @@ package net.ariane.bullet;
 import java.util.HashSet;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import net.ariane.mobs.*;
@@ -17,16 +20,19 @@ public class Bullet {
     public int Xspeed, Yspeed;
     public int damage;
     private Color color;
+
+    protected Sprite sprite;
     private boolean delete=false;
 
-    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Color couleur){
+    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Texture texture){
         setSize(DEFAULT_SIZE);
         setDamage(DEFAULT_DAMAGE);
         setXspeed(Xspeed);
         setYspeed(Yspeed);
         setXposition(Xposition);
         setYposition(Yposition);
-        setColor(couleur);
+        this.sprite = new Sprite(texture);
+        this.sprite.setSize(this.size * 2, this.size * 2);
     }
 
     public void setSize(int size) {
@@ -79,9 +85,12 @@ public class Bullet {
 
     public boolean getDelete(){return this.delete;}
 
-    public void draw(ShapeRenderer shape){
-		shape.setColor(this.color);
-		shape.circle(this.getXposition(),this.getYposition(),this.getSize());
+    public void draw(ShapeRenderer shape, SpriteBatch batch){
+        this.sprite.setPosition((float)this.getXposition(),(float)this.getYposition());
+        sprite.draw(batch);
+
+		//shape.setColor(this.color);
+		//shape.circle(this.getXposition(),this.getYposition(),this.getSize());
 	}
 
     public boolean update(){

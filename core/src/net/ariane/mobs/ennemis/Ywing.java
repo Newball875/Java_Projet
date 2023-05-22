@@ -1,6 +1,8 @@
 package net.ariane.mobs.ennemis;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.Joueur;
@@ -11,16 +13,22 @@ import java.util.HashSet;
 
 public class Ywing extends Ennemi{
 
-    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+    private static String SPRITE_LINK = "sprites/Enemie_1.png";
+    private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot_vert.png";
 
     public Ywing(int X, int Y){
         super(X,Y, SPRITE_LINK);
         this.setSpeedX(3);
         this.setLife(120);
+        this.setSizeY(30);
         this.setSizeX(30);
         this.setWeapon(new Rafale());
         this.setScore(10);
         //this.setColor(Color.ORANGE);
+
+        this.sprite.setSize(getSizeX(),getSizeY());
+        this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));
+
     }
     int DefY = this.getY();
 

@@ -1,5 +1,6 @@
 package net.ariane;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreBoss;
 import net.ariane.hud.BarreVie;
@@ -14,7 +15,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
@@ -24,7 +24,6 @@ public class ArianeGame implements Screen {
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
-	BitmapFont font;
 	Level niveaux[];
 
 	private GameAriane game;
@@ -118,15 +117,19 @@ public class ArianeGame implements Screen {
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 
+		//MAJ de la barre de vie
+		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
+		//MAJ de la barre de boss
+		level.draw(shape, new BitmapFont(),batch);
+
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
 			//Dire que c'est la fin
 			System.out.println("TU AS PERDU, T'ES TROP NUL !");
 			balles_alliees.clear();
 			balles_ennemies.clear();
-			System.out.println("SALUUUUT");
 			ennemis.clear();
-			game.changeScreen(new Menu(game));
+			System.exit(1);
 		}
 
 		//MAJ de ses balles
@@ -149,7 +152,6 @@ public class ArianeGame implements Screen {
 			Ennemi bad=mechant.get(i);
 			bad.update(balles_ennemies,zac);
 			if(bad.dead){
-				//score.add(bad.getScore());
 				mechant.remove(i);
 			}else{
 				i=i+1;
@@ -179,23 +181,18 @@ public class ArianeGame implements Screen {
 		zac.draw(shape, batch);
 		while(i<allies.size()){
 			Bullet balle=allies.get(i);
-			balle.draw(shape);
+			balle.draw(shape, batch);
 			i=i+1;
 		}
 		i=0;
 		while(i<adverse.size()){
 			Bullet balle=adverse.get(i);
-			balle.draw(shape);
+			balle.draw(shape, batch);
 			i=i+1;
 		}
 		for(Ennemi bad:ennemis){
 			bad.draw(shape, batch);
 		}
-
-		//Draw de la barre de vie
-		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
-		//Draw de la barre de boss
-		level.draw(shape, font, batch);
 
 		level.ennemis=ennemis;
 
@@ -234,7 +231,6 @@ public class ArianeGame implements Screen {
 	public void show() {
 		wait=0;
 		batch = new SpriteBatch();
-		font=new BitmapFont();
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();

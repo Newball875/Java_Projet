@@ -1,6 +1,7 @@
 package net.ariane.weapon;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 
@@ -17,7 +18,7 @@ public class PiouPiou extends Weapon{
         super(SPEEDBULLET,COOLDOWN,DAMAGE,COLOR);
     }
 
-    public void use(HashSet<Bullet> balles_tab, Entite cible, int X, int Y){
+    public void use(HashSet<Bullet> balles_tab, Texture texture, Entite cible, int X, int Y){
 
         if(this.wait<=0){
 
@@ -30,7 +31,7 @@ public class PiouPiou extends Weapon{
                 int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
                 int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
 
 
                 longX = i * 10;
@@ -40,7 +41,7 @@ public class PiouPiou extends Weapon{
                 speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
                 speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
 
 
             }
@@ -52,7 +53,7 @@ public class PiouPiou extends Weapon{
                 int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
                 int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
 
                 longX = 5 * 10;
                 longY = j * 10;
@@ -61,7 +62,7 @@ public class PiouPiou extends Weapon{
                 speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
                 speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, Color.RED));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
 
 
             }

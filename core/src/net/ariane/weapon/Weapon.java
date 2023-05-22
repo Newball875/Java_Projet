@@ -2,6 +2,7 @@ package net.ariane.weapon;
 
 import com.badlogic.gdx.graphics.Color;
 
+import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 
@@ -56,5 +57,5 @@ public abstract class Weapon {
     public Color getColor(){return this.color;}
 
 
-    public abstract void use(HashSet<Bullet> balles_alliees, Entite cible, int x, int y);
+    public abstract void use(HashSet<Bullet> balles_alliees, Texture texture, Entite cible, int x, int y);
 }
