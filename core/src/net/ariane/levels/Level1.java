@@ -1,5 +1,7 @@
 package net.ariane.levels;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.ennemis.*;
@@ -13,7 +15,7 @@ public class Level1 extends Level{
 		this.vagues[0][0]=new Classique(100,700);
 	}
 
-	public void draw(ShapeRenderer shape){
+	public void draw(ShapeRenderer shape, BitmapFont font, SpriteBatch batch){
 		return ;
 	}
 }

@@ -1,5 +1,7 @@
 package net.ariane.levels;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import net.ariane.hud.BarreBoss;
 import net.ariane.mobs.Ennemi;
@@ -41,7 +43,7 @@ public class Level5 extends Level{
 		}
 	}
 
-	public void draw(ShapeRenderer shape){
+	public void draw(ShapeRenderer shape, BitmapFont font, SpriteBatch batch){
 		barreBoss.draw(shape, ennemi.getLife(), ennemi.getMaxlife());
 	}
 }

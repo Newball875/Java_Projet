@@ -61,9 +61,9 @@ public abstract class Level {
 		}
 	}
 
-	public abstract void draw(ShapeRenderer shape);
+	public abstract void draw(ShapeRenderer shape, BitmapFont font, SpriteBatch batch);
 
 	public void afficherNom(BitmapFont font, SpriteBatch batch){
-		
+		font.draw(batch, this.nom, 250, 835);
 	}
 }
