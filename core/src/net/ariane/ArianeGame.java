@@ -39,6 +39,8 @@ public class ArianeGame implements Screen {
 	public int niv;
 	private int wait;
 
+	private boolean pause = false;
+
 	public ArianeGame(GameAriane game, int niv){
 		this.game = game;
 		this.niv=niv;
@@ -62,18 +64,6 @@ public class ArianeGame implements Screen {
 		}
 		wait=0;
 		return true;
-	}
-
-
-	public void pause() {
-		boolean fin = false;
-		while (!fin) {
-			System.out.println("ici");
-			if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
-				System.out.println("la");
-				fin = true;
-			}
-		}
 	}
 
 
@@ -116,96 +106,115 @@ public class ArianeGame implements Screen {
 	
 	@Override
 	public void render (float delta) {
+
 		//Récupération du niveau et des ennemis
-		try{
+		try {
 			checkLevels();
-		}catch(Exception e){
-			System.out.println("ERREUR : "+e);
+		} catch (Exception e) {
+			System.out.println("ERREUR : " + e);
 		}
-		Level level=niveaux[niv];
-		ennemis=level.ennemis;
+		Level level = niveaux[niv];
+		ennemis = level.ennemis;
 
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(img,0,0);
+		batch.draw(img, 0, 0);
 		batch.end();
 
-		
+
 		shape.begin(ShapeRenderer.ShapeType.Filled);
-		int i=0;
 
-		//MAJ du héros
-		if(zac.update(balles_alliees)){
-			//Dire que c'est la fin
-			System.out.println("TU AS PERDU, T'ES TROP NUL !");
+		ArrayList<Bullet> allies;
+		ArrayList<Ennemi> mechant;
+		ArrayList<Bullet> adverse;
+
+		if(!this.pause) {
+
+			int i = 0;
+
+			//MAJ du héros
+			if (zac.update(balles_alliees)) {
+				//Dire que c'est la fin
+				System.out.println("TU AS PERDU, T'ES TROP NUL !");
+				balles_alliees.clear();
+				balles_ennemies.clear();
+				System.out.println("SALUUUUT");
+				ennemis.clear();
+				//game.changeScreen(new Menu(game));
+				backToMenu();
+			}
+
+			//MAJ de ses balles
+
+			allies = new ArrayList<>(balles_alliees);
+			while (i < allies.size()) {
+				Bullet balle = allies.get(i);
+				if (balle.update() || balle.checkCollision(ennemis)) {
+					allies.remove(i);
+				} else {
+					i = i + 1;
+				}
+			}
 			balles_alliees.clear();
-			balles_ennemies.clear();
-			System.out.println("SALUUUUT");
+			balles_alliees = new HashSet<>(allies);
+
+
+			i = 0;
+
+			//MAJ des méchants
+			mechant = new ArrayList<>(ennemis);
+			while (i < mechant.size()) {
+				Ennemi bad = mechant.get(i);
+				bad.update(balles_ennemies, zac);
+				if (bad.dead) {
+					score.add(bad.getScore());
+					mechant.remove(i);
+				} else {
+					i = i + 1;
+				}
+			}
 			ennemis.clear();
-			//game.changeScreen(new Menu(game));
-			backToMenu();
-		}
+			ennemis = new HashSet<>(mechant);
 
-		//MAJ de ses balles
-		ArrayList<Bullet> allies = new ArrayList<>(balles_alliees);
-		while(i<allies.size()){
-			Bullet balle=allies.get(i);
-			if(balle.update() || balle.checkCollision(ennemis)){
-				allies.remove(i);
-			}else{
-				i=i+1;
+			i = 0;
+
+			//MAJ des balles des ennemis
+			adverse = new ArrayList<>(balles_ennemies);
+			while (i < adverse.size()) {
+				Bullet balle = adverse.get(i);
+				if (balle.update() || balle.checkCollision(zac)) {
+					adverse.remove(i);
+				} else {
+					i = i + 1;
+				}
 			}
-		}
-		balles_alliees.clear();
-		balles_alliees=new HashSet<>(allies);
-		i=0;
+			balles_ennemies.clear();
+			balles_ennemies = new HashSet<>(adverse);
 
-		//MAJ des méchants
-		ArrayList<Ennemi> mechant=new ArrayList<>(ennemis);
-		while(i<mechant.size()){
-			Ennemi bad=mechant.get(i);
-			bad.update(balles_ennemies,zac);
-			if(bad.dead){
-				score.add(bad.getScore());
-				mechant.remove(i);
-			}else{
-				i=i+1;
-			}
-		}
-		ennemis.clear();
-		ennemis=new HashSet<>(mechant);
-		i=0;
 
-		//MAJ des balles des ennemis
-		ArrayList<Bullet> adverse= new ArrayList<>(balles_ennemies);
-		while(i<adverse.size()){
-			Bullet balle=adverse.get(i);
-			if(balle.update() || balle.checkCollision(zac)){
-				adverse.remove(i);
-			}else{
-				i=i+1;
-			}
 		}
-		balles_ennemies.clear();
-		balles_ennemies=new HashSet<>(adverse);
-		i=0;
 
+
+		int i = 0;
+		allies = new ArrayList<>(balles_alliees);
+		mechant = new ArrayList<>(ennemis);
+		adverse = new ArrayList<>(balles_ennemies);
 
 		batch.begin();
 		//On draw tout dans le même ordre
 		zac.draw(shape, batch);
-		while(i<allies.size()){
-			Bullet balle=allies.get(i);
+		while (i < allies.size()) {
+			Bullet balle = allies.get(i);
 			balle.draw(shape, batch);
-			i=i+1;
+			i = i + 1;
 		}
-		i=0;
-		while(i<adverse.size()){
-			Bullet balle=adverse.get(i);
+		i = 0;
+		while (i < adverse.size()) {
+			Bullet balle = adverse.get(i);
 			balle.draw(shape, batch);
-			i=i+1;
+			i = i + 1;
 		}
-		for(Ennemi bad:ennemis){
+		for (Ennemi bad : ennemis) {
 			bad.draw(shape, batch);
 		}
 
@@ -214,14 +223,17 @@ public class ArianeGame implements Screen {
 		//Draw de la barre de boss
 		level.draw(shape, font, batch);
 		score.draw(font, batch);
-		level.ennemis=ennemis;
+		level.ennemis = ennemis;
 
-		if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-			pause();
-		}
 
 		batch.end();
 		shape.end();
+
+
+
+		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+			this.pause = !this.pause;
+		}
 
 	}
 
@@ -230,6 +242,10 @@ public class ArianeGame implements Screen {
 
 	}
 
+	@Override
+	public void pause() {
+
+	}
 	public void backToMenu(){
         game.setScreen(menu);
     }
