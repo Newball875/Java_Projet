@@ -48,7 +48,6 @@ public abstract class Entite {
         setX(X);
         setY(Y);
 
-        System.out.println(lien_img);
         this.texture = new Texture(Gdx.files.internal(lien_img));
         this.sprite = new Sprite(this.texture);
     }
