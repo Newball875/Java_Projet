@@ -30,11 +30,18 @@ public class Wither extends Ennemi{
 
     }
 
+    int DefY = this.getY();
+
+    public int getDefY() {
+        return DefY;
+    }
+
     public void update(HashSet<Bullet> balles_ennemies, Joueur cible){
         if(this.getX()<=0 || this.getX()>=750){
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
+        this.setY((int)(this.getDefY() + (50 * Math.sin(Math.toRadians(getX())))));
 
         shoot(balles_ennemies, cible);
         if(this.getLife()<=0){
