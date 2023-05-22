@@ -175,8 +175,6 @@ public class ArianeGame implements Screen {
 			}
 			ennemis.clear();
 			ennemis = new HashSet<>(mechant);
-			backToMenu();
-		}
 
 			i = 0;
 
@@ -193,12 +191,11 @@ public class ArianeGame implements Screen {
 			balles_ennemies.clear();
 			balles_ennemies = new HashSet<>(adverse);
 
-
 		}
 
 
 		int i = 0;
-		allies = new ArrayList<>(balles_alliees);
+		allies=new ArrayList<>(balles_alliees);
 		mechant = new ArrayList<>(ennemis);
 		adverse = new ArrayList<>(balles_ennemies);
 
