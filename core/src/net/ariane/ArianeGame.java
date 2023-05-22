@@ -128,7 +128,7 @@ public class ArianeGame implements Screen {
 			balles_alliees.clear();
 			balles_ennemies.clear();
 			ennemis.clear();
-			System.exit(1);
+			game.changeScreen(new Menu(game));
 		}
 
 		//MAJ de ses balles
@@ -151,6 +151,7 @@ public class ArianeGame implements Screen {
 			Ennemi bad=mechant.get(i);
 			bad.update(balles_ennemies,zac);
 			if(bad.dead){
+				//score.add(bad.getScore());
 				mechant.remove(i);
 			}else{
 				i=i+1;

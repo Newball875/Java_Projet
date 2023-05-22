@@ -6,13 +6,13 @@ import net.ariane.weapon.Weapon;
 
 public class BarreBoss {
 
-    private static final int SIZEX = 250;
+    private static final int SIZEX = 150;
     private static final int SIZEY = 50;
-    private static final int X=250;
+    private static final int X=450;
     private static final int Y=825;
     private int sizeX, sizeY;
     private int x,y;
-    private Color color=Color.GREEN;
+    private Color color=Color.PURPLE;
 
 
     public BarreBoss(){
@@ -26,12 +26,8 @@ public class BarreBoss {
     public void draw(ShapeRenderer shape, int life, int maxLife){
         float max = (float)maxLife;
         float vie = (float)life;
-        if(0.3*max>=vie){
-            color = color.RED;
-        }
-        else{
-            color = color.GREEN;
-        }
+        shape.setColor(color.RED);
+        shape.rect((float)this.getX(),(float)this.getY(),(float)(this.getSizeX()),(float)this.getSizeY());
         shape.setColor(this.color);
         shape.rect((float)this.getX(),(float)this.getY(),(float)(this.getSizeX()*((float)(vie/max))),(float)this.getSizeY());
     }
