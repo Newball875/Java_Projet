@@ -6,7 +6,7 @@ import net.ariane.mobs.ennemis.*;
 public class Level3 extends Level{
 
 	public Level3(){
-		super(2);     
+		super(2, "Niveau 3");     
 		//Première vague à 1 ennemi : 1 Classique
 		this.vagues[0]=new Ennemi[1];
 		this.vagues[0][0]=new Classique(100,700);

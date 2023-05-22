@@ -108,7 +108,7 @@ public class ArianeGame implements Screen {
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(img,0,0);
-		batch.end();
+		
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 
@@ -185,6 +185,7 @@ public class ArianeGame implements Screen {
 		}
 		level.ennemis=ennemis;
 		shape.end();
+		batch.end();
 	}
 
 	@Override

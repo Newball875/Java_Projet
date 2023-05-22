@@ -6,7 +6,7 @@ import net.ariane.mobs.ennemis.*;
 public class Level5 extends Level{
 
 	public Level5(){
-		super(1);
+		super(1,"Niveau BOSS");
 		int i=0;
 		while(i<this.getNombre()){
 			Ennemi ennemi=new Boss(200,600);

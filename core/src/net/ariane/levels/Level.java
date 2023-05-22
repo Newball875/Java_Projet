@@ -3,6 +3,10 @@ package net.ariane.levels;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.physics.box2d.Shape;
+
 import net.ariane.mobs.Ennemi;
 
 public class Level {
@@ -10,12 +14,17 @@ public class Level {
 	protected Ennemi[][] vagues;
 	private int nombre;		//Nombre de vagues
 	private int actuel;	//Vague actuelle
+	private String nom;
 
-	public Level(int nombre){
+	public Level(int nombre, String nom){
 		setNombre(nombre);
+		setNom(nom);
 		this.vagues=new Ennemi[nombre][];
 		this.actuel=-1;
 	}
+
+	public void setNom(String nom){this.nom=nom;}
+	public String getNom(){return this.nom;}
 
 	public void setNombre(int nombre){this.nombre=nombre;}
 	public int getNombre(){return this.nombre;}
@@ -49,5 +58,9 @@ public class Level {
 		if(ennemis.isEmpty()){
 			envoyerVague(this.actuel);
 		}
+	}
+
+	public void afficherNom(BitmapFont font){
+		
 	}
 }
