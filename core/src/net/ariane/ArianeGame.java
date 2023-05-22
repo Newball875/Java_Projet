@@ -116,10 +116,7 @@ public class ArianeGame implements Screen {
 
 		//MAJ de la barre de vie
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
-		//MAJ de la barre de boss
-		if(niv==4){
-			barreBoss.draw(shape, .getLife(), zac.getMaxlife());
-		}
+
 
 		//MAJ du héros
 		if(zac.update(balles_alliees)){

@@ -1,18 +1,25 @@
 package net.ariane.levels;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import net.ariane.hud.BarreBoss;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.ennemis.*;
 
 public class Level5 extends Level{
 
+	BarreBoss barreBoss ;
+	Ennemi ennemi;
 	public Level5(){
 		super(1,"Niveau BOSS");
 		int i=0;
+
 		while(i<this.getNombre()){
-			Ennemi ennemi=new Boss(200,600);
+			barreBoss = new BarreBoss();
+			ennemi=new Boss(200,600);
 			Ennemi ennemi2=new Ywing(200,500);
 			Ennemi ennemi3=new Ywing(400,400);
 			Ennemi ennemi4=new Ywing(600,500);
+
 
 			this.vagues[i]=new Ennemi[4];
 			this.vagues[i][0]=ennemi;
@@ -27,5 +34,16 @@ public class Level5 extends Level{
 
 			i=i+1;
 		}
+	}
+	public void update(){
+		if(ennemis.isEmpty()){
+			envoyerVague(this.actuel);
+		}
+	}
+
+	public void draw(){
+		ShapeRenderer shape ;
+		shape.begin();
+		barreBoss.draw(shape, ennemi.getLife(), ennemi.getMaxlife());
 	}
 }

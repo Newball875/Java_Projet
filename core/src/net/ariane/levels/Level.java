@@ -13,7 +13,7 @@ public class Level {
 	public HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	protected Ennemi[][] vagues;
 	private int nombre;		//Nombre de vagues
-	private int actuel;	//Vague actuelle
+	protected int actuel;	//Vague actuelle
 	private String nom;
 
 	public Level(int nombre, String nom){
