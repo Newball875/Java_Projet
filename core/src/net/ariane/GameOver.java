@@ -33,20 +33,10 @@ public class GameOver implements Screen {
 
     ShapeRenderer shape;
 
-    private Menu menu ;
     BitmapFont font;
 
     public GameOver(GameScreen game){
         this.game = game;
-    }
-
-    public void create(){
-        menu = new Menu(this.game);
-        backToMenu();
-    }
-
-    public void backToMenu() {
-        game.setScreen(menu);
     }
 
     @Override

@@ -34,19 +34,9 @@ public class Select implements Screen {
 
     ShapeRenderer shape;
 
-    private Menu menu ;
 
     public Select(GameScreen game){
         this.game = game;
-    }
-
-    public void create(){
-        menu = new Menu(this.game);
-        backToMenu();
-    }
-
-    public void backToMenu(){
-        game.setScreen(menu);
     }
 
     public void creerBouton(int x, int y, Color color, ShapeRenderer shape){

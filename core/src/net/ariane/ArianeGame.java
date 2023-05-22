@@ -34,7 +34,6 @@ public class ArianeGame implements Screen {
 	BarreBoss barreBoss = new BarreBoss();
 	private SpriteBatch batch;
 	private Texture img;
-	private Menu menu;
 	private Score score;
 	public int niv;
 	private int wait;
@@ -47,15 +46,6 @@ public class ArianeGame implements Screen {
 		this.niv=niv;
 		System.out.println("NIVEAU : "+this.niv);
 	}
-	
-	public void create () {
-		boolean truc=true;
-		if(truc){
-			System.out.println("OUI");
-		}
-		shape=new ShapeRenderer();
-		zac=new Joueur();
-	}
 
 	public boolean attente(int temps){
 		temps=60*temps;
@@ -65,21 +55,6 @@ public class ArianeGame implements Screen {
 		}
 		wait=0;
 		return true;
-	}
-
-
-	public void createClassique (int X, int Y) {
-		Ennemi ennemi=new SlimeVert(X,Y);
-		ennemis.add(ennemi);
-	}
-	public void createYwing (int X, int Y) {
-		Ennemi ennemi=new Pillard(X,Y);
-		ennemis.add(ennemi);
-	}
-
-	public void createMother (int X, int Y){
-		Ennemi ennemi = new Wither(X, Y);
-		ennemis.add(ennemi);
 	}
 
 	public void checkLevels()throws Exception{
@@ -138,9 +113,7 @@ public class ArianeGame implements Screen {
 				System.out.println("TU AS PERDU, T'ES TROP NUL !");
 				balles_alliees.clear();
 				balles_ennemies.clear();
-				System.out.println("SALUUUUT");
 				ennemis.clear();
-				//game.changeScreen(new Menu(game));
 				backToMenu();
 			}
 
@@ -192,6 +165,9 @@ public class ArianeGame implements Screen {
 			balles_ennemies = new HashSet<>(adverse);
 
 		}
+		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+			this.pause = !this.pause;
+		}
 
 
 		int i = 0;
@@ -227,13 +203,6 @@ public class ArianeGame implements Screen {
 
 		batch.end();
 		shape.end();
-
-
-
-		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-			this.pause = !this.pause;
-		}
-
 	}
 
 	@Override
@@ -246,7 +215,7 @@ public class ArianeGame implements Screen {
 
 	}
 	public void backToMenu(){
-        game.setScreen(menu);
+        game.backToMenu();
     }
 
 
@@ -266,7 +235,6 @@ public class ArianeGame implements Screen {
 
 	@Override
 	public void show() {
-		menu=new Menu(this.game);
 		wait=0;
 		batch = new SpriteBatch();
 		font=new BitmapFont();
