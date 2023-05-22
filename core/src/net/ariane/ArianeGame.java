@@ -1,6 +1,7 @@
 package net.ariane;
 
 import net.ariane.bullet.Bullet;
+import net.ariane.hud.BarreBoss;
 import net.ariane.hud.BarreVie;
 import net.ariane.levels.*;      
 import net.ariane.mobs.*;
@@ -26,10 +27,11 @@ public class ArianeGame implements Screen {
 
 	private GameAriane game;
 	BarreVie barreVie = new BarreVie();
+	BarreBoss barreBoss = new BarreBoss();
 	private SpriteBatch batch;
 	private Texture img;
 	private Menu menu;
-	private int niv;
+	public int niv;
 	private int wait;
 
 	public ArianeGame(GameAriane game, int niv){
@@ -114,6 +116,10 @@ public class ArianeGame implements Screen {
 
 		//MAJ de la barre de vie
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
+		//MAJ de la barre de boss
+		if(niv==4){
+			barreBoss.draw(shape, .getLife(), zac.getMaxlife());
+		}
 
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
