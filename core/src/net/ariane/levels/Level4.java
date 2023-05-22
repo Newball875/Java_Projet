@@ -1,5 +1,6 @@
 package net.ariane.levels;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import net.ariane.mobs.Ennemi;
 import net.ariane.mobs.ennemis.*;
 
@@ -16,4 +17,9 @@ public class Level4 extends Level{
 		this.vagues[1][0]=new Mother(100,700);
 		this.vagues[1][1]=new Ywing(150,650);
 	}
+
+	public void draw(ShapeRenderer shape){
+		return ;
+	}
+
 }

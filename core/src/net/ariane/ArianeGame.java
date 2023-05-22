@@ -110,13 +110,16 @@ public class ArianeGame implements Screen {
 		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(img,0,0);
+		batch.end();
+
 		
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 
 		//MAJ de la barre de vie
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
-		level[5].draw(shape);
+		//MAJ de la barre de boss
+		level.draw(shape);
 
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
@@ -170,6 +173,9 @@ public class ArianeGame implements Screen {
 		balles_ennemies.clear();
 		balles_ennemies=new HashSet<>(adverse);
 		i=0;
+
+
+		batch.begin();
 		//On draw tout dans le même ordre
 		zac.draw(shape);
 		while(i<allies.size()){
@@ -186,9 +192,14 @@ public class ArianeGame implements Screen {
 		for(Ennemi bad:ennemis){
 			bad.draw(shape);
 		}
+
 		level.ennemis=ennemis;
-		shape.end();
+
+
+
 		batch.end();
+		shape.end();
+
 	}
 
 	@Override

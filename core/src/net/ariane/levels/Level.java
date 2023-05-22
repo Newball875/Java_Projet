@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 
 import net.ariane.mobs.Ennemi;
 
-public class Level {
+public abstract class Level {
 	public HashSet<Ennemi>ennemis=new HashSet<Ennemi>();
 	protected Ennemi[][] vagues;
 	private int nombre;		//Nombre de vagues
@@ -60,6 +60,8 @@ public class Level {
 			envoyerVague(this.actuel);
 		}
 	}
+
+	public abstract void draw(ShapeRenderer shape);
 
 	public void afficherNom(BitmapFont font, SpriteBatch batch){
 		
