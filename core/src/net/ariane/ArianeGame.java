@@ -39,13 +39,10 @@ public class ArianeGame implements Screen {
 	public int niv;
 	private int wait;
 
-<<<<<<< HEAD
+
 	private boolean pause = false;
 
-	public ArianeGame(GameAriane game, int niv){
-=======
 	public ArianeGame(GameScreen game, int niv){
->>>>>>> 7c151fd (nuclear arme)
 		this.game = game;
 		this.niv=niv;
 		System.out.println("NIVEAU : "+this.niv);
@@ -177,12 +174,9 @@ public class ArianeGame implements Screen {
 				}
 			}
 			ennemis.clear();
-<<<<<<< HEAD
 			ennemis = new HashSet<>(mechant);
-=======
 			backToMenu();
 		}
->>>>>>> 7c151fd (nuclear arme)
 
 			i = 0;
 
