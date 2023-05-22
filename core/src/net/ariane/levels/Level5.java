@@ -44,6 +44,7 @@ public class Level5 extends Level{
 	}
 
 	public void draw(ShapeRenderer shape, BitmapFont font, SpriteBatch batch){
+		afficherNom(font, batch);
 		barreBoss.draw(shape, ennemi.getLife(), ennemi.getMaxlife());
 	}
 }

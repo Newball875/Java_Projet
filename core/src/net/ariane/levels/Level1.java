@@ -16,6 +16,6 @@ public class Level1 extends Level{
 	}
 
 	public void draw(ShapeRenderer shape, BitmapFont font, SpriteBatch batch){
-		return ;
+		afficherNom(font, batch);
 	}
 }
