@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.ArianeGame;
+import net.ariane.hud.Score;
 import net.ariane.weapon.*;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -121,9 +122,6 @@ public abstract class Entite {
         }
         setLife(getLife() - damage);
         return getLife();
-    }
-    public void update_HighScore(int score){
-
     }
 
     public void draw(ShapeRenderer shape, SpriteBatch batch){
