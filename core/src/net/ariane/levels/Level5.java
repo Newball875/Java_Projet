@@ -41,9 +41,7 @@ public class Level5 extends Level{
 		}
 	}
 
-	public void draw(){
-		ShapeRenderer shape ;
-		shape.begin();
+	public void draw(ShapeRenderer shape){
 		barreBoss.draw(shape, ennemi.getLife(), ennemi.getMaxlife());
 	}
 }
