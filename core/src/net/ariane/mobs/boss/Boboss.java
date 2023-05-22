@@ -12,13 +12,14 @@ import java.util.HashSet;
 
 public class Boboss extends Ennemi {
 
+    private static String SPRITE_LINK = "sprites/Slime_vert.png";
 
     public Boboss(int X, int Y){
-        super(X,Y);
+        super(X,Y, SPRITE_LINK);
         this.setLife(100);
         this.setWeapon(new BossArme());
         this.setScore(100);
-        this.setColor(Color.CORAL);
+        //this.setColor(Color.CORAL);
     }
 
 

@@ -11,14 +11,16 @@ import java.util.HashSet;
 
 public class Ywing extends Ennemi{
 
+    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+
     public Ywing(int X, int Y){
-        super(X,Y);
+        super(X,Y, SPRITE_LINK);
         this.setSpeedX(3);
         this.setLife(120);
         this.setSizeX(30);
         this.setWeapon(new Rafale());
         this.setScore(10);
-        this.setColor(Color.ORANGE);
+        //this.setColor(Color.ORANGE);
     }
     int DefY = this.getY();
 

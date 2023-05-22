@@ -22,10 +22,12 @@ import java.util.HashSet;
 
 public class Boss extends Ennemi{
 
+    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+
     Weapon weapon2;
     Weapon weapon3;
     public Boss(int X, int Y){
-        super(X,Y);
+        super(X,Y, SPRITE_LINK);
         this.setSpeedX(0);
         this.setSizeX(400);
         this.setSizeY(200);
@@ -34,7 +36,7 @@ public class Boss extends Ennemi{
         this.setWeapon2(new PiouPiou());
         this.setWeapon3(new Rafale());
         this.setScore(2000);
-        this.setColor(Color.CORAL);
+        //this.setColor(Color.CORAL);
     }
 
     public void setWeapon2(Weapon weapon2) {

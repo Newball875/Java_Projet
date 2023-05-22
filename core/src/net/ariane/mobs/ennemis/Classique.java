@@ -12,13 +12,18 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Classique extends Ennemi {
+
+    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+
     public Classique(int X, int Y){
-        super(X,Y);
+        super(X,Y, SPRITE_LINK);
         this.setSpeedX(5);
         this.setLife(80);
         this.setWeapon(new Destroyer());
         this.setScore(5);
-        this.setColor(Color.CORAL);
+        //this.setColor(Color.CORAL);
+
+        this.sprite.setSize(20,20);
     }
 
     public void update(HashSet<Bullet>balles_ennemies, Joueur cible){

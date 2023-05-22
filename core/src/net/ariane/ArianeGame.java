@@ -177,7 +177,7 @@ public class ArianeGame implements Screen {
 
 		batch.begin();
 		//On draw tout dans le même ordre
-		zac.draw(shape);
+		zac.draw(shape, batch);
 		while(i<allies.size()){
 			Bullet balle=allies.get(i);
 			balle.draw(shape);
@@ -190,7 +190,7 @@ public class ArianeGame implements Screen {
 			i=i+1;
 		}
 		for(Ennemi bad:ennemis){
-			bad.draw(shape);
+			bad.draw(shape, batch);
 		}
 
 		level.ennemis=ennemis;

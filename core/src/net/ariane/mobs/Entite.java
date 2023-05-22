@@ -1,5 +1,9 @@
 package net.ariane.mobs;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import net.ariane.ArianeGame;
 import net.ariane.weapon.*;
 
@@ -22,8 +26,32 @@ public abstract class Entite {
     private int speedy ;
     private int sizeX, sizeY;
     private int x,y;
-    private Color color=Color.WHITE;
+
+    protected Sprite sprite;
+    protected Texture texture;
+ //   private Color color=Color.WHITE;
     protected Weapon weapon;
+
+
+    public Entite(int maxLife, int sizeX, int sizeY, String lien_img){
+        if(maxLife<=0){
+            maxLife = MAXLIFE;
+        }
+        if(sizeX <= 0){sizeX = SIZEX;}
+        if(sizeY <= 0){sizeY = SIZEY;}
+        setMaxLife(maxLife);
+        setLife(maxLife);
+        setSpeedX(SPEEDX);
+        setSpeedX(SPEEDY);
+        setSizeX(sizeX);
+        setSizeY(sizeY);
+        setX(X);
+        setY(Y);
+
+        System.out.println(lien_img);
+        this.texture = new Texture(Gdx.files.internal(lien_img));
+        this.sprite = new Sprite(this.texture);
+    }
 
     public Entite(int maxLife, int sizeX, int sizeY){
         if(maxLife<=0){
@@ -31,7 +59,6 @@ public abstract class Entite {
         }
         if(sizeX <= 0){sizeX = SIZEX;}
         if(sizeY <= 0){sizeY = SIZEY;}
-
         setMaxLife(maxLife);
         setLife(maxLife);
         setSpeedX(SPEEDX);
@@ -42,7 +69,7 @@ public abstract class Entite {
         setY(Y);
     }
 
-    public Entite(int life,int maxLife){
+    public Entite(int life,int maxLife, String lien_img){
         if(maxLife<=0){
             maxLife = MAXLIFE;
         }
@@ -54,6 +81,9 @@ public abstract class Entite {
         setX(X);
         setY(Y);
         setLife(life);
+
+        this.texture = new Texture(Gdx.files.internal(lien_img));
+        this.sprite = new Sprite(this.texture);
     }
 
     public int getLife(){return life;}
@@ -81,8 +111,8 @@ public abstract class Entite {
     public Weapon getWeapon(){return this.weapon;}
     public void setWeapon(Weapon weapon){this.weapon = weapon;}
 
-    public Color getColor(){return this.color;}
-    public void setColor(Color color){this.color=color;}
+  //  public Color getColor(){return this.color;}
+    //public void setColor(Color color){this.color=color;}
 
     public int attack(int damage){
         if(getLife() - damage <= 0){
@@ -96,9 +126,13 @@ public abstract class Entite {
 
     }
 
-    public void draw(ShapeRenderer shape){
-		shape.setColor(this.color);
-		shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
+    public void draw(ShapeRenderer shape, SpriteBatch batch){
+
+        this.sprite.setPosition((float)this.getX(),(float)this.getY());
+        sprite.draw(batch);
+
+        //shape.setColor(this.color);
+		//shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
 	}
 
 }
