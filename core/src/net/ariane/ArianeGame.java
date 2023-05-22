@@ -118,11 +118,6 @@ public class ArianeGame implements Screen {
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i=0;
 
-		//MAJ de la barre de vie
-		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
-		//MAJ de la barre de boss
-		level.draw(shape, font, batch);
-
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
 			//Dire que c'est la fin
@@ -195,6 +190,11 @@ public class ArianeGame implements Screen {
 		for(Ennemi bad:ennemis){
 			bad.draw(shape, batch);
 		}
+
+		//Draw de la barre de vie
+		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
+		//Draw de la barre de boss
+		level.draw(shape, font, batch);
 
 		level.ennemis=ennemis;
 
