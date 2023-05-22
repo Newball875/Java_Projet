@@ -35,7 +35,12 @@ public class Joueur extends Entite{
 
     public boolean update(HashSet<Bullet>balles_alliees){
 		this.setX(Gdx.input.getX()-(this.getSizeX()/2));
-		this.setY((Gdx.graphics.getHeight()-Gdx.input.getY())-(this.getSizeY()/2));
+        if((Gdx.graphics.getHeight() - Gdx.input.getY()) >= 800) {
+            this.setY(800);
+        }else {
+            this.setY((Gdx.graphics.getHeight() - Gdx.input.getY()) - (this.getSizeY() / 2));
+
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(0)){
             shoot(balles_alliees);
         }
