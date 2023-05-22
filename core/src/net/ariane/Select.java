@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -27,6 +28,7 @@ public class Select implements Screen {
     private TextureRegion backgroundTexture;
     private GameAriane game ;
     private float f=0 ;
+    BitmapFont font;
 
     private Color color;
 
@@ -47,6 +49,11 @@ public class Select implements Screen {
         game.setScreen(menu);
     }
 
+    public void creerBouton(int x, int y, Color color, ShapeRenderer shape){
+        shape.setColor(color);
+        shape.rect(x,y,200,200);
+    }
+
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);
@@ -55,23 +62,21 @@ public class Select implements Screen {
         batch.draw(bucketImage2, 0, 0,900,900);
         batch.end();
 
+        batch.begin();
         shape.begin(ShapeRenderer.ShapeType.Filled);
+        
 
-        shape.setColor(color.GREEN);
+        creerBouton(100,600,Color.GREEN,shape);
+        creerBouton(500,600,Color.GREEN,shape);
 
-        shape.rect(100,600,200,200);
-        shape.rect(500,600,200,200);
+        creerBouton(100,400,Color.BLUE,shape);
+        creerBouton(500,400,Color.BLUE,shape);
 
-        shape.setColor(color.BLUE);
+        creerBouton(300,100,Color.RED,shape);
 
-        shape.rect(100,400,200,200);
-        shape.rect(500,400,200,200);
-
-        shape.setColor(color.RED);
-
-        shape.rect(300,100,200,200);
 
         shape.end();
+        batch.end();    
         if(Gdx.input.isButtonPressed(0)){
             if(Gdx.input.getX()>100 && Gdx.input.getX()<300){
                 if(Gdx.graphics.getHeight()-Gdx.input.getY()>600 && Gdx.graphics.getHeight()-Gdx.input.getY()<800){
@@ -122,6 +127,7 @@ public class Select implements Screen {
         bucket2.y = 200;
 
         raindrops = new Array<Rectangle>();
+        font=new BitmapFont();
     }
 
     @Override
