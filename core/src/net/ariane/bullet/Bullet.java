@@ -9,11 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import net.ariane.mobs.*;
+import net.ariane.weapon.Weapon;
 
 public class Bullet {
 
     public static final int DEFAULT_SIZE = 5;
-    public static final int DEFAULT_DAMAGE = 10;
 
     public int size;
     public int Xposition, Yposition;
@@ -24,9 +24,14 @@ public class Bullet {
     protected Sprite sprite;
     private boolean delete=false;
 
-    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Texture texture){
+    public Bullet(int Xposition, int Yposition, int Xspeed, int Yspeed, Texture texture, int damage){
         setSize(DEFAULT_SIZE);
-        setDamage(DEFAULT_DAMAGE);
+        if(damage!=0){
+            setDamage(damage);
+        }
+        else{
+            setDamage(1);
+        }
         setXspeed(Xspeed);
         setYspeed(Yspeed);
         setXposition(Xposition);

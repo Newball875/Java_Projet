@@ -26,7 +26,7 @@ public class Select implements Screen {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
-    private GameAriane game ;
+    private GameScreen game ;
     private float f=0 ;
     BitmapFont font;
 
@@ -36,7 +36,7 @@ public class Select implements Screen {
 
     private Menu menu ;
 
-    public Select(GameAriane game){
+    public Select(GameScreen game){
         this.game = game;
     }
 

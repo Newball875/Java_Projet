@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 
-public class GameAriane extends com.badlogic.gdx.Game {
+public class GameScreen extends com.badlogic.gdx.Game {
 
     public void create () {
         changeScreen(new Menu(this));

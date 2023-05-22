@@ -28,7 +28,7 @@ public class Joueur extends Entite{
 
     public Joueur(){
         super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK);
-        this.setWeapon(new Zak());
+        this.setWeapon(new ZakUpgrade3());
         this.setHighScore(0);
         this.sprite.setSize(SIZEX,SIZEY);
         this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));

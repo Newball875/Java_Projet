@@ -8,13 +8,13 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.graphics.Color;
 
-public class Zak extends Weapon{
+public class ZakUpgrade3 extends Weapon{
     private final static int SPEEDBULLET=5;
-    private final static int COOLDOWN=6;
-    private final static int DAMAGE=5;
+    private final static int COOLDOWN=60;
+    private final static int DAMAGE=1000;
     private final static Color COLOR=Color.GREEN;
 
-    public Zak(){
+    public ZakUpgrade3(){
         super(SPEEDBULLET,COOLDOWN,DAMAGE,COLOR);
     }
 

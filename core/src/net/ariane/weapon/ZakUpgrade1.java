@@ -1,28 +1,29 @@
 package net.ariane.weapon;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 
 import java.util.HashSet;
 
-public class PiouPiou extends Weapon{
+import com.badlogic.gdx.graphics.Color;
 
-    private final static int SPEEDBULLET=4;
-    private final static int COOLDOWN=15;
-    private final static int DAMAGE=4;
-    private final static Color COLOR=Color.RED;
+public class ZakUpgrade1 extends Weapon{
+    private final static int SPEEDBULLET=5;
+    private final static int COOLDOWN=6;
+    private final static int DAMAGE=5;
+    private final static Color COLOR=Color.GREEN;
 
-    public PiouPiou(){
+    public ZakUpgrade1(){
         super(SPEEDBULLET,COOLDOWN,DAMAGE,COLOR);
     }
 
-    public void use(HashSet<Bullet> balles_tab, Texture texture, Entite cible, int X, int Y){
 
-        if(this.wait<=0){
+    public void use(HashSet<Bullet> balles_tab, Texture texture, Entite cible, int X, int Y) {
 
-            for(int i = -5; i <= 5; i++){
+        if (this.wait <= 0) {
+
+            for (int i = -5; i <= 5; i++) {
 
                 int longX = i * 10;
                 int longY = -5 * 10;
@@ -45,7 +46,7 @@ public class PiouPiou extends Weapon{
 
 
             }
-            for(int j = -4; j <= 4; j++){
+            for (int j = -4; j <= 4; j++) {
                 int longX = -5 * 10;
                 int longY = j * 10;
                 int D = (int) Math.sqrt((longX * longX + longY * longY));
@@ -67,11 +68,9 @@ public class PiouPiou extends Weapon{
 
             }
 
-            this.wait=this.getCooldown();
-        }
-        else{
+            this.wait = this.getCooldown();
+        } else {
             this.wait--;
         }
-
     }
 }

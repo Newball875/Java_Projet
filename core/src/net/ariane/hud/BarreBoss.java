@@ -7,8 +7,8 @@ import net.ariane.weapon.Weapon;
 public class BarreBoss {
 
     private static final int SIZEX = 150;
-    private static final int SIZEY = 50;
-    private static final int X=450;
+    private static final int SIZEY = 40;
+    private static final int X=600;
     private static final int Y=825;
     private int sizeX, sizeY;
     private int x,y;
