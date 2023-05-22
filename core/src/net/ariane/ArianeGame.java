@@ -123,8 +123,8 @@ public class ArianeGame implements Screen {
 			//Dire que c'est la fin
 			System.out.println("TU AS PERDU, T'ES TROP NUL !");
 			balles_alliees.clear();
-			System.out.println("SALUUUUT");
 			balles_ennemies.clear();
+			System.out.println("SALUUUUT");
 			ennemis.clear();
 			game.changeScreen(new Menu(game));
 		}
