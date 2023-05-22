@@ -14,6 +14,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
@@ -23,6 +24,7 @@ public class ArianeGame implements Screen {
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
+	BitmapFont font;
 	Level niveaux[];
 
 	private GameAriane game;
@@ -119,7 +121,7 @@ public class ArianeGame implements Screen {
 		//MAJ de la barre de vie
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
 		//MAJ de la barre de boss
-		level.draw(shape);
+		level.draw(shape, font, batch);
 
 		//MAJ du héros
 		if(zac.update(balles_alliees)){
@@ -231,6 +233,7 @@ public class ArianeGame implements Screen {
 	public void show() {
 		wait=0;
 		batch = new SpriteBatch();
+		font=new BitmapFont();
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
