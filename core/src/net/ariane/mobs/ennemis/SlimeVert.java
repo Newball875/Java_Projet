@@ -21,7 +21,6 @@ public class SlimeVert extends Ennemi {
         this.setLife(80);
         this.setWeapon(new Destroyer());
         this.setScore(5);
-        //this.setColor(Color.CORAL);
 
         this.sprite.setSize(this.getSizeX(),this.getSizeY());
         this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));

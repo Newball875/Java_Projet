@@ -1,5 +1,6 @@
 package net.ariane;
 
+import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
@@ -12,6 +13,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Zaq");
 		config.setWindowedMode(800,900);
+		config.setWindowIcon("assets/sprites/Slime.png");
 		new Lwjgl3Application( new GameScreen(), config);
 	}
 }
