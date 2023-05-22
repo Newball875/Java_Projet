@@ -26,12 +26,12 @@ public class Menu implements Screen {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
-    private GameAriane game ;
+    private GameScreen game ;
     private float f=0 ;
 
     private Menu menu ;
 
-    public Menu(GameAriane game){
+    public Menu(GameScreen game){
         this.game = game;
     }
 

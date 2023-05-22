@@ -26,7 +26,7 @@ public class GameOver implements Screen {
     private Array<Rectangle> raindrops;
     private long lastDropTime;
     private TextureRegion backgroundTexture;
-    private GameAriane game ;
+    private GameScreen game ;
     private float f=0 ;
 
     private Color color;
@@ -36,7 +36,7 @@ public class GameOver implements Screen {
     private Menu menu ;
     BitmapFont font;
 
-    public GameOver(GameAriane game){
+    public GameOver(GameScreen game){
         this.game = game;
     }
 

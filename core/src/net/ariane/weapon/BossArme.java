@@ -31,17 +31,17 @@ public class BossArme extends Weapon{
 
 
             if(Math.abs(longX) < Math.abs(longY)) {
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
-                balles_tab.add(new Bullet(X, Y, speedX-1, speedY, texture));
-                balles_tab.add(new Bullet(X, Y, speedX+1, speedY, texture));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX-1, speedY, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX+1, speedY, texture,getDamage()));
             }else if (Math.abs(longX) > Math.abs(longY)){
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
-                balles_tab.add(new Bullet(X, Y, speedX, speedY-1, texture));
-                balles_tab.add(new Bullet(X, Y, speedX, speedY+1, texture));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY-1, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY+1, texture,getDamage()));
             }else {
-                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
-                balles_tab.add(new Bullet(X, Y, speedX-1, speedY-1, texture));
-                balles_tab.add(new Bullet(X, Y, speedX+1, speedY+1, texture));
+                balles_tab.add(new Bullet(X, Y, speedX, speedY, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX-1, speedY-1, texture,getDamage()));
+                balles_tab.add(new Bullet(X, Y, speedX+1, speedY+1, texture,getDamage()));
             }
             this.wait=this.getCooldown();
         }

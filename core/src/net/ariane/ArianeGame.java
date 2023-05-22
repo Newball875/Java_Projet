@@ -29,7 +29,7 @@ public class ArianeGame implements Screen {
 	BitmapFont font;
 	Level niveaux[];
 
-	private GameAriane game;
+	private GameScreen game;
 	BarreVie barreVie = new BarreVie();
 	BarreBoss barreBoss = new BarreBoss();
 	private SpriteBatch batch;
@@ -39,9 +39,13 @@ public class ArianeGame implements Screen {
 	public int niv;
 	private int wait;
 
+<<<<<<< HEAD
 	private boolean pause = false;
 
 	public ArianeGame(GameAriane game, int niv){
+=======
+	public ArianeGame(GameScreen game, int niv){
+>>>>>>> 7c151fd (nuclear arme)
 		this.game = game;
 		this.niv=niv;
 		System.out.println("NIVEAU : "+this.niv);
@@ -116,7 +120,6 @@ public class ArianeGame implements Screen {
 		Level level = niveaux[niv];
 		ennemis = level.ennemis;
 
-		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.end();
@@ -174,7 +177,12 @@ public class ArianeGame implements Screen {
 				}
 			}
 			ennemis.clear();
+<<<<<<< HEAD
 			ennemis = new HashSet<>(mechant);
+=======
+			backToMenu();
+		}
+>>>>>>> 7c151fd (nuclear arme)
 
 			i = 0;
 

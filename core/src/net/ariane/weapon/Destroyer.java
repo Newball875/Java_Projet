@@ -30,7 +30,7 @@ public class Destroyer extends Weapon{
             int speedX = (longX * (this.getSpeedBullet() * 10) / D) / 10;
             int speedY = (longY * (this.getSpeedBullet() * 10) / D) / 10;
 
-            balles_tab.add(new Bullet(X, Y, speedX, speedY, texture));
+            balles_tab.add(new Bullet(X, Y, speedX, speedY, texture,getDamage()));
             this.wait=this.getCooldown();
         }
         else{

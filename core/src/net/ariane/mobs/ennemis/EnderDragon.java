@@ -26,6 +26,7 @@ public class EnderDragon extends Ennemi{
         this.setSpeedX(1);
         this.setSizeX(400);
         this.setSizeY(200);
+        this.setMaxLife(2000);
         this.setLife(2000);
         this.setWeapon(new PiouPiou());
         this.setWeapon2(new PiouPiou());
