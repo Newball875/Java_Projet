@@ -23,7 +23,7 @@ public class EnderDragon extends Ennemi{
     Weapon weapon3;
     public EnderDragon(int X, int Y){
         super(X,Y, SPRITE_LINK);
-        this.setSpeedX(0);
+        this.setSpeedX(1);
         this.setSizeX(400);
         this.setSizeY(200);
         this.setLife(2000);
@@ -46,7 +46,7 @@ public class EnderDragon extends Ennemi{
     }
 
     public void update(HashSet<Bullet> balles_ennemies, Joueur cible){
-        if(this.getX()<=0 || this.getX()>=800){
+        if(this.getX()<=0 || this.getX()>=400){
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());

@@ -46,7 +46,7 @@ public class Pillard extends Ennemi{
     }
 
     public void update(HashSet<Bullet> balles_ennemies, Joueur cible) {
-        if(this.getX()<=0 || this.getX()>=800){
+        if(this.getX()<=0 || this.getX()>=770){
             this.setSpeedX(-this.getSpeedX());
         }
         this.setX(this.getX() + this.getSpeedX());
