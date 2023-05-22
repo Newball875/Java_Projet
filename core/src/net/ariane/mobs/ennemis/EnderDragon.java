@@ -1,34 +1,27 @@
 package net.ariane.mobs.ennemis;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Entite;
 import net.ariane.mobs.Joueur;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 
-import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
-import net.ariane.mobs.Joueur;
-import net.ariane.weapon.Destroyer;
 import net.ariane.weapon.PiouPiou;
 import net.ariane.weapon.Rafale;
 import net.ariane.weapon.Weapon;
 
-import java.util.HashMap;
-
 import java.util.HashSet;
 
-public class Boss extends Ennemi{
+public class EnderDragon extends Ennemi{
 
     private static String SPRITE_LINK = "sprites/Boss_1.png";
     private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot_vert.png";
 
     Weapon weapon2;
     Weapon weapon3;
-    public Boss(int X, int Y){
+    public EnderDragon(int X, int Y){
         super(X,Y, SPRITE_LINK);
         this.setSpeedX(0);
         this.setSizeX(400);

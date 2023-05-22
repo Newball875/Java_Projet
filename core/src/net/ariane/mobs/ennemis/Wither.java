@@ -1,36 +1,36 @@
 package net.ariane.mobs.ennemis;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-
 import com.badlogic.gdx.graphics.Texture;
 import net.ariane.bullet.Bullet;
 import net.ariane.mobs.Ennemi;
+import net.ariane.mobs.Entite;
 import net.ariane.mobs.Joueur;
-import net.ariane.weapon.Destroyer;
+import net.ariane.weapon.PiouPiou;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
-public class Classique extends Ennemi {
+public class Wither extends Ennemi{
 
-    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+    private static String SPRITE_LINK = "sprites/Enemie_2.png";
     private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot_vert.png";
 
-    public Classique(int X, int Y){
+    public Wither(int X, int Y){
         super(X,Y, SPRITE_LINK);
-        this.setSpeedX(5);
-        this.setLife(80);
-        this.setWeapon(new Destroyer());
-        this.setScore(5);
-        //this.setColor(Color.CORAL);
+        this.setSpeedX(1);
+        this.setSizeX(50);
+        this.setSizeY(40);
+        this.setLife(250);
+        this.setWeapon(new PiouPiou());
+        this.setScore(50);
+        //this.setColor(Color.BROWN);
 
         this.sprite.setSize(this.getSizeX(),this.getSizeY());
         this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));
 
     }
 
-    public void update(HashSet<Bullet>balles_ennemies, Joueur cible){
+    public void update(HashSet<Bullet> balles_ennemies, Joueur cible){
         if(this.getX()<=0 || this.getX()>=800){
             this.setSpeedX(-this.getSpeedX());
         }
@@ -42,4 +42,11 @@ public class Classique extends Ennemi {
         }
     }
 
+    @Override
+    public void shoot(HashSet<Bullet>balles_ennemies, Entite cible) {
+
+        int x = this.getX() + (getSizeX() / 2);
+        int y = this.getY() + (getSizeY() / 2);
+        this.weapon.use(balles_ennemies, this.texture_bullet, cible, x, y);
+    }
 }
