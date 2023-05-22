@@ -1,5 +1,6 @@
 package net.ariane;
 
+import com.badlogic.gdx.Input;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreBoss;
 import net.ariane.hud.BarreVie;
@@ -62,6 +63,19 @@ public class ArianeGame implements Screen {
 		wait=0;
 		return true;
 	}
+
+
+	public void pause() {
+		boolean fin = false;
+		while (!fin) {
+			System.out.println("ici");
+			if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
+				System.out.println("la");
+				fin = true;
+			}
+		}
+	}
+
 
 	public void createClassique (int X, int Y) {
 		Ennemi ennemi=new Classique(X,Y);
@@ -201,8 +215,10 @@ public class ArianeGame implements Screen {
 		score.draw(font, batch);
 		level.ennemis=ennemis;
 
-
-
+		if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+			pause();
+		}
+;
 		batch.end();
 		shape.end();
 
@@ -213,10 +229,8 @@ public class ArianeGame implements Screen {
 
 	}
 
-	@Override
-	public void pause() {
 
-	}
+
 
 	@Override
 	public void resume() {
