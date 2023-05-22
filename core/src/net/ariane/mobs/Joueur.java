@@ -16,14 +16,17 @@ public class Joueur extends Entite{
     private static final int SIZEX=20;
     private static final int SIZEY=20;
 
+    private static String SPRITE_LINK = "sprites/Slime.png";
+
     private int highScore ;
     public int getHighScore(){return highScore;}
     public void setHighScore(int score){this.highScore = highScore;}
 
     public Joueur(){
-        super(MAXLIFE, SIZEX, SIZEY);
+        super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK);
         this.setWeapon(new Zak());
         this.setHighScore(0);
+        this.sprite.setSize(SIZEX,SIZEY);
     }
 
     public boolean update(HashSet<Bullet>balles_alliees){

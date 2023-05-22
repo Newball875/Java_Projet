@@ -11,15 +11,18 @@ import net.ariane.weapon.PiouPiou;
 import java.util.HashSet;
 
 public class Mother extends Ennemi{
+
+    private static String SPRITE_LINK = "sprites/Slime_vert.png";
+
     public Mother(int X, int Y){
-        super(X,Y);
+        super(X,Y, SPRITE_LINK);
         this.setSpeedX(1);
         this.setSizeX(50);
         this.setSizeY(30);
         this.setLife(250);
         this.setWeapon(new PiouPiou());
         this.setScore(20);
-        this.setColor(Color.BROWN);
+        //this.setColor(Color.BROWN);
     }
 
     public void update(HashSet<Bullet> balles_ennemies, Joueur cible){

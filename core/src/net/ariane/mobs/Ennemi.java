@@ -27,8 +27,8 @@ public abstract class Ennemi extends Entite{
     public HashSet<Bullet> getBalles(){return this.balles;}
 
 
-    public Ennemi(int X, int Y){
-        super(MAXLIFE, SIZEX, SIZEY);
+    public Ennemi(int X, int Y, String lien_img){
+        super(MAXLIFE, SIZEX, SIZEY, lien_img);
         this.setX(X);
         this.setY(Y);
     }
