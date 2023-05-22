@@ -25,6 +25,7 @@ public class Joueur extends Entite{
     public int getHighScore(){return highScore;}
     public void setHighScore(int score){this.highScore = highScore;}
 
+
     public Joueur(){
         super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK);
         this.setWeapon(new Zak());
@@ -46,6 +47,10 @@ public class Joueur extends Entite{
         }
         return (this.getLife()<=0);
 	}
+
+    public void update_HighScore(int newHighScore){
+        setHighScore(newHighScore);
+    }
 
     public void shoot(HashSet<Bullet>balles_alliees){
         int x = this.getX() + (getSizeX()/2);

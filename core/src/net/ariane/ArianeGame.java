@@ -3,7 +3,8 @@ package net.ariane;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreBoss;
 import net.ariane.hud.BarreVie;
-import net.ariane.levels.*;      
+import net.ariane.hud.Score;
+import net.ariane.levels.*;
 import net.ariane.mobs.*;
 import net.ariane.mobs.ennemis.*;
 
@@ -33,6 +34,7 @@ public class ArianeGame implements Screen {
 	private SpriteBatch batch;
 	private Texture img;
 	private Menu menu;
+	private Score score;
 	public int niv;
 	private int wait;
 
@@ -149,7 +151,7 @@ public class ArianeGame implements Screen {
 			Ennemi bad=mechant.get(i);
 			bad.update(balles_ennemies,zac);
 			if(bad.dead){
-				//score.add(bad.getScore());
+				score.add(bad.getScore());
 				mechant.remove(i);
 			}else{
 				i=i+1;
@@ -196,7 +198,7 @@ public class ArianeGame implements Screen {
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
 		//Draw de la barre de boss
 		level.draw(shape, font, batch);
-
+		score.draw(font, batch);
 		level.ennemis=ennemis;
 
 
@@ -244,6 +246,7 @@ public class ArianeGame implements Screen {
 		niveaux[2]=new Level3();
 		niveaux[3]=new Level4();
 		niveaux[4]=new Level5();
+		score = new Score();
 	}
 
 	@Override
