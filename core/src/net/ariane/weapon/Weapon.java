@@ -48,7 +48,7 @@ public abstract class Weapon {
     public int getCooldown(){return this.cooldown;}
     public void setCooldown(int cool){this.cooldown=cool;}
 
-
+    public int getDamage(){return this.damage;}
     public void setDamage(int damage) {
         this.damage = damage;
     }

@@ -120,7 +120,6 @@ public class GameOver implements Screen {
 
     @Override
     public void dispose() {
-        bucketImage.dispose();
         bucketImage2.dispose();
         rainMusic.dispose();
         batch.dispose();

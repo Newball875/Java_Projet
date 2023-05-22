@@ -2,9 +2,8 @@ package net.ariane.hud;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import net.ariane.weapon.Weapon;
 
-public class Button {
+public class Replay {
 
     private static final int SIZEX = 200;
     private static final int SIZEY = 200;
@@ -15,7 +14,7 @@ public class Button {
     private Color color=Color.WHITE;
 
 
-    public Button(){
+    public Replay(){
         setSizeX(SIZEX);
         setSizeY(SIZEY);
         setX(X);

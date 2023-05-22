@@ -64,16 +64,16 @@ public class ArianeGame implements Screen {
 	}
 
 	public void createClassique (int X, int Y) {
-		Ennemi ennemi=new Classique(X,Y);
+		Ennemi ennemi=new SlimeVert(X,Y);
 		ennemis.add(ennemi);
 	}
 	public void createYwing (int X, int Y) {
-		Ennemi ennemi=new Ywing(X,Y);
+		Ennemi ennemi=new Pillard(X,Y);
 		ennemis.add(ennemi);
 	}
 
 	public void createMother (int X, int Y){
-		Ennemi ennemi = new Mother(X, Y);
+		Ennemi ennemi = new Wither(X, Y);
 		ennemis.add(ennemi);
 	}
 
