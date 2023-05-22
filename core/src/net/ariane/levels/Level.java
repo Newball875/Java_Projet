@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.Shape;
 
@@ -60,7 +61,7 @@ public class Level {
 		}
 	}
 
-	public void afficherNom(BitmapFont font){
+	public void afficherNom(BitmapFont font, SpriteBatch batch){
 		
 	}
 }
