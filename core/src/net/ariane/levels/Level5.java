@@ -18,9 +18,9 @@ public class Level5 extends Level{
 		while(i<this.getNombre()){
 			barreBoss = new BarreBoss();
 			ennemi=new EnderDragon(200,600);
-			Ennemi ennemi2=new Pillard(200,500);
-			Ennemi ennemi3=new Pillard(400,400);
-			Ennemi ennemi4=new Pillard(600,500);
+			Ennemi ennemi2=new Wither(200,500);
+			Ennemi ennemi3=new SlimeVert(400,400);
+			Ennemi ennemi4=new Wither(600,500);
 
 
 			this.vagues[i]=new Ennemi[4];
