@@ -247,6 +247,7 @@ public class ArianeGame implements Screen {
 
 	}
 	public void backToMenu(){
+		Gdx.graphics.setSystemCursor(SystemCursor.Arrow);
         game.backToMenu();
     }
 
