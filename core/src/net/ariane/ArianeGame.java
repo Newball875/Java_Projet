@@ -13,9 +13,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.input.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Cursor.SystemCursor;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -27,8 +29,8 @@ public class ArianeGame implements Screen {
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
 	ShapeRenderer shape;
 	BitmapFont font;
-	Level niveaux[];
 	Level niveau;
+	int[] curseur=new int[2];
 
 	private GameScreen game;
 	BarreVie barreVie = new BarreVie();
@@ -182,8 +184,21 @@ public class ArianeGame implements Screen {
 			balles_ennemies = new HashSet<>(adverse);
 
 		}
+
+		//Partie de vérification de la pause
 		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-			this.pause = !this.pause;
+			//Si pause est false (jeu en cours), on va mettre pause en true et garder les coordonnées du curseur
+			if(!this.pause){
+				this.pause=true;
+				curseur[0]=Gdx.input.getX();
+				curseur[1]=Gdx.input.getY();
+				Gdx.graphics.setSystemCursor(SystemCursor.Arrow);
+			}else{
+				//Si pause est true (jeu en pause), on va mettre pause en false et remettre les anciennes coordonnées du curseur
+				this.pause=false;
+				Gdx.input.setCursorPosition(curseur[0], curseur[1]);
+				Gdx.graphics.setSystemCursor(SystemCursor.None);
+			}
 		}
 
 
@@ -258,18 +273,13 @@ public class ArianeGame implements Screen {
 		img = new Texture(Gdx.files.internal("fond.png"));
 		shape=new ShapeRenderer();
 		zac=new Joueur();
-		niveaux=new Level[5];
-		niveaux[0]=new Level1();
-		niveaux[1]=new Level2();
-		niveaux[2]=new Level3();
-		niveaux[3]=new Level4();
-		niveaux[4]=new Level5();
 		niveau=genererNiveau(niv);
 		if(niveau==null){
 			niv=0;
 			niveau=genererNiveau(niv);
 		}
 		score = new Score();
+		Gdx.graphics.setSystemCursor(SystemCursor.None);
 	}
 
 	@Override

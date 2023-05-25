@@ -39,9 +39,9 @@ public class Select implements Screen {
         this.game = game;
     }
 
-    public void creerBouton(int x, int y, Color color, ShapeRenderer shape){
-        shape.setColor(color);
-        shape.rect(x,y,200,200);
+    public void creerBouton(int x, int y, String image, SpriteBatch batch){
+        Texture texture=new Texture((Gdx.files.internal("levels/"+image)));
+        batch.draw(texture,x,y);
     }
 
     @Override
@@ -56,13 +56,13 @@ public class Select implements Screen {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         
 
-        creerBouton(100,600,Color.GREEN,shape);
-        creerBouton(500,600,Color.GREEN,shape);
+        creerBouton(100,600,"1.png",batch);
+        creerBouton(500,600,"2.png",batch);
 
-        creerBouton(100,400,Color.BLUE,shape);
-        creerBouton(500,400,Color.BLUE,shape);
+        creerBouton(100,400,"3.png",batch);
+        creerBouton(500,400,"4.png",batch);
 
-        creerBouton(300,100,Color.RED,shape);
+        creerBouton(300,100,"5.png",batch);
 
 
         shape.end();
