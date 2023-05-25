@@ -127,7 +127,7 @@ public class ArianeGame implements Screen {
 			//MAJ du héros
 			if (zac.update(balles_alliees)) {
 				//Dire que c'est la fin
-				System.out.println("TU AS PERDU, T'ES TROP NUL !");
+				System.out.println("TU AS PERDU !");
 				balles_alliees.clear();
 				balles_ennemies.clear();
 				ennemis.clear();
