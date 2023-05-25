@@ -28,6 +28,7 @@ public class ArianeGame implements Screen {
 	ShapeRenderer shape;
 	BitmapFont font;
 	Level niveaux[];
+	Level niveau;
 
 	private GameScreen game;
 	BarreVie barreVie = new BarreVie();
@@ -51,46 +52,62 @@ public class ArianeGame implements Screen {
 		temps=60*temps;
 		if(wait<temps){
 			wait++;
-			return false;
+			return true;
 		}
-		wait=0;
-		return true;
+		return false;
 	}
 
-	public void checkLevels()throws Exception{
-		if(niv>=niveaux.length){
-			niv--;
+	public void checkLevels(){
+		//On vérifie si il reste des ennemis
+		if(!ennemis.isEmpty()){
+			//Si il en reste, on ne fait rien
 			return;
 		}
-		Level level=niveaux[niv];
-		if(level.getNombreEnnemis()==0){
-			balles_ennemies.clear();
-			if(level.vagueSuivante()){
-				return;
-			}
-			else{
-				//Attente (en seconde)
-				if(attente(2)){
-					niv++;
-					wait=0;
-					checkLevels();
-				}
-			}
+		//Sinon, on regarde pour passer à la vague suivante
+		Level level=niveau;
+		if(level.vagueSuivante()){
+			//Si on peut passer à la vague suivante, on l'a fait donc on ne fait plus rien
+			return;
+		}
+		//Si on n'a pas pu, on regarde si on peut passer au niveau suivant
+		//Donc on doit attendre, puis générer le niveau et l'envoyer
+		if(attente(2)){
+			//On attend
+			return;
+		}
+		niv=niv+1;
+		level=genererNiveau(niv);
+		//Si on a pu le générer, on le met dans le niveau actuel
+		if(level!=null){
+			niveau=level;
+			wait=0;
+			return;
+		}
+		//Sinon, on dit qu'on a gagné
+		System.out.println("GAGNÉ !");
+		backToMenu();
+	}
+
+	//Fonction qui génère le niveau demandé (il n'y en a que 5, donc entre 0 et 4), mais si on demande 5, on estime que ce n'est pas une erreur, juste une victoire.
+	//C'est pour éviter d'avoir le message d'erreur lorsque l'on gagne
+	public Level genererNiveau(int lev){
+		switch(lev){
+			case 0: return new Level1();
+			case 1: return new Level2();
+			case 2: return new Level3();
+			case 3: return new Level4();
+			case 4: return new Level5();
+			case 5: return null;
+			default: System.out.println("[ERROR]:Numéro de niveau incorrect !");
+					return null;
 		}
 	}
 
 	
 	@Override
 	public void render (float delta) {
-
-		//Récupération du niveau et des ennemis
-		try {
-			checkLevels();
-		} catch (Exception e) {
-			System.out.println("ERREUR : " + e);
-		}
-		Level level = niveaux[niv];
-		ennemis = level.ennemis;
+		ennemis=niveau.ennemis;
+		checkLevels();
 
 		batch.begin();
 		batch.draw(img, 0, 0);
@@ -196,9 +213,9 @@ public class ArianeGame implements Screen {
 		//Draw de la barre de vie
 		barreVie.draw(shape, zac.getLife(), zac.getMaxlife());
 		//Draw de la barre de boss
-		level.draw(shape, font, batch);
+		niveau.draw(shape, font, batch);
 		score.draw(font, batch);
-		level.ennemis = ennemis;
+		niveau.ennemis = ennemis;
 
 
 		batch.end();
@@ -247,6 +264,11 @@ public class ArianeGame implements Screen {
 		niveaux[2]=new Level3();
 		niveaux[3]=new Level4();
 		niveaux[4]=new Level5();
+		niveau=genererNiveau(niv);
+		if(niveau==null){
+			niv=0;
+			niveau=genererNiveau(niv);
+		}
 		score = new Score();
 	}
 
