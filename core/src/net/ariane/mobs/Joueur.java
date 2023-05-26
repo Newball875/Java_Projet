@@ -18,8 +18,8 @@ public class Joueur extends Entite{
     private static final int SIZEY=20;
 
     private static String SPRITE_LINK = "sprites/Slime.png";
-
     private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot.png";
+    private static String SOUND_DAMAGE="sounds/player_damage.mp3";
 
     private int highScore ;
     public int getHighScore(){return highScore;}
@@ -27,7 +27,7 @@ public class Joueur extends Entite{
 
 
     public Joueur(){
-        super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK);
+        super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK,SOUND_DAMAGE);
         this.setWeapon(new ZakUpgrade1());
         this.setHighScore(0);
         this.sprite.setSize(SIZEX,SIZEY);
@@ -50,6 +50,16 @@ public class Joueur extends Entite{
 
     public void update_HighScore(int newHighScore){
         setHighScore(newHighScore);
+    }
+
+    public int attack(int damage){
+        sound.play(0.5f,1,0);
+        if(getLife() - damage <= 0){
+            setLife(0);
+            return 0;
+        }
+        setLife(getLife() - damage);
+        return getLife();
     }
 
     public void shoot(HashSet<Bullet>balles_alliees){

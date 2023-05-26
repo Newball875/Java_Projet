@@ -1,6 +1,7 @@
 package net.ariane.mobs;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,11 +32,11 @@ public abstract class Entite {
     protected Sprite sprite;
     protected Texture texture;
     protected Texture texture_bullet;
- //   private Color color=Color.WHITE;
     protected Weapon weapon;
+    protected Sound sound;            //Le son sera quand une entité est touchée
 
 
-    public Entite(int maxLife, int sizeX, int sizeY, String lien_img){
+    public Entite(int maxLife, int sizeX, int sizeY, String lien_img, String lien_son){
         if(maxLife<=0){
             maxLife = MAXLIFE;
         }
@@ -49,12 +50,13 @@ public abstract class Entite {
         setSizeY(sizeY);
         setX(X);
         setY(Y);
+        setSound(lien_son);
 
         this.texture = new Texture(Gdx.files.internal(lien_img));
         this.sprite = new Sprite(this.texture);
     }
 
-    public Entite(int maxLife, int sizeX, int sizeY){
+    public Entite(int maxLife, int sizeX, int sizeY, String lien_son){
         if(maxLife<=0){
             maxLife = MAXLIFE;
         }
@@ -68,9 +70,10 @@ public abstract class Entite {
         setSizeY(sizeY);
         setX(X);
         setY(Y);
+        setSound(lien_son);
     }
 
-    public Entite(int life,int maxLife, String lien_img){
+    public Entite(int life,int maxLife, String lien_img, String lien_son){
         if(maxLife<=0){
             maxLife = MAXLIFE;
         }
@@ -82,6 +85,7 @@ public abstract class Entite {
         setX(X);
         setY(Y);
         setLife(life);
+        setSound(lien_son);
 
         this.texture = new Texture(Gdx.files.internal(lien_img));
         this.sprite = new Sprite(this.texture);
@@ -112,25 +116,17 @@ public abstract class Entite {
     public Weapon getWeapon(){return this.weapon;}
     public void setWeapon(Weapon weapon){this.weapon = weapon;}
 
+    public Sound getSound(){return this.sound;}
+    public void setSound(String son){this.sound=Gdx.audio.newSound(Gdx.files.internal(son));}
+
   //  public Color getColor(){return this.color;}
     //public void setColor(Color color){this.color=color;}
 
-    public int attack(int damage){
-        if(getLife() - damage <= 0){
-            setLife(0);
-            return 0;
-        }
-        setLife(getLife() - damage);
-        return getLife();
-    }
+    public abstract int attack(int damage);
 
     public void draw(ShapeRenderer shape, SpriteBatch batch){
-
         this.sprite.setPosition((float)this.getX(),(float)this.getY());
         sprite.draw(batch);
-
-        //shape.setColor(this.color);
-		//shape.rect((float)this.getX(),(float)this.getY(),(float)this.getSizeX(),(float)this.getSizeY());
 	}
 
 }
