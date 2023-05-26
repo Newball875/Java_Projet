@@ -23,6 +23,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class ArianeGame implements Screen {
+	public static final float BACKGROUND_SPEED=-100;
+	private Texture img1,img2;
+	private float yMax, y1, y2;
+
 	Joueur zac;
 	HashSet<Ennemi>ennemis;
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
@@ -105,27 +109,25 @@ public class ArianeGame implements Screen {
 		}
 	}
 
-	
-	@Override
-	public void render (float delta) {
+	//Fonction qui permet de faire les diverses mises à jour
+	public void update(){
+
 		ennemis=niveau.ennemis;
 		checkLevels();
-
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-
-
-		shape.begin(ShapeRenderer.ShapeType.Filled);
 
 		ArrayList<Bullet> allies;
 		ArrayList<Ennemi> mechant;
 		ArrayList<Bullet> adverse;
 
 		if(!this.pause) {
-
+			//Mise à jour du fond
+			y1=y1+BACKGROUND_SPEED*Gdx.graphics.getDeltaTime();
+			y2=y1+yMax;
+			if(y1>=0){
+				y1=-yMax;
+				y2=0;
+			}
 			int i = 0;
-
 			//MAJ du héros
 			if (zac.update(balles_alliees)) {
 				//Dire que c'est la fin
@@ -200,12 +202,23 @@ public class ArianeGame implements Screen {
 				Gdx.graphics.setSystemCursor(SystemCursor.None);
 			}
 		}
+	}
+	
+	@Override
+	public void render (float delta) {
+		//Mise à jour des données
+		update();
 
+		//Affichage du fond qui bouge
+		batch.begin();
+		batch.draw(img1, 0, y1);
+		batch.draw(img2,0,y2);
+		batch.end();
 
+		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i = 0;
-		allies=new ArrayList<>(balles_alliees);
-		mechant = new ArrayList<>(ennemis);
-		adverse = new ArrayList<>(balles_ennemies);
+		ArrayList<Bullet> allies=new ArrayList<>(balles_alliees);
+		ArrayList<Bullet> adverse = new ArrayList<>(balles_ennemies);
 
 		batch.begin();
 		//On draw tout dans le même ordre
@@ -272,6 +285,11 @@ public class ArianeGame implements Screen {
 		batch = new SpriteBatch();
 		font=new BitmapFont();
 		img = new Texture(Gdx.files.internal("fond.png"));
+		img1=new Texture(Gdx.files.internal("background_minecraft.png"));
+		img2=new Texture(Gdx.files.internal("background_minecraft.png"));
+		yMax=4608;	//Taille en y de l'image (à changer si on change d'image)
+		y1=-yMax;
+		y2=0;
 		shape=new ShapeRenderer();
 		zac=new Joueur();
 		niveau=genererNiveau(niv);
