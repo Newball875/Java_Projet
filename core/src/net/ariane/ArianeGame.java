@@ -319,7 +319,6 @@ public class ArianeGame implements Screen {
 		wait=0;
 		batch = new SpriteBatch();
 		font=new BitmapFont();
-		img = new Texture(Gdx.files.internal("fond.png"));
 		img1=new Texture(Gdx.files.internal("background_minecraft.png"));
 		img2=new Texture(Gdx.files.internal("background_minecraft.png"));
 		yMax=4608;	//Taille en y de l'image (à changer si on change d'image)

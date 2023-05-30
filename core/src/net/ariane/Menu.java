@@ -38,13 +38,17 @@ public class Menu implements Screen {
         game.backToMenu();
     }
 
+    public void creerBouton(int x, int y, String image, SpriteBatch batch){
+        Texture texture=new Texture((Gdx.files.internal("menu/"+image)));
+        batch.draw(texture,x,y);
+    }
+
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);
         batch.begin();
 
         batch.draw(bucketImage2, 0, 0,900,900);
-        batch.draw(bucketImage, bucket.x, bucket.y,200,600);
         batch.end();
 
         if(Gdx.input.isTouched()) {
@@ -53,12 +57,19 @@ public class Menu implements Screen {
             camera.unproject(touchPos);
 
         }
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>635 && Gdx.graphics.getHeight()-Gdx.input.getY()<735))) game.changeScreen(new Select(game));//PLay
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>515 && Gdx.graphics.getHeight()-Gdx.input.getY()<615))) game.changeScreen(new GameOver(game));//Option
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>395 && Gdx.graphics.getHeight()-Gdx.input.getY()<495))) game.changeScreen(new HighScore(game));//Score
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>275 && Gdx.graphics.getHeight()-Gdx.input.getY()<375))) game.changeScreen(new ArianeGame(game,0));//Help
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>155 && Gdx.graphics.getHeight()-Gdx.input.getY()<255))) System.exit(1);
 
+        batch.begin();
+        creerBouton(150,635,"Play.png",batch);
+        creerBouton(150,515,"Select.png",batch);
+        creerBouton(150,395,"High-Score.png",batch);
+        creerBouton(150, 275, "Quit.png", batch);
+        batch.end();
+
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>635 && Gdx.graphics.getHeight()-Gdx.input.getY()<735))) game.changeScreen(new ArianeGame(game,0));//PLay
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>515 && Gdx.graphics.getHeight()-Gdx.input.getY()<615))) game.changeScreen(new Select(game));//Select
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>395 && Gdx.graphics.getHeight()-Gdx.input.getY()<495))) game.changeScreen(new HighScore(game));//High-Score
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>275 && Gdx.graphics.getHeight()-Gdx.input.getY()<375))) System.exit(1);//Quit
+        
         if(bucket.x < 0) bucket.x = 0;
         if(bucket.x > 800 - 64) bucket.x = 800 - 64;
     }
