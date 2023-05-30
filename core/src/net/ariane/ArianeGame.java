@@ -1,6 +1,9 @@
 package net.ariane;
 
 import com.badlogic.gdx.Input;
+import net.ariane.boost.Heal;
+import net.ariane.boost.LuckyBlock;
+import net.ariane.boost.UpWeapon;
 import net.ariane.bullet.Bullet;
 import net.ariane.hud.BarreBoss;
 import net.ariane.hud.BarreVie;
@@ -11,6 +14,7 @@ import net.ariane.mobs.ennemis.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.input.*;
@@ -26,11 +30,14 @@ public class ArianeGame implements Screen {
 	public static final float BACKGROUND_SPEED=-100;
 	private Texture img1,img2;
 	private float yMax, y1, y2;
+	private Random random = new Random();
 
 	Joueur zac;
 	HashSet<Ennemi>ennemis;
 	HashSet<Bullet>balles_alliees=new HashSet<Bullet>();
 	HashSet<Bullet>balles_ennemies=new HashSet<Bullet>();
+
+	HashSet<LuckyBlock>boost = new HashSet<LuckyBlock>();
 	ShapeRenderer shape;
 	BitmapFont font;
 	Level niveau;
@@ -118,6 +125,7 @@ public class ArianeGame implements Screen {
 		ArrayList<Bullet> allies;
 		ArrayList<Ennemi> mechant;
 		ArrayList<Bullet> adverse;
+		ArrayList<LuckyBlock> bonus;
 
 		if(!this.pause) {
 			//Mise à jour du fond
@@ -162,6 +170,13 @@ public class ArianeGame implements Screen {
 				bad.update(balles_ennemies, zac);
 				if (bad.dead) {
 					score.add(bad.getScore());
+					if(random.nextInt(50) % 2 == 0){
+						if(random.nextInt(6) % 3 == 0){
+							boost.add(new UpWeapon(bad.getX(), bad.getY()));
+						}else{
+							boost.add(new Heal(bad.getX(), bad.getY()));
+						}
+					}
 					mechant.remove(i);
 				} else {
 					i = i + 1;
@@ -185,6 +200,21 @@ public class ArianeGame implements Screen {
 			balles_ennemies.clear();
 			balles_ennemies = new HashSet<>(adverse);
 
+			i = 0;
+
+			//MAJ des boost
+			bonus = new ArrayList<>(boost);
+			while (i < bonus.size()) {
+				LuckyBlock up = bonus.get(i);
+				if(up.update() || up.checkCollision(zac)){
+					up.use(zac);
+					bonus.remove(i);
+				}else{
+					i = i + 1;
+				}
+			}
+			boost.clear();
+			boost = new HashSet<>(bonus);
 		}
 
 		//Partie de vérification de la pause
@@ -217,7 +247,7 @@ public class ArianeGame implements Screen {
 
 		shape.begin(ShapeRenderer.ShapeType.Filled);
 		int i = 0;
-		ArrayList<Bullet> allies=new ArrayList<>(balles_alliees);
+		ArrayList<Bullet> allies = new ArrayList<>(balles_alliees);
 		ArrayList<Bullet> adverse = new ArrayList<>(balles_ennemies);
 
 		batch.begin();
@@ -233,6 +263,9 @@ public class ArianeGame implements Screen {
 			Bullet balle = adverse.get(i);
 			balle.draw(shape, batch);
 			i = i + 1;
+		}
+		for (LuckyBlock up : boost) {
+			up.draw(shape, batch);
 		}
 		for (Ennemi bad : ennemis) {
 			bad.draw(shape, batch);

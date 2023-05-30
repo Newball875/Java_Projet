@@ -13,13 +13,18 @@ import net.ariane.weapon.*;
 
 public class Joueur extends Entite{
 
-    private static final int MAXLIFE = 1000;
+    public static final int MAXLIFE = 1000;
     private static final int SIZEX=20;
     private static final int SIZEY=20;
 
     private static String SPRITE_LINK = "sprites/Slime.png";
     private static String SPRITE_BULETTE_LINK = "sprites/Slime_shoot.png";
     private static String SOUND_DAMAGE="sounds/player_damage.mp3";
+    public static int WEAPON_NB = 2;
+
+    public int weapon_used = 0;
+
+    public Weapon[] weapons = {new Zak(), new ZakUpgrade2(), new ZakUpgrade3()};
 
     private int highScore ;
     public int getHighScore(){return highScore;}
@@ -28,7 +33,6 @@ public class Joueur extends Entite{
 
     public Joueur(){
         super(MAXLIFE, SIZEX, SIZEY, SPRITE_LINK,SOUND_DAMAGE);
-        this.setWeapon(new ZakUpgrade1());
         this.setHighScore(0);
         this.sprite.setSize(SIZEX,SIZEY);
         this.texture_bullet = new Texture(Gdx.files.internal(SPRITE_BULETTE_LINK));
@@ -65,6 +69,6 @@ public class Joueur extends Entite{
     public void shoot(HashSet<Bullet>balles_alliees){
         int x = this.getX() + (getSizeX()/2);
         int y = this.getY() + getSizeY();
-        this.weapon.use(balles_alliees, this.texture_bullet, null,  x, y);
+        this.weapons[this.weapon_used].use(balles_alliees, this.texture_bullet, null,  x, y);
     }
 }
