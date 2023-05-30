@@ -42,43 +42,11 @@ public class Score {
         font.draw(batch, motBestScore , 10, 30);
     }
 
-    /*public String LireFichier(){
-        try
-        {
-          // Le fichier d'entrée
-          FileInputStream file = new FileInputStream("BestScore.png");   
-          Scanner scanner = new Scanner(file);  
-          String str="";
-          while(scanner.hasNextLine()){
-            str = scanner.nextLine();
-          }
-          scanner.close();    
-          return str ;
-        }
-        catch(Exception e){
-          e.printStackTrace();
-        }
-        return null;
-    }*/
-
     public String LireFichier(){
       FileHandle file=Gdx.files.local("BestScore.json");
       String text=file.readString();
       return text;
     }
-    
-    /*public void EcrireFichier(){
-        int temp=this.bestScore;
-        String str=""+temp ;
-        try{
-            FileWriter fw = new FileWriter("BestScore.png");
-            fw.write(str);
-            fw.close();
-        } 
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }*/
 
     public void EcrireFichier(){
     FileHandle file=Gdx.files.local("BestScore.json");
