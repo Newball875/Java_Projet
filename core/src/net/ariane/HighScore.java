@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
-
+/*
 public class Menu implements Screen {
     
     private Texture bucketImage2;
@@ -36,4 +36,4 @@ public class Menu implements Screen {
     
     }
 
-}
+}*/

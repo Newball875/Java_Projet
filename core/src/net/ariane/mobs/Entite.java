@@ -22,7 +22,7 @@ public abstract class Entite {
     private static final int X=100;
     private static final int Y=100;
 
-    private int life ;
+    public int life ;
     private int maxLife ;
     private int speedx ;
     private int speedy ;

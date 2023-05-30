@@ -1,23 +1,30 @@
 package net.ariane.boost;
 
 import net.ariane.mobs.Joueur;
+import java.util.Random;
 
 public class Heal extends LuckyBlock{
-    private int life;
-    private int maxLife;
-    private int wait;
-    private int heal = 20;
+    private int heal;
+    private Random random ;
 
-    public Heal(int x, int y, Joueur zac){
+    public Heal(int x, int y){
         super(x,y);
-        life = zac.getLife();
-        maxLife = zac.getMaxlife();
-        if(maxLife<=life+heal){
-            zac.setLife(maxLife);
+        random = new Random() ;
+    }
+
+    private void setHeal(){
+        this.heal = this.random.nextInt(250) - 50;
+    }
+
+    public void use(Joueur joueur) {
+        this.setHeal();
+
+        if(joueur.MAXLIFE <= joueur.life + this.heal) {
+            joueur.setLife(joueur.MAXLIFE);
+        } else {
+            joueur.setLife(joueur.life + this.heal);
         }
-        else{
-            zac.setLife(life+heal);
-        }
+        System.out.println(this.heal);
     }
 
 }

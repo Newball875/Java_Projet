@@ -82,7 +82,7 @@ public class GameOver implements Screen {
         bucket2.x = 800 / 2 - 64 / 2;
         bucket2.y = 200;
 
-        raindrops = new Array<Rectangle>();
+        //raindrops = new Array<Rectangle>();
         font = new BitmapFont();
     }
 
