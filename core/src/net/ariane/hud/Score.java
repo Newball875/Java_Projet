@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -40,11 +42,11 @@ public class Score {
         font.draw(batch, motBestScore , 10, 30);
     }
 
-    public String LireFichier(){
+    /*public String LireFichier(){
         try
         {
           // Le fichier d'entrée
-          FileInputStream file = new FileInputStream("./assets/BestScore.txt");   
+          FileInputStream file = new FileInputStream("BestScore.png");   
           Scanner scanner = new Scanner(file);  
           String str="";
           while(scanner.hasNextLine()){
@@ -57,18 +59,30 @@ public class Score {
           e.printStackTrace();
         }
         return null;
+    }*/
+
+    public String LireFichier(){
+      FileHandle file=Gdx.files.local("BestScore.txt");
+      String text=file.readString();
+      return text;
     }
     
-    public void EcrireFichier(){
+    /*public void EcrireFichier(){
         int temp=this.bestScore;
         String str=""+temp ;
         try{
-            FileWriter fw = new FileWriter("./assets/BestScore.txt");
+            FileWriter fw = new FileWriter("BestScore.png");
             fw.write(str);
             fw.close();
         } 
         catch (Exception e){
             e.printStackTrace();
         }
+    }*/
+
+    public void EcrireFichier(){
+    FileHandle file=Gdx.files.local("BestScore.txt");
+      String text=""+this.bestScore;
+      file.writeString(text, false);
     }
 }
