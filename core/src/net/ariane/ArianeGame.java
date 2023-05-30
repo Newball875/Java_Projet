@@ -143,7 +143,7 @@ public class ArianeGame implements Screen {
 				balles_alliees.clear();
 				balles_ennemies.clear();
 				ennemis.clear();
-				game.changeScreen(new GameOver(game));
+				game.backToMenu();
 			}
 
 			//MAJ de ses balles
@@ -298,13 +298,6 @@ public class ArianeGame implements Screen {
 		score.EcrireFichier();
         game.backToMenu();
     }
-
-	public void goGameOver(){
-		Gdx.graphics.setSystemCursor(SystemCursor.Arrow);
-		score.EcrireFichier();
-        game.changeScreen(new GameOver(game))
-    }
-
 
 	@Override
 	public void resume() {
