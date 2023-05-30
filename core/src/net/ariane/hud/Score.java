@@ -30,6 +30,6 @@ public class Score {
     //Dessine le meilleur score du joueur
     public void drawBestScore(BitmapFont font, SpriteBatch batch){
         String motBestScore = "Best Score : " + this.bestScore ;
-        font.draw(batch, motBestScore , 10, 10);
+        font.draw(batch, motBestScore , 10, 30);
     }
 }
