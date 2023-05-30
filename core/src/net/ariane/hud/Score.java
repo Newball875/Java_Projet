@@ -14,7 +14,7 @@ public class Score {
     public Score(){
         score = 0 ;
         String str = LireFichier();
-        int s = (int)str;
+        int s = Integer.parseInt(str);
         bestScore= s ;
     }
 
