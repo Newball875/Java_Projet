@@ -62,7 +62,7 @@ public class Score {
     }*/
 
     public String LireFichier(){
-      FileHandle file=Gdx.files.local("BestScore.txt");
+      FileHandle file=Gdx.files.local("BestScore.json");
       String text=file.readString();
       return text;
     }
@@ -81,7 +81,7 @@ public class Score {
     }*/
 
     public void EcrireFichier(){
-    FileHandle file=Gdx.files.local("BestScore.txt");
+    FileHandle file=Gdx.files.local("BestScore.json");
       String text=""+this.bestScore;
       file.writeString(text, false);
     }
