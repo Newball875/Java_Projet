@@ -2,17 +2,13 @@ package net.ariane;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
+import net.ariane.hud.Score;
 
 
 public class HighScore implements Screen {
@@ -42,7 +38,7 @@ public class HighScore implements Screen {
 
         shape.begin(ShapeRenderer.ShapeType.Filled);
 
-        shape.setColor(color.RED);
+        shape.setColor(Color.RED);
 
         shape.rect(300,300,200,100);
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>300 && Gdx.graphics.getHeight()-Gdx.input.getY()<400))) game.changeScreen(new Menu(game));
@@ -56,6 +52,31 @@ public class HighScore implements Screen {
         batch = new SpriteBatch();
 		font=new BitmapFont();
         shape=new ShapeRenderer();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        
+    }
+
+    @Override
+    public void pause() {
+        
+    }
+
+    @Override
+    public void resume() {
+        
+    }
+
+    @Override
+    public void hide() {
+        
+    }
+
+    @Override
+    public void dispose() {
+        
     }
 
 }
