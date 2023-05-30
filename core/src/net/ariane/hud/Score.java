@@ -12,6 +12,9 @@ public class Score {
 
     public Score(){
         score = 0 ;
+        String str = LireFichier();
+        int s = (int)str;
+        bestScore= s ;
     }
 
     public void add(int addscore){
