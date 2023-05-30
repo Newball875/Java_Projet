@@ -24,7 +24,6 @@ public class Heal extends LuckyBlock{
         } else {
             joueur.setLife(joueur.life + this.heal);
         }
-        System.out.println(this.heal);
     }
 
 }
