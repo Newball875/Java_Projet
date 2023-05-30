@@ -2,22 +2,20 @@ package net.ariane;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.TimeUtils;
 
-/*
-public class Menu implements Screen {
+import net.ariane.hud.Score;
+
+
+public class HighScore implements Screen {
     
+    private BitmapFont font;
     private Texture bucketImage2;
+    private GameScreen game;
+    private SpriteBatch batch;
+    private Score score;
 
     public HighScore(GameScreen game){
         this.game = game;
@@ -28,12 +26,50 @@ public class Menu implements Screen {
     }
 
     public void render(float delta) {
+        String str = score.LireFichier() ;
+
+        batch.begin();
         batch.draw(bucketImage2, 0, 0,900,900);
-        score.draw(batch,);
+        font.draw(batch,str, 350, 450);
+        batch.end();
+
     }
 
     public void show() {
-    
+        bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
+        score=new Score();
+        batch = new SpriteBatch();
+		font=new BitmapFont();
     }
 
-}*/
+    @Override
+    public void resize(int width, int height) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'resize'");
+    }
+
+    @Override
+    public void pause() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'pause'");
+    }
+
+    @Override
+    public void resume() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'resume'");
+    }
+
+    @Override
+    public void hide() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'hide'");
+    }
+
+    @Override
+    public void dispose() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'dispose'");
+    }
+
+}

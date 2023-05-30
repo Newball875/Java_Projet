@@ -55,7 +55,7 @@ public class Menu implements Screen {
         }
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>635 && Gdx.graphics.getHeight()-Gdx.input.getY()<735))) game.changeScreen(new Select(game));//PLay
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>515 && Gdx.graphics.getHeight()-Gdx.input.getY()<615))) game.changeScreen(new GameOver(game));//Option
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>395 && Gdx.graphics.getHeight()-Gdx.input.getY()<495))) game.changeScreen(new Select(game));//Score
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>395 && Gdx.graphics.getHeight()-Gdx.input.getY()<495))) game.changeScreen(new HighScore(game));//Score
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>275 && Gdx.graphics.getHeight()-Gdx.input.getY()<375))) game.changeScreen(new ArianeGame(game,0));//Help
         if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>375 && Gdx.input.getX()<475) && (Gdx.graphics.getHeight()-Gdx.input.getY()>155 && Gdx.graphics.getHeight()-Gdx.input.getY()<255))) System.exit(1);
 

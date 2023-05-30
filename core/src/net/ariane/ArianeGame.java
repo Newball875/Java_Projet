@@ -131,9 +131,9 @@ public class ArianeGame implements Screen {
 			//Mise à jour du fond
 			y1=y1+BACKGROUND_SPEED*Gdx.graphics.getDeltaTime();
 			y2=y1+yMax;
-			if(y1>=0){
-				y1=-yMax;
-				y2=0;
+			if(y2<=0){
+				y1=0;
+				y2=-yMax;
 			}
 			int i = 0;
 			//MAJ du héros
@@ -276,6 +276,7 @@ public class ArianeGame implements Screen {
 		//Draw de la barre de boss
 		niveau.draw(shape, font, batch);
 		score.draw(font, batch);
+		score.highScore();
 		score.drawBestScore(font, batch);
 		niveau.ennemis = ennemis;
 
@@ -321,8 +322,8 @@ public class ArianeGame implements Screen {
 		img1=new Texture(Gdx.files.internal("background_minecraft.png"));
 		img2=new Texture(Gdx.files.internal("background_minecraft.png"));
 		yMax=4608;	//Taille en y de l'image (à changer si on change d'image)
-		y1=-yMax;
-		y2=0;
+		y1=0;
+		y2=-yMax;
 		shape=new ShapeRenderer();
 		zac=new Joueur();
 		niveau=genererNiveau(niv);

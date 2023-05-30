@@ -1,5 +1,8 @@
 package net.ariane.hud;
 
+import java.io.FileInputStream;
+import java.util.Scanner;
+
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -15,6 +18,7 @@ public class Score {
         score = score + addscore ;
     }
 
+    //Dessine le score actuel du joueur
     public void draw(BitmapFont font, SpriteBatch batch){
         String motScore = "Score : " + this.score ;
         font.draw(batch, motScore , 350, 835);
@@ -26,8 +30,28 @@ public class Score {
         }
     }
 
+    //Dessine le meilleur score du joueur
     public void drawBestScore(BitmapFont font, SpriteBatch batch){
         String motBestScore = "Best Score : " + this.bestScore ;
-        font.draw(batch, motBestScore , 10, 10);
+        font.draw(batch, motBestScore , 10, 30);
     }
+
+    public String LireFichier(){
+        try
+        {
+          // Le fichier d'entrée
+          FileInputStream file = new FileInputStream("BestScore.txt");   
+          Scanner scanner = new Scanner(file);  
+          String str="";
+          while(scanner.hasNextLine()){
+            str = scanner.nextLine();
+          }
+          scanner.close();    
+          return str ;
+        }
+        catch(Exception e){
+          e.printStackTrace();
+        }
+        return null;
+      }
 }
