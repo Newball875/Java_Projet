@@ -18,6 +18,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class Menu implements Screen {
     
     private Texture bucketImage2;
+    private BitmapFont font ;
 
     public HighScore(GameScreen game){
         this.game = game;
@@ -28,12 +29,18 @@ public class Menu implements Screen {
     }
 
     public void render(float delta) {
+        String str = score.LireFichier()
+
+        batch.begin();
         batch.draw(bucketImage2, 0, 0,900,900);
-        score.draw(batch,);
+        font.draw(batch,str, 350, 450);
+        batch.end();
+        
     }
 
     public void show() {
-    
+        batch = new SpriteBatch();
+		font=new BitmapFont();
     }
 
 }
