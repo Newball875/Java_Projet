@@ -243,8 +243,8 @@ public class ArianeGame implements Screen {
 		//Draw de la barre de boss
 		niveau.draw(shape, font, batch);
 		score.draw(font, batch);
+		score.drawBestScore(font, batch);
 		niveau.ennemis = ennemis;
-
 
 		batch.end();
 		shape.end();

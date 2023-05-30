@@ -38,16 +38,6 @@ public class Menu implements Screen {
         game.backToMenu();
     }
 
-    private void spawnRaindrop() {
-        Rectangle raindrop = new Rectangle();
-        raindrop.x = MathUtils.random(0, 800-64);
-        raindrop.y = 480;
-        raindrop.width = 64;
-        raindrop.height = 64;
-        raindrops.add(raindrop);
-        lastDropTime = TimeUtils.nanoTime();
-    }
-
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);
@@ -95,9 +85,6 @@ public class Menu implements Screen {
         bucket2 = new Rectangle();
         bucket2.x = 800 / 2 - 64 / 2;
         bucket2.y = 200;
-
-        raindrops = new Array<Rectangle>();
-        spawnRaindrop();
     }
 
     @Override

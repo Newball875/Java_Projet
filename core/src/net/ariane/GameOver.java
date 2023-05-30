@@ -23,8 +23,6 @@ public class GameOver implements Screen {
     private OrthographicCamera camera;
     private Rectangle bucket;
     private Rectangle bucket2;
-    private Array<Rectangle> raindrops;
-    private long lastDropTime;
     private TextureRegion backgroundTexture;
     private GameScreen game ;
     private float f=0 ;
