@@ -123,7 +123,6 @@ public class ArianeGame implements Screen {
 			//Mise à jour du fond
 			y1=y1+BACKGROUND_SPEED*Gdx.graphics.getDeltaTime();
 			y2=y1+yMax;
-			System.out.println("SALUUT "+y1+" "+y2);
 			if(y2<=0){
 				y1=0;
 				y2=-yMax;
