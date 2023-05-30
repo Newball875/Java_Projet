@@ -2,20 +2,27 @@ package net.ariane;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import net.ariane.hud.Score;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class HighScore implements Screen {
     
-    private BitmapFont font;
     private Texture bucketImage2;
-    private GameScreen game;
-    private SpriteBatch batch;
+    private BitmapFont font ;
+    private GameScreen game ;
+    private SpriteBatch batch ;
     private Score score;
+    private ShapeRenderer shape;
 
     public HighScore(GameScreen game){
         this.game = game;
@@ -33,38 +40,22 @@ public class HighScore implements Screen {
         font.draw(batch,str, 350, 450);
         batch.end();
 
+        shape.begin(ShapeRenderer.ShapeType.Filled);
+
+        shape.setColor(color.RED);
+
+        shape.rect(300,300,200,100);
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>300 && Gdx.graphics.getHeight()-Gdx.input.getY()<400))) game.changeScreen(new Menu(game));
+
+        shape.end();
+
     }
 
     public void show() {
         bucketImage2 = new Texture(Gdx.files.internal("background_space.png"));
-        score=new Score();
         batch = new SpriteBatch();
 		font=new BitmapFont();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        
-    }
-
-    @Override
-    public void pause() {
-        
-    }
-
-    @Override
-    public void resume() {
-        
-    }
-
-    @Override
-    public void hide() {
-        
-    }
-
-    @Override
-    public void dispose() {
-        
+        shape=new ShapeRenderer();
     }
 
 }
