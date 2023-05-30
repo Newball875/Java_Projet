@@ -21,7 +21,7 @@ public class Score {
         font.draw(batch, motScore , 350, 835);
     }
 
-    public highScore(score){
+    public void highScore(){
         if(this.score>=this.bestScore){
             this.bestScore=this.score ;
         }
