@@ -15,6 +15,7 @@ public class Score {
         score = score + addscore ;
     }
 
+    //Dessine le score actuel du joueur
     public void draw(BitmapFont font, SpriteBatch batch){
         String motScore = "Score : " + this.score ;
         font.draw(batch, motScore , 350, 835);
@@ -26,6 +27,7 @@ public class Score {
         }
     }
 
+    //Dessine le meilleur score du joueur
     public void drawBestScore(BitmapFont font, SpriteBatch batch){
         String motBestScore = "Best Score : " + this.bestScore ;
         font.draw(batch, motBestScore , 10, 10);

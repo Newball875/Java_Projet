@@ -23,6 +23,7 @@ public class BarreBoss {
         setColor(color);
     }
 
+    //Dessine la barre du boss quand celui-ci apparaît
     public void draw(ShapeRenderer shape, int life, int maxLife){
         float max = (float)maxLife;
         float vie = (float)life;

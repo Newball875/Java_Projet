@@ -23,6 +23,7 @@ public class BarreVie {
         setColor(color);
     }
 
+    //Dessine la barre de vie du Joueur
     public void draw(ShapeRenderer shape, int life, int maxLife){
         float max = (float)maxLife;
         float vie = (float)life;
