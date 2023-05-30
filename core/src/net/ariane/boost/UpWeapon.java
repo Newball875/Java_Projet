@@ -13,7 +13,6 @@ public class UpWeapon extends LuckyBlock{
         if(joueur.weapon_used < joueur.WEAPON_NB){
             joueur.weapon_used++;
         }
-        System.out.println(joueur.weapon_used);
     }
 
 }
