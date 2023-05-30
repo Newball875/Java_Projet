@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
 
-public class Menu implements Screen {
+public class HighScore implements Screen {
     
     private Texture bucketImage2;
     private BitmapFont font ;
@@ -29,13 +29,13 @@ public class Menu implements Screen {
     }
 
     public void render(float delta) {
-        String str = score.LireFichier()
+        String str = score.LireFichier() ;
 
         batch.begin();
         batch.draw(bucketImage2, 0, 0,900,900);
         font.draw(batch,str, 350, 450);
         batch.end();
-        
+
     }
 
     public void show() {
