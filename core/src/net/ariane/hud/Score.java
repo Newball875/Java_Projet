@@ -1,6 +1,7 @@
 package net.ariane.hud;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -58,10 +59,11 @@ public class Score {
         return null;
     }
     
-    public void EcrireFichier(Score score){
-        String str = (String)score ;
+    public void EcrireFichier(){
+        int temp=this.bestScore;
+        String str=""+temp ;
         try{
-            FileWriter fw = new FileWriter("./assets/BestScore.txt")
+            FileWriter fw = new FileWriter("./assets/BestScore.txt");
             fw.write(str);
             fw.close();
         } 
