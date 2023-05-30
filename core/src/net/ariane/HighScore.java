@@ -24,25 +24,19 @@ public class HighScore implements Screen {
         this.game = game;
     }
 
-    public void backToMenu(){
-        game.backToMenu();
-    }
+        public void render(float delta) {
+        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>300 && Gdx.graphics.getHeight()-Gdx.input.getY()<400))) backToMenu();
 
-    public void render(float delta) {
+
         String str = score.LireFichier() ;
-
         batch.begin();
         batch.draw(bucketImage2, 0, 0,900,900);
         font.draw(batch,str, 350, 450);
         batch.end();
 
         shape.begin(ShapeRenderer.ShapeType.Filled);
-
         shape.setColor(Color.RED);
-
         shape.rect(300,300,200,100);
-        if(Gdx.input.isButtonPressed(0) && ((Gdx.input.getX()>300 && Gdx.input.getX()<500) && (Gdx.graphics.getHeight()-Gdx.input.getY()>300 && Gdx.graphics.getHeight()-Gdx.input.getY()<400))) game.changeScreen(new Menu(game));
-
         shape.end();
 
     }
@@ -52,6 +46,12 @@ public class HighScore implements Screen {
         batch = new SpriteBatch();
 		font=new BitmapFont();
         shape=new ShapeRenderer();
+        score=new Score();
+    }
+
+    public void backToMenu(){
+        //game.backToMenu();
+        game.changeScreen(new ArianeGame(game,0));
     }
 
     @Override
@@ -76,7 +76,9 @@ public class HighScore implements Screen {
 
     @Override
     public void dispose() {
-        
+        bucketImage2.dispose();
+        batch.dispose();
+        font.dispose();
     }
 
 }

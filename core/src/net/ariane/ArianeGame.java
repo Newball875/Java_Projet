@@ -143,7 +143,7 @@ public class ArianeGame implements Screen {
 				balles_alliees.clear();
 				balles_ennemies.clear();
 				ennemis.clear();
-				game.backToMenu();
+				backToMenu();
 			}
 
 			//MAJ de ses balles
@@ -337,6 +337,8 @@ public class ArianeGame implements Screen {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		img.dispose();
+		img1.dispose();
+		img2.dispose();
+		font.dispose();
 	}
 }
