@@ -32,4 +32,25 @@ public class Score {
         String motBestScore = "Best Score : " + this.bestScore ;
         font.draw(batch, motBestScore , 10, 30);
     }
+
+    public String LireFichier(){
+        try
+        {
+          // Le fichier d'entrée
+          FileInputStream file = new FileInputStream("BestScore.txt");   
+          Scanner scanner = new Scanner(file);  
+        
+          while(scanner.hasNextLine())
+          {
+            String str = Scanner.hasNextLine ;
+          }
+          scanner.close();    
+          return str ;
+        }
+        catch(IOException e)
+        {
+          e.printStackTrace();
+        }
+      }
+    }
 }
