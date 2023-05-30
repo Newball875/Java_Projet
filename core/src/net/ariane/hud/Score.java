@@ -40,7 +40,7 @@ public class Score {
         try
         {
           // Le fichier d'entrée
-          FileInputStream file = new FileInputStream("BestScore.txt");   
+          FileInputStream file = new FileInputStream("./assets/BestScore.txt");   
           Scanner scanner = new Scanner(file);  
           String str="";
           while(scanner.hasNextLine()){

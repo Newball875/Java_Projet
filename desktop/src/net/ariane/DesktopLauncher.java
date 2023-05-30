@@ -13,7 +13,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Zaq");
 		config.setWindowedMode(800,900);
-		config.setWindowIcon("../assets/icon.png");
+		config.setWindowIcon("./assets/icon.png");
 		new Lwjgl3Application( new GameScreen(), config);
 	}
 }
