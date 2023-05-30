@@ -27,7 +27,6 @@ public class Score {
     public void highScore(){
         if(this.score>=this.bestScore){
             this.bestScore=this.score ;
-            EcrireFichier(this.bestScore);
         }
     }
 
