@@ -27,6 +27,7 @@ public class Score {
     public void highScore(){
         if(this.score>=this.bestScore){
             this.bestScore=this.score ;
+            EcrireFichier(this.bestScore);
         }
     }
 
@@ -55,4 +56,15 @@ public class Score {
         return null;
     }
     
+    public void EcrireFichier(Score score){
+        String str = (String)score ;
+        try{
+            FileWriter fw = new FileWriter("./assets/BestScore.txt")
+            fw.write(str);
+            fw.close();
+        } 
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
